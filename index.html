@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>OK Financial — Student & Visitor Insurance Canada</title>
+<meta name="description" content="Licensed Financial Security Advisor in Montreal offering Destination insurance for international students and visitors across Canada."/>
+<meta property="og:title" content="OK Financial — Student &amp; Visitor Insurance Canada"/>
+<meta property="og:description" content="Up to $2,000,000 in coverage for international students and visitors. Licensed advisor in Montreal. Buy online in 2 minutes."/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_CA"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OK Financial — Student &amp; Visitor Insurance Canada"/>
+<meta name="twitter:description" content="Up to $2,000,000 in coverage for international students and visitors to Canada. Licensed advisor in Montreal."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0d1b2a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f7f3ec;
+  --slate: #2e4057;
+  --mist: #eef2f7;
+  --text: #1a2533;
+  --sub: #5a6a7a;
+  --danger: #c0392b;
+  --success: #27ae60;
+  --radius: 10px;
+  --shadow: 0 4px 24px rgba(13,27,42,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+body{font-family:'DM Sans',sans-serif;background:white;color:var(--text);min-height:100vh;}
+.hidden{display:none!important;}
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+.lp-nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:72px;
+  background:rgba(13,27,42,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,168,76,.15);
+}
+.lp-logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:white;letter-spacing:.3px;cursor:pointer;}
+.lp-logo span{color:var(--gold);}
+.lp-nav-links{display:flex;align-items:center;gap:22px;}
+.lp-nav-a{color:rgba(255,255,255,.6);font-size:.88rem;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.lp-nav-a:hover{color:white;}
+.lang-toggle{display:flex;gap:0;background:rgba(255,255,255,.08);border-radius:7px;overflow:hidden;border:1px solid rgba(255,255,255,.12);}
+.lang-btn{background:none;border:none;padding:6px 13px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:rgba(255,255,255,.45);transition:all .18s;letter-spacing:.5px;}
+.lang-btn.active{background:var(--gold);color:var(--navy);}
+.lp-portal-btn{
+  background:var(--gold);color:var(--navy);padding:9px 22px;
+  border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;
+  border:none;font-family:'DM Sans',sans-serif;transition:all .2s;
+}
+.lp-portal-btn:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* ═══════════════════════════════════
+   HERO — OPTION 3 (Who are you buying for?)
+═══════════════════════════════════ */
+.lp-hero{
+  min-height:100vh;
+  background:linear-gradient(160deg, #0a1520 0%, #0d1b2a 60%, #0f2235 100%);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.hero-bg-photo{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1569959220744-ff553533f492?w=1800&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center 30%;
+  opacity:.13;
+}
+.hero-bg-glow{
+  position:absolute;top:-10%;right:-5%;
+  width:70%;height:120%;
+  background:radial-gradient(ellipse at center,rgba(201,168,76,.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;opacity:.03;
+  background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+.hero-bg-circle{
+  position:absolute;bottom:-20%;left:-10%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,64,87,.5) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1160px;margin:0 auto;padding:120px 5% 60px;
+  text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:28px;
+  animation:fadeUp .5s .1s both;
+}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.6rem,5vw,4.4rem);
+  color:white;line-height:1.08;font-weight:600;
+  margin-bottom:18px;animation:fadeUp .5s .2s both;
+}
+.hero-h1 em{color:var(--gold);font-style:italic;}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.55);line-height:1.75;
+  margin-bottom:52px;max-width:540px;animation:fadeUp .5s .3s both;
+}
+/* WHO CARDS */
+.who-cards{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
+  width:100%;max-width:1000px;
+  animation:fadeUp .5s .4s both;
+  margin-bottom:0;
+}
+.who-card{
+  background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:38px 32px;
+  cursor:pointer;transition:all .28s;
+  text-align:left;position:relative;overflow:hidden;
+}
+.who-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,168,76,.08) 0%,transparent 60%);
+  opacity:0;transition:opacity .28s;
+}
+.who-card:hover{
+  border-color:rgba(201,168,76,.5);
+  background:rgba(201,168,76,.06);
+  transform:translateY(-4px);
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+@media(hover:none){
+  .who-card:hover{transform:none;box-shadow:none;}
+  .who-card:active{border-color:var(--gold);background:rgba(201,168,76,.09);}
+}
+.who-card:hover::before{opacity:1;}
+.who-card.active-seg{
+  border-color:var(--gold);
+  background:rgba(201,168,76,.09);
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.who-card.active-seg::before{opacity:1;}
+.who-icon{font-size:2.4rem;margin-bottom:16px;display:block;}
+.who-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:600;color:white;
+  margin-bottom:8px;line-height:1.15;
+}
+.who-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:18px;}
+.who-price{font-size:.82rem;color:var(--gold);font-weight:600;}
+.who-arrow{
+  position:absolute;bottom:22px;right:24px;
+  font-size:1.1rem;color:rgba(255,255,255,.25);transition:all .22s;
+}
+.who-card:hover .who-arrow,.who-card.active-seg .who-arrow{color:var(--gold);transform:translateX(4px);}
+/* REVEAL WIDGET — per-plan cards */
+.hero-reveal{
+  width:100%;max-width:1100px;
+  display:none;
+  animation:fadeUp .35s ease both;
+  margin-top:28px;
+}
+.hero-reveal.show{display:block;}
+.hw-date-row{
+  background:rgba(255,255,255,.07);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.13);border-radius:14px;
+  padding:20px 28px;
+  display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.hw-date-label{
+  font-size:.68rem;font-weight:700;color:rgba(255,255,255,.35);
+  letter-spacing:1.8px;text-transform:uppercase;
+  margin-bottom:14px;flex:0 0 100%;
+}
+.hw-field{display:flex;flex-direction:column;gap:5px;flex:1;min-width:140px;}
+.hw-field label{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:1.2px;text-transform:uppercase;}
+.hw-field input{
+  padding:11px 14px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:max(16px,.9rem);color:white;outline:none;
+  transition:border .2s;
+}
+.hw-field input:focus{border-color:rgba(201,168,76,.5);}
+.hw-days-pill{
+  background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);
+  border-radius:8px;padding:11px 20px;
+  font-size:.88rem;font-weight:700;color:var(--gold);
+  white-space:nowrap;align-self:flex-end;
+}
+/* Per-plan cards grid */
+.hw-plan-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(195px,1fr));
+  gap:12px;
+}
+.hwp-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;overflow:hidden;
+  transition:all .22s;display:flex;flex-direction:column;
+}
+.hwp-card:hover{
+  border-color:rgba(201,168,76,.45);
+  background:rgba(201,168,76,.06);
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(0,0,0,.3);
+}
+.hwp-card.hwp-popular{border-color:rgba(201,168,76,.38);}
+.hwp-head{padding:16px 18px 12px;}
+.hwp-badge{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:8px;}
+.hwp-badge-tugo{background:#2563c7;color:#fff !important;font-weight:900;font-size:.68rem;letter-spacing:.5px;}
+.hwp-badge-dest,.hwp-badge-destination{background:#00b341;color:#fff !important;font-weight:900;font-size:.68rem;letter-spacing:.5px;}
+.hwp-pop-tag{float:right;font-size:.62rem;background:rgba(201,168,76,.18);color:var(--gold);padding:2px 7px;border-radius:20px;font-weight:700;}
+.hwp-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:white;margin-bottom:2px;}
+.hwp-tagline{font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.4;}
+.hwp-price{padding:12px 18px;background:rgba(0,0,0,.2);}
+.hwp-total{font-family:'Cormorant Garamond',serif;font-size:1.75rem;color:var(--gold);font-weight:600;line-height:1;}
+.hwp-total-unit{font-size:.7rem;color:rgba(255,255,255,.35);margin-top:3px;}
+.hwp-daily{font-size:.7rem;color:rgba(201,168,76,.65);font-weight:600;margin-top:2px;}
+.hwp-foot{padding:12px 18px;margin-top:auto;}
+
+/* ── Plan card mini features ── */
+.hwp-features-mini{padding:8px 18px 4px;}
+.hwp-feature{font-size:.72rem;color:rgba(255,255,255,.5);padding:2px 0;display:flex;align-items:center;gap:6px;}
+.hwp-feature::before{content:'';display:none;}
+.hwp-age-note{font-size:.68rem;color:rgba(201,168,76,.7);margin-top:4px;font-weight:600;}
+/* ── 3-card grid on mobile ── */
+@media(max-width:480px){
+  .who-cards{grid-template-columns:1fr!important;max-width:100%!important;}
+}
+.hwp-buy{
+  width:100%;padding:10px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:8px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:.82rem;cursor:pointer;transition:all .2s;
+}
+.hwp-buy:hover{background:var(--gold-light);}
+.hwp-buy.secondary{background:transparent;border:1.5px solid rgba(201,168,76,.4);color:var(--gold);}
+.hwp-buy.secondary:hover{background:rgba(201,168,76,.1);}
+
+/* Stats strip */
+.stats-strip{
+  background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.07);
+}
+.stats-inner{
+  max-width:1160px;margin:0 auto;padding:26px 5%;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{text-align:center;padding:0 20px;border-right:1px solid rgba(255,255,255,.08);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-weight:600;}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.45);margin-top:3px;letter-spacing:.5px;}
+
+/* ═══════════════════════════════════
+   SECTIONS
+═══════════════════════════════════ */
+.section{max-width:1160px;margin:0 auto;padding:100px 5%;}
+.sec-eye{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);color:var(--navy);line-height:1.15;margin-bottom:16px;}
+.sec-h2-light{color:white;}
+.sec-sub{font-size:.95rem;color:var(--sub);max-width:520px;line-height:1.75;margin-bottom:56px;}
+.sec-sub-light{color:rgba(255,255,255,.5);}
+
+/* HOW IT WORKS */
+.how-bg{
+  background:var(--mist);
+  position:relative;
+}
+.how-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center 40%;
+  opacity:.04;pointer-events:none;
+}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.step-card{background:white;border-radius:16px;padding:34px;box-shadow:0 4px 24px rgba(13,27,42,.08);position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.1);}
+.step-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:4rem;color:rgba(201,168,76,.18);font-weight:600;line-height:1;margin-bottom:16px;}
+.step-title{font-size:.98rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.step-text{font-size:.84rem;color:var(--sub);line-height:1.65;}
+
+/* AUDIENCE SECTION */
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.aud-card{
+  border-radius:20px;overflow:hidden;
+  background:white;box-shadow:var(--shadow);
+  border:1px solid rgba(13,27,42,.07);
+  transition:transform .22s,box-shadow .22s;
+}
+.aud-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(13,27,42,.14);}
+.aud-head{padding:36px 36px 24px;background:var(--navy);position:relative;}
+.aud-head-student{
+  background:linear-gradient(135deg,rgba(13,27,42,.96) 0%,rgba(26,58,85,.95) 100%);
+  position:relative;overflow:hidden;
+}
+.aud-head-student::before{
+  content:'';position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center;
+  opacity:.18;pointer-events:none;
+}
+.aud-head-visitor{
+  background:linear-gradient(135deg,rgba(13,27,20,.96) 0%,rgba(26,58,35,.95) 100%);
+  position:relative;overflow:hidden;
+}
+.aud-head-visitor::before{
+  content:'';position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center;
+  opacity:.2;pointer-events:none;
+}
+.aud-icon{font-size:2.8rem;margin-bottom:16px;display:block;position:relative;z-index:1;}
+.aud-title{font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:white;margin-bottom:8px;position:relative;z-index:1;}
+.aud-subtitle{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6;position:relative;z-index:1;}
+.aud-body{padding:28px 36px 32px;}
+.aud-feat-list{list-style:none;margin-bottom:24px;}
+.aud-feat-list li{font-size:.86rem;color:var(--text);padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:10px;align-items:flex-start;}
+.aud-feat-list li:last-child{border-bottom:none;}
+.aud-feat-list li::before{content:'✓';color:var(--success);font-weight:700;flex-shrink:0;margin-top:1px;}
+.aud-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--navy);padding:12px 26px;
+  border-radius:10px;font-weight:700;font-size:.88rem;
+  border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;
+}
+.aud-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+.aud-cta-ghost{
+  background:transparent;border:1.5px solid rgba(13,27,42,.18);
+  color:var(--navy);
+}
+.aud-cta-ghost:hover{background:var(--navy);color:white;}
+
+/* PLANS */
+.plans-bg{background:var(--navy);}
+.pub-plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-bottom:32px;}
+.pub-plan{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;transition:all .25s;}
+.pub-plan:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.45);box-shadow:0 20px 48px rgba(0,0,0,.3);}
+.pub-plan.pop{border-color:rgba(201,168,76,.5);}
+.pub-plan-head{padding:22px 22px 14px;border-bottom:1px solid rgba(255,255,255,.07);}
+.pub-badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.pub-badge-tugo{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);}
+.pub-badge-dest,.pub-badge-destination{background:#00b341;color:#fff !important;font-weight:900;}
+.pub-pop-tag{float:right;font-size:.68rem;background:rgba(201,168,76,.18);color:var(--gold);padding:2px 8px;border-radius:20px;font-weight:700;}
+.pub-plan-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:white;margin-bottom:3px;}
+.pub-plan-tag{font-size:.75rem;color:rgba(255,255,255,.4);}
+.pub-plan-price{padding:14px 22px;background:rgba(0,0,0,.2);display:flex;align-items:baseline;gap:6px;}
+.pub-price-amt{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--gold);font-weight:600;}
+.pub-price-unit{font-size:.74rem;color:rgba(255,255,255,.4);}
+.pub-price-day{font-size:.68rem;color:rgba(201,168,76,.65);font-weight:600;margin-left:auto;}
+.pub-features{padding:16px 22px;}
+.pub-feat{font-size:.8rem;color:rgba(255,255,255,.65);padding:3px 0;display:flex;gap:8px;}
+.pub-feat::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.pub-plan-foot{padding:14px 22px;border-top:1px solid rgba(255,255,255,.07);}
+.pub-buy{width:100%;padding:11px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .2s;}
+.pub-buy:hover{background:var(--gold-light);}
+.pub-buy.secondary{background:transparent;border:1.5px solid rgba(201,168,76,.45);color:var(--gold);}
+.pub-buy.secondary:hover{background:rgba(201,168,76,.1);}
+
+/* ADVISOR SECTION */
+.advisor-bg{background:white;}
+.advisor-inner{
+  max-width:1160px;margin:0 auto;padding:100px 5%;
+  display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:start;
+}
+.advisor-photo-col{}
+.advisor-photo{
+  width:100%;aspect-ratio:3/4;border-radius:20px;
+  background:linear-gradient(145deg,#c5c8cc,#a8acb0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;position:relative;overflow:hidden;
+  box-shadow:0 24px 64px rgba(13,27,42,.18);
+}
+.advisor-photo::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(13,27,42,.35) 100%);
+}
+.advisor-photo-placeholder{font-size:5rem;opacity:.4;z-index:1;}
+.advisor-photo-note{font-size:.75rem;color:rgba(255,255,255,.7);font-weight:600;z-index:1;letter-spacing:.5px;}
+.advisor-license-badge{
+  margin-top:18px;padding:12px 18px;
+  background:white;border-radius:12px;
+  box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:12px;
+}
+.alb-icon{font-size:1.5rem;}
+.alb-text{}
+.alb-title{font-size:.78rem;font-weight:700;color:var(--navy);letter-spacing:.3px;}
+.alb-sub{font-size:.7rem;color:var(--sub);margin-top:2px;}
+.advisor-content-col{}
+.advisor-tag{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;}
+.advisor-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);color:var(--navy);line-height:1.1;margin-bottom:6px;}
+.advisor-title-line{font-size:.92rem;color:var(--sub);margin-bottom:24px;}
+.advisor-bio{font-size:.93rem;color:var(--text);line-height:1.8;margin-bottom:32px;max-width:480px;}
+.advisor-certs{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px;
+}
+.advisor-cert{
+  background:white;border-radius:12px;padding:16px 18px;
+  box-shadow:var(--shadow);border-left:3px solid var(--gold);
+}
+.cert-label{font-size:.68rem;font-weight:700;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px;}
+.cert-value{font-size:.88rem;font-weight:600;color:var(--navy);}
+.advisor-contact{display:flex;flex-wrap:wrap;gap:12px;}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;
+  cursor:pointer;transition:all .2s;border:none;text-decoration:none;
+}
+.contact-btn-gold{background:var(--gold);color:var(--navy);}
+.contact-btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);}
+.contact-btn-outline{background:transparent;border:1.5px solid rgba(13,27,42,.18);color:var(--navy);}
+.contact-btn-outline:hover{background:var(--navy);color:white;}
+.contact-btn-green{background:#25d366;color:white;}
+.contact-btn-green:hover{background:#1fb854;transform:translateY(-1px);}
+.advisor-info-row{
+  display:flex;flex-wrap:wrap;gap:18px;margin-bottom:28px;
+}
+.advisor-info-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:.84rem;color:var(--sub);
+}
+.advisor-info-item strong{color:var(--navy);}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.why-card{background:white;border-radius:14px;padding:30px;box-shadow:0 4px 24px rgba(13,27,42,.07);border:1px solid rgba(201,168,76,.09);}
+.why-icon{font-size:2rem;margin-bottom:14px;}
+.why-title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.why-text{font-size:.82rem;color:var(--sub);line-height:1.65;}
+
+/* TESTIMONIALS */
+.testi-bg{background:linear-gradient(160deg,#0f2035 0%,#1a3050 100%);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.testi-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
+  border-radius:16px;padding:28px;transition:all .22s;
+}
+.testi-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-3px);}
+.testi-stars{color:var(--gold);font-size:.9rem;margin-bottom:14px;letter-spacing:2px;}
+.testi-text{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.9rem;color:var(--navy);flex-shrink:0;
+}
+.testi-name{font-size:.88rem;font-weight:600;color:white;}
+.testi-from{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:2px;}
+
+/* FAQ */
+.faq-list{max-width:760px;}
+.faq-item{border-bottom:1px solid #eef0f3;}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;cursor:pointer;
+  font-size:.93rem;font-weight:600;color:var(--navy);
+  gap:16px;
+}
+.faq-q:hover{color:var(--gold);}
+.faq-chevron{
+  font-size:.7rem;color:var(--sub);flex-shrink:0;
+  transition:transform .25s;
+}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
+  font-size:.86rem;color:var(--sub);line-height:1.75;
+}
+.faq-a-inner{padding-bottom:20px;}
+
+/* CTA BANNER */
+.cta-banner-photo{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=1600&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center;
+  opacity:.12;
+}
+.cta-banner{position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--slate) 100%);
+  padding:80px 5%;text-align:center;position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;top:-50%;left:30%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:white;margin-bottom:14px;}
+.cta-banner p{color:rgba(255,255,255,.55);font-size:.95rem;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.btn-gold-solid{
+  background:var(--gold);color:var(--navy);padding:15px 34px;
+  border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;
+  border:none;font-family:'DM Sans',sans-serif;transition:all .25s;
+  box-shadow:0 8px 28px rgba(201,168,76,.28);
+}
+.btn-gold-solid:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* FOOTER */
+.lp-footer{background:linear-gradient(180deg,#0a1822 0%,#060e16 100%);border-top:1px solid rgba(255,255,255,.07);padding:60px 5% 40px;}
+.footer-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:white;margin-bottom:12px;}
+.footer-logo span{color:var(--gold);}
+.footer-desc{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.75;max-width:260px;margin-bottom:20px;}
+.footer-contact-line{display:flex;align-items:center;gap:8px;font-size:.79rem;color:rgba(255,255,255,.45);margin-bottom:7px;}
+.footer-contact-line a{color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-contact-line a:hover{color:var(--gold);}
+.footer-col-title{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;}
+.footer-link{display:block;font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:8px;cursor:pointer;transition:color .2s;}
+.footer-link:hover{color:var(--gold);}
+.footer-bottom{max-width:1160px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);font-size:.72rem;color:rgba(255,255,255,.25);text-align:center;line-height:1.9;}
+
+/* ═══════════════════════════════════
+   LOGIN MODAL
+═══════════════════════════════════ */
+#login-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);z-index:1000;align-items:center;justify-content:center;}
+#login-modal.open{display:flex;}
+.login-box{background:var(--cream);border-radius:20px;padding:52px 44px;width:420px;box-shadow:0 24px 64px rgba(0,0,0,.4);animation:fadeUp .3s ease both;position:relative;}
+.login-close{position:absolute;top:18px;right:20px;background:none;border:none;font-size:1.3rem;color:var(--sub);cursor:pointer;line-height:1;transition:color .2s;}
+.login-close:hover{color:var(--navy);}
+.login-logo{text-align:center;margin-bottom:32px;}
+.login-logo h1{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);}
+.login-logo span{color:var(--gold);}
+.login-logo p{font-size:.75rem;color:var(--sub);margin-top:4px;letter-spacing:1.5px;text-transform:uppercase;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:.75rem;font-weight:600;color:var(--sub);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.form-group input{width:100%;padding:12px 14px;border:1.5px solid #dde3ea;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.95rem;background:white;transition:border .2s;outline:none;}
+.form-group input:focus{border-color:var(--gold);}
+.btn{display:block;width:100%;padding:13px;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s;border:none;text-align:center;}
+.btn-primary{background:var(--navy);color:white;}
+.btn-primary:hover{background:var(--slate);}
+.btn-outline{background:transparent;border:1.5px solid #dde3ea;color:var(--text);}
+.btn-outline:hover{border-color:var(--navy);}
+.btn-gold{background:var(--gold);color:var(--navy);}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-danger{background:rgba(192,57,43,.1);color:var(--danger);border:none;}
+.btn-sm{width:auto;padding:8px 16px;font-size:.82rem;}
+.error-msg{color:var(--danger);font-size:.8rem;margin-top:10px;display:none;text-align:center;}
+
+/* ═══════════════════════════════════
+   PORTAL APP
+═══════════════════════════════════ */
+#app{display:none;}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:240px;background:var(--navy);display:flex;flex-direction:column;padding:0 0 20px;z-index:100;overflow-y:auto;}
+.sidebar-logo{padding:24px 22px 20px;border-bottom:1px solid rgba(255,255,255,.08);}
+.sidebar-logo h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:white;}
+.sidebar-logo span{color:var(--gold);}
+.sidebar-logo p{font-size:.7rem;color:rgba(255,255,255,.35);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+.sidebar-user{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:12px;align-items:center;}
+.sidebar-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:var(--navy);flex-shrink:0;}
+.sidebar-name{font-size:.85rem;font-weight:600;color:white;}
+.sidebar-role{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:2px;}
+.nav-section{padding:18px 22px 6px;}
+.nav-label{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 22px;color:rgba(255,255,255,.55);font-size:.85rem;cursor:pointer;transition:all .15s;border-left:3px solid transparent;}
+.nav-item svg{width:16px;height:16px;flex-shrink:0;}
+.nav-item:hover{color:white;background:rgba(255,255,255,.05);}
+.nav-item.active{color:white;border-left-color:var(--gold);background:rgba(201,168,76,.08);}
+.logout-btn{margin:auto 22px 0;padding:10px;background:rgba(255,255,255,.06);border:none;border-radius:8px;color:rgba(255,255,255,.45);font-family:'DM Sans',sans-serif;font-size:.82rem;cursor:pointer;transition:all .18s;width:calc(100% - 44px);}
+.logout-btn:hover{background:rgba(255,255,255,.12);color:white;}
+.main{margin-left:240px;padding:36px 40px;background:var(--mist);min-height:100vh;}
+.page-header{margin-bottom:28px;}
+.page-header h2{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);}
+.page-header p{color:var(--sub);font-size:.88rem;margin-top:4px;}
+.card{background:white;border-radius:14px;box-shadow:var(--shadow);padding:28px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px;}
+.stat-card{background:white;border-radius:14px;padding:22px 24px;box-shadow:var(--shadow);}
+.stat-card .label{font-size:.72rem;color:var(--sub);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+.stat-card .value{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--navy);margin-top:6px;}
+.stat-accent{border-top:3px solid var(--gold);}
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;font-size:.72rem;color:var(--sub);text-transform:uppercase;letter-spacing:1px;padding:10px 14px;border-bottom:1.5px solid #eee;font-weight:600;}
+td{padding:13px 14px;font-size:.87rem;border-bottom:1px solid #f3f4f6;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#fafbfc;}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.5px;}
+.badge-admin{background:rgba(201,168,76,.18);color:#8a6a1a;}
+.badge-coord{background:rgba(46,64,87,.12);color:var(--slate);}
+.badge-active{background:rgba(39,174,96,.12);color:var(--success);}
+.badge-pending{background:rgba(230,126,34,.12);color:#d35400;}
+.page{display:none;}
+.page.active{display:block;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:16px;padding:36px;width:460px;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:fadeUp .3s ease both;max-height:90vh;overflow-y:auto;}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);margin-bottom:20px;}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.step-indicator{display:flex;gap:0;margin-bottom:28px;}
+.step{flex:1;text-align:center;padding:10px;font-size:.78rem;font-weight:600;background:#eee;color:var(--sub);transition:all .2s;}
+.step:first-child{border-radius:8px 0 0 8px;}
+.step:last-child{border-radius:0 8px 8px 0;}
+.step.active{background:var(--navy);color:white;}
+.step.done{background:var(--gold);color:var(--navy);}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-bottom:32px;}
+.plan-card{background:white;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer;border:2px solid transparent;}
+.plan-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(13,27,42,.14);}
+.plan-card.selected-plan{border-color:var(--gold);}
+.plan-card-header{padding:20px 22px 14px;border-bottom:1px solid #f0f2f5;}
+.plan-provider-badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.badge-tugo{background:rgba(13,27,42,.08);color:var(--navy);}
+.badge-dest{background:rgba(39,174,96,.1);color:#1a7a43;}
+.plan-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--navy);margin-bottom:4px;}
+.plan-tagline{font-size:.75rem;color:var(--sub);}
+.plan-card-price{padding:16px 22px;background:var(--mist);display:flex;align-items:baseline;gap:6px;}
+.plan-price-amount{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);font-weight:600;}
+.plan-price-unit{font-size:.75rem;color:var(--sub);}
+.plan-price-note{font-size:.7rem;color:var(--gold);font-weight:600;margin-left:auto;}
+.plan-card-features{padding:16px 22px;}
+.plan-feature{display:flex;align-items:center;gap:8px;font-size:.81rem;color:var(--text);padding:4px 0;}
+.plan-feature::before{content:'✓';color:var(--success);font-weight:700;font-size:.8rem;flex-shrink:0;}
+.plan-card-footer{padding:14px 22px;border-top:1px solid #f0f2f5;display:flex;justify-content:space-between;align-items:center;}
+.plan-select-btn{font-size:.8rem;font-weight:600;color:var(--gold);cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.price-updated{font-size:.68rem;color:var(--sub);}
+.price-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.price-section-title{font-size:.7rem;font-weight:700;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--gold);}
+.last-updated-bar{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:10px 14px;font-size:.8rem;color:#8a6a1a;margin-bottom:20px;}
+.action-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px;}
+.search-input{padding:10px 14px;border:1.5px solid #dde3ea;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;width:240px;}
+.search-input:focus{border-color:var(--gold);}
+.redirect-banner{background:linear-gradient(135deg,var(--navy),var(--slate));border-radius:12px;padding:28px;text-align:center;color:white;}
+.redirect-banner h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:8px;}
+.summary-field{background:var(--mist);border-radius:8px;padding:12px 14px;}
+.summary-field .sf-label{font-size:.68rem;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.summary-field .sf-value{font-size:.9rem;color:var(--navy);font-weight:500;}
+.next-step-item{display:flex;align-items:flex-start;gap:10px;flex:1;min-width:180px;padding:0 16px 0 0;}
+.next-step-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:white;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.next-step-text{font-size:.81rem;color:var(--sub);line-height:1.5;}
+.quote-dur-bar{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:10px 16px;font-size:.82rem;color:#8a6a1a;margin-bottom:20px;display:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══════════════════════════════════
+   DESTINATION CHECKOUT MODAL
+═══════════════════════════════════ */
+#checkout-modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.8);backdrop-filter:blur(12px);
+  z-index:1100;align-items:center;justify-content:center;padding:16px;
+  overflow-y:auto;
+}
+#checkout-modal.open{display:flex;}
+.checkout-box{
+  background:white;border-radius:22px;
+  width:100%;max-width:600px;
+  box-shadow:0 32px 80px rgba(0,0,0,.5);
+  animation:fadeUp .3s ease both;
+  overflow:hidden;
+  margin:auto;
+}
+.checkout-head{
+  background:var(--navy);padding:24px 28px 20px;
+  position:relative;
+}
+.checkout-close{
+  position:absolute;top:16px;right:18px;
+  background:none;border:none;color:rgba(255,255,255,.5);
+  font-size:1.1rem;cursor:pointer;padding:4px 8px;
+  transition:color .2s;
+}
+.checkout-close:hover{color:white;}
+.checkout-plan-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-size:.68rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:10px;
+}
+.checkout-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.45rem;color:white;margin-bottom:4px;line-height:1.15;
+}
+.checkout-head p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5;}
+.checkout-steps{
+  display:flex;gap:0;border-bottom:1px solid #eef0f3;
+}
+.checkout-step{
+  flex:1;padding:12px 16px;text-align:center;
+  font-size:.72rem;font-weight:700;letter-spacing:.5px;
+  color:var(--sub);border-bottom:2px solid transparent;
+  transition:all .2s;cursor:default;
+}
+.checkout-step.active{color:var(--navy);border-bottom-color:var(--gold);}
+.checkout-step.done{color:var(--success);}
+.checkout-body{padding:24px 28px;}
+/* Step 1 — applicant info */
+.co-section-title{font-size:.72rem;font-weight:700;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;}
+.co-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.co-form-full{margin-bottom:12px;}
+.co-label{display:block;font-size:.72rem;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:5px;}
+.co-input{
+  width:100%;padding:11px 14px;
+  border:1.5px solid #dde3ea;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:max(16px,.9rem);
+  outline:none;transition:border .2s;color:var(--text);background:white;
+}
+.co-input:focus{border-color:var(--gold);}
+.co-input.error{border-color:var(--danger);}
+.co-select{
+  width:100%;padding:11px 14px;
+  border:1.5px solid #dde3ea;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:max(16px,.9rem);
+  outline:none;transition:border .2s;color:var(--text);background:white;
+  appearance:none;cursor:pointer;
+}
+.co-select:focus{border-color:var(--gold);}
+/* Plan summary strip */
+.co-plan-summary{
+  background:var(--mist);border-radius:12px;padding:14px 18px;
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:20px;flex-wrap:wrap;gap:10px;
+}
+.co-plan-name{font-weight:700;color:var(--navy);font-size:.9rem;}
+.co-plan-dates{font-size:.78rem;color:var(--sub);}
+.co-plan-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);font-weight:600;}
+/* Step 2 — payment iframe */
+.dtg-iframe-wrap{
+  border-radius:12px;overflow:hidden;
+  border:1.5px solid #dde3ea;
+  background:#f9fafb;
+  min-height:380px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.dtg-iframe-loading{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+  font-size:.85rem;color:var(--sub);
+}
+.dtg-spinner{
+  width:32px;height:32px;border:3px solid rgba(201,168,76,.2);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+#dtg-iframe{width:100%;height:400px;border:none;display:block;}
+/* Payment error */
+.co-pay-error{
+  background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.25);
+  border-radius:10px;padding:12px 16px;margin-top:12px;
+  font-size:.82rem;color:var(--danger);display:none;line-height:1.55;
+}
+/* Success screen */
+.co-success{
+  text-align:center;padding:32px 20px;
+}
+.co-success-icon{font-size:3.5rem;margin-bottom:16px;}
+.co-success-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);margin-bottom:10px;}
+.co-success-msg{font-size:.88rem;color:var(--sub);line-height:1.7;max-width:380px;margin:0 auto 24px;}
+.co-success-ref{
+  display:inline-block;background:var(--mist);border-radius:10px;
+  padding:10px 24px;font-size:.82rem;color:var(--navy);font-weight:700;
+}
+/* Buttons */
+.co-btn-row{display:flex;gap:12px;margin-top:20px;}
+.co-btn-primary{
+  flex:1;padding:13px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:11px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:.95rem;cursor:pointer;transition:all .22s;
+}
+.co-btn-primary:hover{background:var(--gold-light);}
+.co-btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+.co-btn-outline{
+  padding:13px 22px;background:transparent;
+  border:1.5px solid #dde3ea;border-radius:11px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;
+  color:var(--sub);cursor:pointer;transition:all .22s;
+}
+.co-btn-outline:hover{border-color:var(--navy);color:var(--navy);}
+.co-err-msg{font-size:.75rem;color:var(--danger);margin-top:4px;display:none;}
+@media(max-width:600px){
+  .checkout-box{border-radius:16px;}
+  .checkout-body{padding:18px 18px;}
+  .co-form-row{grid-template-columns:1fr;}
+  .co-btn-row{flex-direction:column;}
+}
+
+/* ═══════════════════════════════════
+   LEAD CAPTURE MODAL
+═══════════════════════════════════ */
+#lead-modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(10px);
+  z-index:1000;align-items:center;justify-content:center;padding:20px;
+}
+#lead-modal.open{display:flex;}
+.lead-box{
+  background:white;border-radius:22px;
+  width:100%;max-width:480px;
+  box-shadow:0 32px 80px rgba(0,0,0,.45);
+  animation:fadeUp .3s ease both;
+  overflow:hidden;
+}
+.lead-head{
+  background:var(--navy);padding:28px 32px 24px;
+  position:relative;
+}
+.lead-head-plan{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-size:.7rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:5px 14px;border-radius:20px;margin-bottom:14px;
+}
+.lead-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;color:white;margin-bottom:6px;line-height:1.15;
+}
+.lead-head p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6;}
+.lead-close{
+  position:absolute;top:16px;right:18px;
+  background:rgba(255,255,255,.1);border:none;border-radius:50%;
+  width:30px;height:30px;color:rgba(255,255,255,.6);
+  font-size:.9rem;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;justify-content:center;
+}
+.lead-close:hover{background:rgba(255,255,255,.2);color:white;}
+.lead-body{padding:28px 32px 32px;}
+.lead-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.lead-form-full{margin-bottom:14px;}
+.lead-label{display:block;font-size:.72rem;font-weight:700;color:var(--sub);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.lead-input{
+  width:100%;padding:12px 14px;
+  border:1.5px solid #dde3ea;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:max(16px,.93rem);
+  background:white;outline:none;transition:border .2s;color:var(--text);
+}
+.lead-input:focus{border-color:var(--gold);}
+.lead-input.error{border-color:var(--danger);}
+.lead-err{font-size:.75rem;color:var(--danger);margin-bottom:12px;display:none;}
+.lead-submit{
+  width:100%;padding:14px;
+  background:var(--gold);color:var(--navy);
+  border:none;border-radius:11px;
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;
+  cursor:pointer;transition:all .22s;
+  box-shadow:0 6px 20px rgba(201,168,76,.3);
+}
+.lead-submit:hover{background:var(--gold-light);transform:translateY(-1px);}
+.lead-note{font-size:.72rem;color:var(--sub);text-align:center;margin-top:12px;line-height:1.6;}
+
+
+/* ═══════════════════════════════════
+   RESPONSIVE — TABLET (≤900px)
+═══════════════════════════════════ */
+@media(max-width:900px){
+  /* Nav */
+  .lp-nav-links .lp-nav-a{display:none;}
+  .lp-portal-btn{padding:8px 14px;font-size:.8rem;}
+
+  /* Hero */
+  .hero-inner{padding:100px 5% 48px;}
+  .hero-h1{font-size:clamp(2rem,6vw,3rem);}
+  .who-cards{grid-template-columns:1fr 1fr;max-width:640px;width:100%;}
+  .who-card{padding:26px 24px;}
+  .hero-reveal{max-width:100%;}
+  .hw-date-row{padding:16px 18px;}
+  .hw-plan-cards{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));}
+
+  /* Sections */
+  .section{padding:72px 5%;}
+  .steps-grid{grid-template-columns:1fr;}
+  .audience-grid{grid-template-columns:1fr;}
+  .advisor-inner{grid-template-columns:1fr;gap:40px;}
+  .advisor-photo{aspect-ratio:16/9;max-height:280px;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .stat-item:nth-child(2){border-right:none;}
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — MOBILE (≤600px)
+═══════════════════════════════════ */
+@media(max-width:600px){
+  /* Nav */
+  .lp-nav{padding:0 4%;height:64px;}
+  .lp-logo{font-size:1.3rem;}
+  .lang-toggle{display:flex;}
+  .lp-portal-btn{padding:7px 12px;font-size:.75rem;}
+
+  /* Hero */
+  .hero-inner{padding:88px 4% 40px;gap:0;}
+  .hero-eyebrow{font-size:.65rem;padding:5px 12px;margin-bottom:20px;}
+  .hero-h1{font-size:clamp(1.8rem,8vw,2.4rem);margin-bottom:14px;}
+  .hero-sub{font-size:.88rem;margin-bottom:36px;}
+  .who-cards{gap:12px;max-width:100%;}
+  .who-card{padding:22px 20px;border-radius:16px;}
+  .who-icon{font-size:1.8rem;margin-bottom:10px;}
+  .who-title{font-size:1.25rem;}
+  .who-desc{font-size:.8rem;margin-bottom:12px;}
+  .who-price{font-size:.75rem;}
+
+  /* Hero widget */
+  .hero-reveal{margin-top:18px;}
+  .hw-date-row{padding:14px 16px;gap:10px;flex-direction:column;align-items:stretch;}
+  .hw-field{min-width:unset;width:100%;}
+  .hw-field input{font-size:1rem;padding:13px 14px;}/* bigger tap target */
+  .hw-days-pill{align-self:flex-start;padding:8px 14px;font-size:.82rem;}
+  .hw-plan-cards{grid-template-columns:1fr;gap:10px;}
+  .hwp-card{border-radius:12px;}
+  .hwp-head{padding:14px 16px 10px;}
+  .hwp-price{padding:10px 16px;}
+  .hwp-foot{padding:10px 16px 14px;}
+  .hwp-buy{padding:13px;font-size:.9rem;}/* larger tap target */
+  .hwp-total{font-size:1.5rem;}
+
+  /* Stats strip */
+  .stats-inner{grid-template-columns:1fr 1fr;gap:0;}
+  .stat-item{padding:0 10px;}
+  .stat-num{font-size:1.5rem;}
+
+  /* Sections */
+  .section{padding:56px 4%;}
+  .sec-h2{font-size:clamp(1.6rem,7vw,2.2rem);}
+  .sec-sub{font-size:.88rem;margin-bottom:36px;}
+
+  /* How it works */
+  .steps-grid{grid-template-columns:1fr;gap:16px;}
+  .step-card{padding:24px;}
+  .step-num{font-size:3rem;}
+
+  /* Audience */
+  .audience-grid{grid-template-columns:1fr;gap:20px;}
+  .aud-head{padding:24px 24px 18px;}
+  .aud-body{padding:20px 24px 24px;}
+
+  /* Advisor */
+  .advisor-inner{padding:56px 4%;gap:32px;}
+  .advisor-photo{aspect-ratio:4/3;max-height:240px;}
+  .advisor-name{font-size:1.8rem;}
+  .advisor-certs{grid-template-columns:1fr 1fr;}
+  .advisor-contact{flex-direction:column;}
+  .contact-btn{justify-content:center;padding:14px;font-size:.9rem;}/* full width tap targets */
+
+  /* Why */
+  .why-grid{grid-template-columns:1fr;gap:14px;}
+  .why-card{padding:22px;}
+
+  /* Testimonials */
+  .testi-grid{grid-template-columns:1fr;gap:14px;}
+  .testi-card{padding:22px;}
+
+  /* FAQ */
+  .faq-q{font-size:.88rem;padding:16px 0;}
+
+  /* CTA */
+  .cta-banner{padding:56px 6%;}
+  .cta-banner h2{font-size:1.8rem;}
+  .btn-gold-solid{width:100%;text-align:center;padding:15px;}
+
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr;gap:32px;padding:48px 4%;}
+  .footer-logo{font-size:1.4rem;}
+
+  /* Lead modal */
+  .lead-box{border-radius:16px;}
+  .lead-head{padding:22px 20px 18px;}
+  .lead-head h2{font-size:1.3rem;}
+  .lead-body{padding:20px 20px 24px;}
+  .lead-form-row{grid-template-columns:1fr;gap:10px;}
+  .lead-input{padding:13px 14px;font-size:1rem;}/* no zoom on iOS */
+  .lead-submit{padding:15px;font-size:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     LANDING PAGE
+═══════════════════════════════════ -->
+<div id="landing-page">
+<div style="background:#c9a84c;color:#0d1b2a;text-align:center;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;position:relative;z-index:600;">
+  🚧 &nbsp; WORK IN PROGRESS — Preview version for integration review &nbsp; 🚧
+</div>
+
+
+  <!-- NAV -->
+  <nav class="lp-nav">
+    <div class="lp-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">OK <span>Financial</span></div>
+    <div class="lp-nav-links">
+      <button class="lp-nav-a" onclick="lpScroll('how')" data-en="How It Works" data-fr="Comment ça marche">How It Works</button>
+      <button class="lp-nav-a" onclick="lpScroll('advisor')" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</button>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="lang-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="lang-fr" onclick="setLang('fr')">FR</button>
+      </div>
+      <button class="lp-portal-btn" onclick="openLogin()" data-en="Portal Login" data-fr="Portail">Portal Login</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="lp-hero">
+    <div class="hero-bg-photo"></div>
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-circle"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow" data-en="🛡️ Licensed Financial Security Advisor · Montreal, Quebec" data-fr="🛡️ Conseiller en sécurité financière · Montréal, Québec">🛡️ Licensed Financial Security Advisor · Montreal, Quebec</div>
+      <h1 class="hero-h1" data-en="Your health is protected.<br><em>From day one.</em>" data-fr="Votre santé est protégée.<br><em>Dès le premier jour.</em>">Your health is protected.<br><em>From day one.</em></h1>
+      <p class="hero-sub" data-en="Up to $2,000,000 in emergency medical coverage — for international students and visitors arriving in Canada. Two minutes to apply. Instant policy delivery." data-fr="Jusqu'à 2 000 000 $ en couverture médicale d'urgence — pour les étudiants internationaux et visiteurs au Canada. Deux minutes pour postuler.">Up to $2,000,000 in emergency medical coverage — for international students and visitors arriving in Canada. Two minutes to apply. Instant policy delivery.</p>
+      <!-- WHO CARDS -->
+      <div class="who-cards">
+        <div class="who-card" id="seg-student" onclick="selectSegment('student')">
+          <span class="who-icon">🎓</span>
+          <div class="who-title" data-en="I'm an International Student" data-fr="Je suis étudiant(e) international(e)">I'm an International Student</div>
+          <p class="who-desc" data-en="International student starting or continuing studies in Canada. Requires a study permit or visa." data-fr="Étudiant(e) international(e) commençant ou poursuivant des études au Canada.">International student starting or continuing studies in Canada. Requires a study permit or visa.</p>
+          <div class="who-price" data-en="From $2.40/day · 365-day coverage · $2M protection" data-fr="Dès 2,40 $/jour · Couverture 365 jours · 2 M$ de protection">From $2.40/day · 365-day coverage · $2M protection</div>
+          <div class="who-arrow">→</div>
+        </div>
+        <div class="who-card" id="seg-visitor" onclick="selectSegment('visitor')">
+          <span class="who-icon">✈️</span>
+          <div class="who-title" data-en="I'm Visiting Canada" data-fr="Je visite le Canada">I'm Visiting Canada</div>
+          <p class="who-desc" data-en="Visitor, Super Visa applicant, new permanent resident, or waiting for provincial health coverage." data-fr="Visiteur, demandeur de super visa, nouveau résident permanent, ou en attente de couverture provinciale.">Visitor, Super Visa applicant, new permanent resident, or waiting for provincial health coverage.</p>
+          <div class="who-price" data-en="From $1.75/day · Any duration · Super Visa eligible" data-fr="Dès 1,75 $/jour · Toute durée · Super visa admissible">From $1.75/day · Any duration · Super Visa eligible</div>
+          <div class="who-arrow">→</div>
+        </div>
+        <div class="who-card" id="seg-canadian" onclick="selectSegment('canadian')">
+          <span class="who-icon">🍁</span>
+          <div class="who-title" data-en="I'm Canadian & Travelling" data-fr="Je suis Canadien(ne) en voyage">I'm Canadian & Travelling</div>
+          <p class="who-desc" data-en="Canadian travelling abroad for leisure, or living and working outside Canada as an expat." data-fr="Canadien(ne) voyageant à l'étranger pour les loisirs ou vivant et travaillant hors du Canada.">Canadian travelling abroad for leisure, or living and working outside Canada as an expat.</p>
+          <div class="who-price" data-en="Leisure & Expat plans · Age 0–79 · Flexible duration" data-fr="Plans loisirs et expatriés · 0–79 ans · Durée flexible">Leisure & Expat plans · Age 0–79 · Flexible duration</div>
+          <div class="who-arrow">→</div>
+        </div>
+      </div>
+      <!-- REVEAL WIDGET — per-plan cards -->
+      <div class="hero-reveal" id="hero-reveal">
+        <div class="hw-date-row">
+          <div class="hw-date-label" id="hw-label">Coverage dates</div>
+          <div class="hw-field">
+            <label data-en="Start Date" data-fr="Date de début">Start Date</label>
+            <input type="date" id="hw-start" onchange="updateHeroPlanCards()"/>
+          </div>
+          <div class="hw-field" id="hw-end-field">
+            <label data-en="End Date" data-fr="Date de fin">End Date</label>
+            <input type="date" id="hw-end" onchange="updateHeroPlanCards()"/>
+          </div>
+          <div class="hw-days-pill" id="hw-days">365 days</div>
+        </div>
+        <div class="hw-plan-cards" id="hw-plan-cards"></div>
+      </div>
+    </div>
+    <div class="stats-strip">
+      <div class="stats-inner">
+        <div class="stat-item"><div class="stat-num">$2M</div><div class="stat-lbl" data-en="Maximum Coverage" data-fr="Couverture maximale">Maximum Coverage</div></div>
+        <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-lbl" data-en="Emergency Assistance" data-fr="Assistance d'urgence">Emergency Assistance</div></div>
+        <div class="stat-item"><div class="stat-num">2 min</div><div class="stat-lbl" data-en="To Get Covered" data-fr="Pour être couvert">To Get Covered</div></div>
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl" data-en="Online Process" data-fr="Processus en ligne">Online Process</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div id="lp-how" class="how-bg">
+    <div class="section">
+      <div class="sec-eye" data-en="Simple Process" data-fr="Processus simple">Simple Process</div>
+      <h2 class="sec-h2" data-en="Get covered in<br>three easy steps" data-fr="Couvrez-vous en<br>trois étapes simples">Get covered in<br>three easy steps</h2>
+      <p class="sec-sub" data-en="No complicated paperwork, no waiting rooms. Choose your plan, fill in your details, and receive your policy by email — all online." data-fr="Pas de paperasse compliquée, pas de salle d'attente. Choisissez votre forfait, remplissez vos informations, et recevez votre police par courriel.">No complicated paperwork, no waiting rooms. Choose your plan, fill in your details, and receive your policy by email — all online.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title" data-en="Choose Your Plan" data-fr="Choisissez votre forfait">Choose Your Plan</div>
+          <div class="step-text" data-en="Browse our Destination plans. Compare coverage levels and pricing to find what fits your needs and budget." data-fr="Parcourez nos forfaits Destination. Comparez les niveaux de couverture pour trouver ce qui correspond à vos besoins.">Browse our Destination plans. Compare coverage levels and pricing to find what fits your needs and budget.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title" data-en="Share Your Details" data-fr="Partagez vos coordonnées">Share Your Details</div>
+          <div class="step-text" data-en="Enter your name, email, and phone number in our quick form. We log your information so your advisor can follow up if you need any help." data-fr="Entrez votre nom, courriel et téléphone dans notre formulaire rapide. Nous enregistrons vos informations pour que votre conseiller puisse vous aider si besoin.">Enter your name, email, and phone number in our quick form. We log your information so your advisor can follow up if you need any help.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title" data-en="Pay & Get Covered" data-fr="Payez et soyez couvert">Pay & Get Covered</div>
+          <div class="step-text" data-en="Complete your secure payment online. Your policy confirmation and insurance card arrive instantly by email. You're covered from day one." data-fr="Effectuez votre paiement sécurisé en ligne. Votre confirmation de police et votre carte d'assurance arrivent instantanément par courriel.">Complete your secure payment online. Your policy confirmation and insurance card arrive instantly by email. You're covered from day one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO IS IT FOR -->
+  <div id="lp-audience" style="background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);">
+    <div class="section">
+      <div class="sec-eye" data-en="Who We Serve" data-fr="Qui nous servons">Who We Serve</div>
+      <h2 class="sec-h2" data-en="The right plan for<br>your situation" data-fr="Le bon forfait pour<br>votre situation">The right plan for<br>your situation</h2>
+      <p class="sec-sub" data-en="Whether you're starting school in Canada or visiting family, we have coverage designed specifically for you." data-fr="Que vous commenciez vos études au Canada ou que vous rendiez visite à votre famille, nous avons la couverture qu'il vous faut.">Whether you're starting school in Canada or visiting family, we have coverage designed specifically for you.</p>
+      <div class="audience-grid">
+        <div class="aud-card">
+          <div class="aud-head aud-head-student">
+            <span class="aud-icon">🎓</span>
+            <div class="aud-title" data-en="International Students" data-fr="Étudiants internationaux">International Students</div>
+            <div class="aud-subtitle" data-en="Study permit holders, college & university students, exchange programs across all provinces." data-fr="Titulaires de permis d'études, étudiants collégiaux et universitaires, programmes d'échange.">Study permit holders, college & university students, exchange programs across all provinces.</div>
+          </div>
+          <div class="aud-body">
+            <ul class="aud-feat-list">
+              <li data-en="Required by most Canadian colleges & universities" data-fr="Exigé par la plupart des établissements canadiens">Required by most Canadian colleges & universities</li>
+              <li data-en="Covers emergency medical, dental, hospitalization" data-fr="Couvre l'urgence médicale, dentaire, l'hospitalisation">Covers emergency medical, dental, hospitalization</li>
+              <li data-en="Valid for 365 days — full academic year" data-fr="Valide pour 365 jours — toute l'année scolaire">Valid for 365 days — full academic year</li>
+              <li data-en="Mental health and maternity coverage options" data-fr="Options de santé mentale et de maternité">Mental health and maternity coverage options</li>
+              <li data-en="Easy renewal before your policy expires" data-fr="Renouvellement facile avant l'expiration de votre police">Easy renewal before your policy expires</li>
+            </ul>
+            <button class="aud-cta" onclick="selectSegment('student');document.getElementById('hero-reveal').scrollIntoView({behavior:'smooth',block:'center'})" data-en="Get Student Quote →" data-fr="Obtenir un devis étudiant →">Get Student Quote →</button>
+          </div>
+        </div>
+        <div class="aud-card">
+          <div class="aud-head aud-head-visitor">
+            <span class="aud-icon">✈️</span>
+            <div class="aud-title" data-en="Visitors & New Arrivals" data-fr="Visiteurs et nouveaux arrivants">Visitors & New Arrivals</div>
+            <div class="aud-subtitle" data-en="Family visitors, Super Visa applicants, new permanent residents awaiting provincial health coverage." data-fr="Visiteurs en famille, demandeurs de super visa, nouveaux résidents permanents en attente de couverture provinciale.">Family visitors, Super Visa applicants, new permanent residents awaiting provincial health coverage.</div>
+          </div>
+          <div class="aud-body">
+            <ul class="aud-feat-list">
+              <li data-en="Mandatory for Super Visa applications (IRCC)" data-fr="Obligatoire pour les demandes de super visa (IRCC)">Mandatory for Super Visa applications (IRCC)</li>
+              <li data-en="Flexible durations — weeks to 2 years" data-fr="Durées flexibles — de quelques semaines à 2 ans">Flexible durations — weeks to 2 years</li>
+              <li data-en="Covers while waiting for provincial health card" data-fr="Couvre pendant l'attente de la carte santé provinciale">Covers while waiting for provincial health card</li>
+              <li data-en="Emergency medical up to $2,000,000" data-fr="Médical d'urgence jusqu'à 2 000 000 $">Emergency medical up to $2,000,000</li>
+              <li data-en="Competitive daily rates, no age penalty" data-fr="Tarifs journaliers compétitifs, sans pénalité d'âge">Competitive daily rates, no age penalty</li>
+            </ul>
+            <button class="aud-cta aud-cta-ghost" onclick="selectSegment('visitor');document.getElementById('hero-reveal').scrollIntoView({behavior:'smooth',block:'center'})" data-en="Get Visitor Quote →" data-fr="Obtenir un devis visiteur →">Get Visitor Quote →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ADVISOR -->
+  <div id="lp-advisor" class="advisor-bg">
+    <div class="advisor-inner">
+      <div class="advisor-photo-col">
+        <div class="advisor-photo">
+          <div class="advisor-photo-placeholder">👤</div>
+          <div class="advisor-photo-note">Professional photo coming soon</div>
+        </div>
+        <div class="advisor-license-badge">
+          <div class="alb-icon">🏛️</div>
+          <div class="alb-text">
+            <div class="alb-title">AMF Licensed · Quebec</div>
+            <div class="alb-sub">Financial Security Advisor</div>
+          </div>
+        </div>
+      </div>
+      <div class="advisor-content-col">
+        <div class="advisor-tag" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</div>
+        <div class="advisor-name">Onofrio Kanagaratnam</div>
+        <div class="advisor-title-line" data-en="Licensed Financial Security Advisor · Montreal, Quebec" data-fr="Conseiller en sécurité financière · Montréal, Québec">Licensed Financial Security Advisor · Montreal, Quebec</div>
+        <p class="advisor-bio" data-en="I specialize in health insurance for international students and newcomers to Canada. My goal is simple: make sure you understand your coverage, feel confident in your choice, and never have to worry about a medical emergency going unprotected. There's a real person behind every policy — not a chatbot." data-fr="Je suis spécialisé dans l'assurance maladie pour les étudiants internationaux et les nouveaux arrivants au Canada. Mon objectif est simple : m'assurer que vous comprenez votre couverture et que vous n'ayez jamais à craindre une urgence médicale sans protection.">I specialize in health insurance for international students and newcomers to Canada. My goal is simple: make sure you understand your coverage, feel confident in your choice, and never have to worry about a medical emergency going unprotected. There's a real person behind every policy — not a chatbot.</p>
+        <div class="advisor-info-row">
+          <div class="advisor-info-item">📍 <span data-en="Montreal, Quebec" data-fr="Montréal, Québec">Montreal, Quebec</span></div>
+          <div class="advisor-info-item">📞 <strong>+1 (438) 376-9334</strong></div>
+          <div class="advisor-info-item">✉️ <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5d3233323b2f343273361d3f2f343131343c333e383b2e34733e3230">[email&#160;protected]</a></strong></div>
+          <div class="advisor-info-item">🪪 <span data-en="AMF Licence:" data-fr="Licence AMF :">AMF Licence:</span> <strong>[YOUR LICENSE #]</strong></div>
+        </div>
+        <div class="advisor-certs">
+          <div class="advisor-cert">
+            <div class="cert-label" data-en="Provider" data-fr="Fournisseur">Provider</div>
+            <div class="cert-value">✈️ Destination Authorized Broker</div>
+          </div>
+          <div class="advisor-cert">
+            <div class="cert-label" data-en="Languages" data-fr="Langues">Languages</div>
+            <div class="cert-value">🌐 EN · FR · IT</div>
+          </div>
+          <div class="advisor-cert">
+            <div class="cert-label" data-en="Location" data-fr="Emplacement">Location</div>
+            <div class="cert-value">🍁 Serving All of Canada</div>
+          </div>
+        </div>
+        <div class="advisor-contact">
+          <a class="contact-btn contact-btn-gold" href="tel:+1 (438) 376-9334" data-en="📞 Call Now" data-fr="📞 Appeler maintenant">📞 Call Now</a>
+          <a class="contact-btn contact-btn-outline" href="/cdn-cgi/l/email-protection#5a3534353c28333574311a3828333636333b34393f3c293374393537" data-en="✉️ Send Email" data-fr="✉️ Envoyer un courriel">✉️ Send Email</a>
+          <a class="contact-btn contact-btn-green" href="https://wa.me/14383769334" target="_blank" data-en="💬 WhatsApp" data-fr="💬 WhatsApp">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div id="lp-why" style="background:var(--cream);">
+    <div class="section">
+      <div class="sec-eye" data-en="Why OK Financial" data-fr="Pourquoi OK Financial">Why OK Financial</div>
+      <h2 class="sec-h2" data-en="Your trusted partner<br>for insurance in Canada" data-fr="Votre partenaire de confiance<br>pour l'assurance au Canada">Your trusted partner<br>for insurance in Canada</h2>
+      <p class="sec-sub" data-en="We work directly with Destination, one of Canada's leading insurance providers, so you get comprehensive coverage at competitive rates — with a real licensed advisor behind every policy." data-fr="Nous travaillons directement avec les principaux fournisseurs canadiens pour vous offrir une couverture complète à des tarifs compétitifs.">We work directly with Destination, one of Canada's leading insurance providers, so you get comprehensive coverage at competitive rates — with a real licensed advisor behind every policy.</p>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">🏥</div><div class="why-title" data-en="Up to $2M Coverage" data-fr="Jusqu'à 2 M$ de couverture">Up to $2M Coverage</div><div class="why-text" data-en="Emergency medical, hospitalization, ambulance, prescription drugs, dental, vision and mental health — all in one plan." data-fr="Médical d'urgence, hospitalisation, ambulance, médicaments, dentaire, vision et santé mentale — tout en un.">Emergency medical, hospitalization, ambulance, prescription drugs, dental, vision and mental health — all in one plan.</div></div>
+        <div class="why-card"><div class="why-icon">⚡</div><div class="why-title" data-en="Buy in Minutes" data-fr="Souscrivez en minutes">Buy in Minutes</div><div class="why-text" data-en="No waiting, no paperwork. Complete your application and payment online in under 2 minutes and get your policy instantly." data-fr="Pas d'attente, pas de paperasse. Complétez votre demande et votre paiement en ligne en moins de 2 minutes.">No waiting, no paperwork. Complete your application and payment online in under 2 minutes and get your policy instantly.</div></div>
+        <div class="why-card"><div class="why-icon">🌍</div><div class="why-title" data-en="Multilingual Service" data-fr="Service multilingue">Multilingual Service</div><div class="why-text" data-en="Service in English, French, Italian and more. We speak your language so nothing gets lost in translation when it matters most." data-fr="Service en anglais, français, italien et plus. Nous parlons votre langue pour que rien ne se perde dans la traduction.">Service in English, French, Italian and more. We speak your language so nothing gets lost in translation when it matters most.</div></div>
+        <div class="why-card"><div class="why-icon">📞</div><div class="why-title" data-en="24/7 Emergency Line" data-fr="Ligne d'urgence 24/7">24/7 Emergency Line</div><div class="why-text" data-en="Round-the-clock emergency assistance. If something happens, help is always one phone call away — anywhere in the world." data-fr="Assistance d'urgence 24h/24, 7j/7. En cas d'imprévu, l'aide est toujours à portée de téléphone — partout dans le monde.">Round-the-clock emergency assistance. If something happens, help is always one phone call away — anywhere in the world.</div></div>
+        <div class="why-card"><div class="why-icon">🔄</div><div class="why-title" data-en="Easy Extensions" data-fr="Extensions faciles">Easy Extensions</div><div class="why-text" data-en="Extend or renew your coverage before it expires without reapplying. Stay continuously protected throughout your studies or stay." data-fr="Prolongez ou renouvelez votre couverture avant son expiration sans redemander. Restez protégé(e) continuellement.">Extend or renew your coverage before it expires without reapplying. Stay continuously protected throughout your studies or stay.</div></div>
+        <div class="why-card"><div class="why-icon">👨‍💼</div><div class="why-title" data-en="Licensed Advisor" data-fr="Conseiller agréé">Licensed Advisor</div><div class="why-text" data-en="OK Financial is a licensed financial security advisor in Quebec. You're never alone — real support from a real person, not a call centre." data-fr="OK Financial est un conseiller en sécurité financière agréé au Québec. Vous n'êtes jamais seul(e) — un vrai soutien humain.">OK Financial is a licensed financial security advisor in Quebec. You're never alone — real support from a real person, not a call centre.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div id="lp-testi" class="testi-bg">
+    <div class="section">
+      <div class="sec-eye" style="color:var(--gold)" data-en="Student Reviews" data-fr="Avis d'étudiants">Student Reviews</div>
+      <h2 class="sec-h2 sec-h2-light" data-en="Trusted by students<br>from around the world" data-fr="Choisi par des étudiants<br>du monde entier">Trusted by students<br>from around the world</h2>
+      <p class="sec-sub sec-sub-light" data-en="Real experiences from international students who got covered through OK Financial." data-fr="Expériences réelles d'étudiants internationaux couverts par OK Financial.">Real experiences from international students who got covered through OK Financial.</p>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text" data-en='"Onofrio explained everything clearly and helped me choose the right plan for my budget. I got my insurance card within minutes of applying. Highly recommend to any student coming to Canada."' data-fr='"Onofrio a tout expliqué clairement et m'a aidé à choisir le bon forfait pour mon budget. J'ai reçu ma carte d'assurance en quelques minutes."'>"Onofrio explained everything clearly and helped me choose the right plan for my budget. I got my insurance card within minutes of applying. Highly recommend to any student coming to Canada."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">Y</div>
+            <div>
+              <div class="testi-name">Youssef B.</div>
+              <div class="testi-from">🇲🇦 Morocco · LaSalle College</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text" data-en='"I needed insurance fast for my college enrollment deadline. The process was super quick and the price was exactly what I expected — no hidden fees. Thank you OK Financial!"' data-fr='"J'avais besoin d'une assurance rapidement pour ma date limite d'inscription au collège. Le processus était très rapide et le prix était exactement ce que j'attendais."'>"I needed insurance fast for my college enrollment deadline. The process was super quick and the price was exactly what I expected — no hidden fees. Thank you OK Financial!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Ana G.</div>
+              <div class="testi-from">🇧🇷 Brazil · Concordia University</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text" data-en='"As a first-time arrival in Canada, I had so many questions. Onofrio answered all of them patiently and walked me through every step. My family feels safe knowing I'm covered."' data-fr='"En tant que nouvel arrivant au Canada, j'avais beaucoup de questions. Onofrio y a répondu patiemment et m'a guidé à chaque étape."'>"As a first-time arrival in Canada, I had so many questions. Onofrio answered all of them patiently and walked me through every step. My family feels safe knowing I'm covered."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rohan S.</div>
+              <div class="testi-from">🇮🇳 India · Université de Montréal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="lp-faq" style="background:white;">
+    <div class="section">
+      <div class="sec-eye" data-en="FAQ" data-fr="FAQ">FAQ</div>
+      <h2 class="sec-h2" data-en="Frequently asked<br>questions" data-fr="Questions fréquemment<br>posées">Frequently asked<br>questions</h2>
+      <p class="sec-sub">
+        <span data-en="Everything you need to know before buying. Still have questions? " data-fr="Tout ce que vous devez savoir avant d'acheter. Des questions ? ">Everything you need to know before buying. Still have questions? </span>
+        <a href="/cdn-cgi/l/email-protection#086766676e7a61672663486a7a6164646169666b6d6e7b61266b6765" style="color:var(--gold);font-weight:600;" data-en="Send me a message." data-fr="Envoyez-moi un message.">Send me a message.</a>
+      </p>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-photo"></div>
+    <h2 data-en="Ready to get covered?" data-fr="Prêt(e) à être couvert(e) ?">Ready to get covered?</h2>
+    <p data-en="Tell us who you are, pick your plan, and complete your application in minutes. Your advisor is available every step of the way." data-fr="Dites-nous qui vous êtes, choisissez votre forfait et complétez votre demande en quelques minutes. Votre conseiller est disponible à chaque étape.">Tell us who you are, pick your plan, and complete your application in minutes. Your advisor is available every step of the way.</p>
+    <button class="btn-gold-solid" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-en="Get Covered Now →" data-fr="Se couvrir maintenant →">Get Covered Now →</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="lp-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">OK <span>Financial</span></div>
+        <p class="footer-desc" data-en="Licensed Financial Security Advisor based in Montreal, Quebec. Offering Destination insurance plans to international students and visitors across Canada." data-fr="Conseiller en sécurité financière agréé basé à Montréal, Québec. Offrant des plans d'assurance Destination aux étudiants internationaux et visiteurs à travers le Canada.">Licensed Financial Security Advisor based in Montreal, Quebec. Offering Destination insurance plans to international students and visitors across Canada.</p>
+        <div class="footer-contact-line">📍 <span data-en="Montreal, Quebec, Canada" data-fr="Montréal, Québec, Canada">Montreal, Quebec, Canada</span></div>
+        <div class="footer-contact-line">📞 <a href="tel:+1 (438) 376-9334">+1 (438) 376-9334</a></div>
+        <div class="footer-contact-line">✉️ <a href="/cdn-cgi/l/email-protection#96f9f8f9f0e4fff9b8fdd6f4e4fffafafff7f8f5f3f0e5ffb8f5f9fb"><span class="__cf_email__" data-cfemail="ec8382838a9e8583c287ac8e9e858080858d828f898a9f85c28f8381">[email&#160;protected]</span></a></div>
+        <div class="footer-contact-line">🪪 <span data-en="AMF Licence" data-fr="Licence AMF">AMF Licence</span>: [YOUR LICENSE #]</div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Quick Links" data-fr="Liens rapides">Quick Links</div>
+        <span class="footer-link" onclick="lpScroll('how')" data-en="How It Works" data-fr="Comment ça marche">How It Works</span>
+        <span class="footer-link" onclick="lpScroll('advisor')" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</span>
+        <span class="footer-link" onclick="lpScroll('why')" data-en="Why OK Financial" data-fr="Pourquoi OK Financial">Why OK Financial</span>
+        <span class="footer-link" onclick="lpScroll('faq')" data-en="FAQ" data-fr="FAQ">FAQ</span>
+        <span class="footer-link" onclick="openLogin()" data-en="Coordinator Login" data-fr="Portail coordinateur">Coordinator Login</span>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Providers" data-fr="Fournisseurs">Providers</div>
+        <span class="footer-link" onclick="window.open('https://www.desttravel.com/?id=4549d4e4-6c61-49a5-b29a-dea73d94cf9e#','_blank')">Destination Insurance</span>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="For Students" data-fr="Pour étudiants">For Students</div>
+        <span class="footer-link" onclick="lpScroll('audience')" data-en="Student Plans" data-fr="Forfaits étudiants">Student Plans</span>
+        <span class="footer-link" onclick="lpScroll('audience')" data-en="Visitor Plans" data-fr="Forfaits visiteurs">Visitor Plans</span>
+        <span class="footer-link" onclick="lpScroll('testi')" data-en="Reviews" data-fr="Avis">Reviews</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="© 2025 OK Financial · Licensed Financial Security Advisor · Montreal, Quebec · AMF [YOUR LICENSE #]" data-fr="© 2025 OK Financial · Conseiller en sécurité financière agréé · Montréal, Québec · AMF [VOTRE NUMÉRO DE LICENCE]">© 2025 OK Financial · Licensed Financial Security Advisor · Montreal, Quebec · AMF [YOUR LICENSE #]</span><br>
+      <span data-en="This website provides general information only. Insurance products are subject to eligibility, terms and conditions. Prices are estimates and final premiums are confirmed at checkout." data-fr="Ce site fournit des informations générales uniquement. Les produits d'assurance sont soumis à l'admissibilité, aux termes et conditions. Les prix sont des estimations et les primes finales sont confirmées lors du paiement.">This website provides general information only. Insurance products are subject to eligibility, terms and conditions. Prices are estimates and final premiums are confirmed at checkout.</span>
+    </div>
+  </footer>
+
+</div>
+
+
+<!-- ═══════════════════════════════════
+     LEAD CAPTURE MODAL
+═══════════════════════════════════ -->
+<div id="lead-modal">
+  <div class="lead-box">
+    <div class="lead-head">
+      <button class="lead-close" onclick="closeLead()">✕</button>
+      <div class="lead-head-plan" id="lead-plan-badge">✈️ Destination · International Student Plan</div>
+      <h2 id="lead-head-title">Almost there — just a few details</h2>
+      <p id="lead-head-sub">We'll log your information and open the application form for you. Takes 2 minutes to complete.</p>
+    </div>
+    <div class="lead-body">
+      <div class="lead-form-row">
+        <div>
+          <label class="lead-label" for="lead-fname">First Name *</label>
+          <input class="lead-input" type="text" id="lead-fname" placeholder="Sarah"/>
+        </div>
+        <div>
+          <label class="lead-label" for="lead-lname">Last Name *</label>
+          <input class="lead-input" type="text" id="lead-lname" placeholder="Chen"/>
+        </div>
+      </div>
+      <div class="lead-form-full">
+        <label class="lead-label" for="lead-email">Email Address *</label>
+        <input class="lead-input" type="email" id="lead-email" placeholder="sarah@email.com"/>
+      </div>
+      <div class="lead-form-full">
+        <label class="lead-label" for="lead-phone">Phone Number *</label>
+        <input class="lead-input" type="tel" id="lead-phone" placeholder="+1 514 555 0100"/>
+      </div>
+      <p class="lead-err" id="lead-err">Please fill in all required fields.</p>
+      <button class="lead-submit" onclick="submitLeadAndRedirect()">Continue to Application →</button>
+      <p class="lead-note">Your information is kept private and used only to follow up on your policy.<br>
+      Prefer to talk? Call <strong>+1 (438) 376-9334</strong></p>
+      <div id="lead-success" style="display:none;background:rgba(39,174,96,.1);border:1px solid rgba(39,174,96,.3);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:.85rem;color:#1a7a43;font-weight:600;text-align:center;">
+        ✓ Details saved — complete your application in the new tab
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════
+     ADVISOR CONTACT MODAL (Leisure/Expat)
+═══════════════════════════════════ -->
+<div id="advisor-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);z-index:1200;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;border-radius:20px;max-width:440px;width:100%;overflow:hidden;animation:fadeUp .3s ease both;box-shadow:0 32px 80px rgba(0,0,0,.4);">
+    <div style="background:var(--navy);padding:24px 28px 20px;position:relative;">
+      <button onclick="document.getElementById('advisor-modal').style.display='none';document.body.style.overflow='';" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.1rem;cursor:pointer;">✕</button>
+      <div id="adv-plan-badge" style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;"></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;margin-bottom:6px;" id="adv-modal-title">Get a Quote</h2>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.45);" id="adv-modal-sub">This plan requires a personalized quote. Contact your advisor below.</p>
+    </div>
+    <div style="padding:24px 28px;">
+      <div id="adv-plan-details" style="background:#f8f9fb;border-radius:12px;padding:16px 18px;margin-bottom:20px;font-size:.85rem;color:var(--navy);line-height:1.8;"></div>
+      <a href="tel:+14383769334" style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--gold);color:var(--navy);border-radius:12px;text-decoration:none;font-weight:700;margin-bottom:10px;justify-content:center;font-size:.95rem;">
+        📞 Call +1 (438) 376-9334
+      </a>
+      <a href="https://wa.me/14383769334" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:#25d366;color:white;border-radius:12px;text-decoration:none;font-weight:700;margin-bottom:10px;justify-content:center;font-size:.95rem;">
+        💬 WhatsApp
+      </a>
+      <a href="/cdn-cgi/l/email-protection#c2adacada4b0abadeca982a0b0abaeaeaba3aca1a7a4b1abeca1adaf" style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--mist);color:var(--navy);border-radius:12px;text-decoration:none;font-weight:600;justify-content:center;font-size:.9rem;border:1.5px solid #dde3ea;">
+        ✉️ <span class="__cf_email__" data-cfemail="f49b9a9b92869d9bda9fb496869d98989d959a979192879dda979b99">[email&#160;protected]</span>
+      </a>
+      <p style="font-size:.72rem;color:var(--sub);text-align:center;margin-top:14px;line-height:1.6;">Full online checkout for this plan coming soon.<br>Your advisor will respond within a few hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     DESTINATION INTEGRATED CHECKOUT
+═══════════════════════════════════ -->
+<div id="checkout-modal">
+  <div class="checkout-box">
+    <div class="checkout-head">
+      <button class="checkout-close" onclick="closeCheckout()">✕</button>
+      <div class="checkout-plan-badge" id="co-plan-badge">✈️ Destination</div>
+      <h2 id="co-head-title">Complete your application</h2>
+      <p id="co-head-sub">Secure checkout powered by Destination Insurance</p>
+    </div>
+    <div class="checkout-steps">
+      <div class="checkout-step active" id="co-step-1-tab">1 · Your Details</div>
+      <div class="checkout-step" id="co-step-2-tab">2 · Payment</div>
+      <div class="checkout-step" id="co-step-3-tab">3 · Confirmation</div>
+    </div>
+
+    <!-- STEP 1: Applicant Details -->
+    <div class="checkout-body" id="co-step-1">
+      <div class="co-plan-summary" id="co-plan-summary"></div>
+      <div class="co-section-title">Applicant Information</div>
+      <div class="co-form-row">
+        <div>
+          <label class="co-label" for="co-fname">First Name *</label>
+          <input class="co-input" type="text" id="co-fname" placeholder="Sarah" autocomplete="given-name"/>
+          <div class="co-err-msg" id="err-co-fname">Required</div>
+        </div>
+        <div>
+          <label class="co-label" for="co-lname">Last Name *</label>
+          <input class="co-input" type="text" id="co-lname" placeholder="Chen" autocomplete="family-name"/>
+          <div class="co-err-msg" id="err-co-lname">Required</div>
+        </div>
+      </div>
+      <div class="co-form-row">
+        <div>
+          <label class="co-label" for="co-dob">Date of Birth *</label>
+          <input class="co-input" type="date" id="co-dob" onchange="updateAgeFromDOB()"/>
+          <div class="co-err-msg" id="err-co-dob">Required</div>
+        </div>
+        <div>
+          <label class="co-label" for="co-gender">Gender *</label>
+          <select class="co-select" id="co-gender">
+            <option value="">Select...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+          <div class="co-err-msg" id="err-co-gender">Required</div>
+        </div>
+      </div>
+      <div class="co-form-full">
+        <label class="co-label" for="co-email">Email Address *</label>
+        <input class="co-input" type="email" id="co-email" placeholder="sarah@email.com" autocomplete="email"/>
+        <div class="co-err-msg" id="err-co-email">Required</div>
+      </div>
+      <div class="co-form-full">
+        <label class="co-label" for="co-phone">Phone Number *</label>
+        <input class="co-input" type="tel" id="co-phone" placeholder="+1 514 555 0100" autocomplete="tel"/>
+        <div class="co-err-msg" id="err-co-phone">Required</div>
+      </div>
+      <div class="co-form-full">
+        <label class="co-label" for="co-country">Country of Origin *</label>
+        <select class="co-select" id="co-country">
+          <option value="">Select country...</option>
+          <option value="IN">India</option>
+          <option value="CN">China</option>
+          <option value="NG">Nigeria</option>
+          <option value="PH">Philippines</option>
+          <option value="MA">Morocco</option>
+          <option value="BR">Brazil</option>
+          <option value="MX">Mexico</option>
+          <option value="US">United States</option>
+          <option value="FR">France</option>
+          <option value="GB">United Kingdom</option>
+          <option value="OTHER">Other</option>
+        </select>
+        <div class="co-err-msg" id="err-co-country">Required</div>
+      </div>
+      <div class="co-section-title" style="margin-top:18px;">Canadian Address</div>
+      <div class="co-form-full">
+        <label class="co-label" for="co-address">Street Address *</label>
+        <input class="co-input" type="text" id="co-address" placeholder="211 Consumers Rd."/>
+        <div class="co-err-msg" id="err-co-address">Required</div>
+      </div>
+      <div class="co-form-row">
+        <div>
+          <label class="co-label" for="co-city">City *</label>
+          <input class="co-input" type="text" id="co-city" placeholder="Montreal"/>
+          <div class="co-err-msg" id="err-co-city">Required</div>
+        </div>
+        <div>
+          <label class="co-label" for="co-prov">Province *</label>
+          <select class="co-select" id="co-prov">
+            <option value="">Select...</option>
+            <option value="QC">Quebec</option>
+            <option value="ON">Ontario</option>
+            <option value="BC">British Columbia</option>
+            <option value="AB">Alberta</option>
+            <option value="MB">Manitoba</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="NB">New Brunswick</option>
+            <option value="NL">Newfoundland</option>
+            <option value="PE">PEI</option>
+          </select>
+          <div class="co-err-msg" id="err-co-prov">Required</div>
+        </div>
+      </div>
+      <div class="co-form-full">
+        <label class="co-label" for="co-postal">Postal Code *</label>
+        <input class="co-input" type="text" id="co-postal" placeholder="H3A 1A1" style="text-transform:uppercase;"/>
+        <div class="co-err-msg" id="err-co-postal">Required</div>
+      </div>
+      <div id="co-coverage-options" style="margin-top:18px;display:none;">
+        <div class="co-section-title">Coverage Options</div>
+        <div class="co-form-row">
+          <div>
+            <label class="co-label" for="co-suminsured">Coverage Amount *</label>
+            <select class="co-select" id="co-suminsured">
+              <option value="1000000">$1,000,000</option>
+              <option value="2000000" selected>$2,000,000</option>
+            </select>
+          </div>
+          <div>
+            <label class="co-label" for="co-schedule">Pre-Existing Conditions</label>
+            <select class="co-select" id="co-schedule">
+              <option value="1">Covered (Schedule 1)</option>
+              <option value="2">Not Covered (Schedule 2)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="co-btn-row">
+        <button class="co-btn-outline" onclick="closeCheckout()">Cancel</button>
+        <button class="co-btn-primary" onclick="coNextToPayment()">Continue to Payment →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Payment iframe -->
+    <div class="checkout-body" id="co-step-2" style="display:none;">
+      <div class="co-plan-summary" id="co-payment-summary"></div>
+      <div class="co-section-title">Secure Card Payment</div>
+      <div class="dtg-iframe-wrap" id="dtg-iframe-wrap">
+        <div class="dtg-iframe-loading" id="dtg-loading">
+          <div class="dtg-spinner"></div>
+          <span>Loading secure payment form...</span>
+        </div>
+        <iframe id="dtg-iframe"
+          frameborder="0"
+          scrolling="no"
+          style="display:none;"
+          title="Secure payment by Destination Insurance">
+        </iframe>
+      </div>
+      <div class="co-pay-error" id="co-pay-error"></div>
+      <p style="font-size:.72rem;color:var(--sub);margin-top:12px;line-height:1.6;text-align:center;">
+        🔒 Payment secured by <strong>Moneris</strong> · Visa & Mastercard accepted
+      </p>
+      <div class="co-btn-row">
+        <button class="co-btn-outline" onclick="coBackToDetails()">← Back</button>
+        <button class="co-btn-primary" id="co-pay-btn" onclick="coProcessPayment()">Complete Application →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Confirmation -->
+    <div class="checkout-body" id="co-step-3" style="display:none;">
+      <div class="co-success">
+        <div class="co-success-icon">✅</div>
+        <div class="co-success-title">Application Submitted!</div>
+        <p class="co-success-msg">
+          Your insurance application has been submitted to Destination.
+          You will receive your policy documents by email within a few minutes.
+        </p>
+        <div class="co-success-ref" id="co-ref-number"></div>
+        <p style="font-size:.78rem;color:var(--sub);margin-top:20px;">
+          Questions? Contact your advisor at <strong>+1 (438) 376-9334</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     LOGIN MODAL
+═══════════════════════════════════ -->
+<div id="login-modal">
+  <div class="login-box">
+    <button class="login-close" onclick="closeLogin()">✕</button>
+    <div class="login-logo">
+      <h1>OK <span>Financial</span></h1>
+      <p>Coordinator Portal</p>
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter your username" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="btn btn-primary" onclick="doLogin()">Sign In</button>
+    <p class="error-msg" id="login-error">Invalid credentials. Please try again.</p>
+    <p style="margin-top:20px;font-size:.73rem;color:var(--sub);text-align:center;">For coordinator access, contact your administrator.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PORTAL APP
+═══════════════════════════════════ -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h2>OK <span>Financial</span></h2><p>Coordinator Portal</p></div>
+    <div class="sidebar-user">
+      <div class="sidebar-avatar" id="sidebar-avatar">A</div>
+      <div><div class="sidebar-name" id="sidebar-name">Admin</div><div class="sidebar-role" id="sidebar-role">Administrator</div></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-item active" onclick="showPage('dashboard',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
+      </div>
+      <div class="nav-item" onclick="showPage('plans',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Plans & Pricing
+      </div>
+      <div class="nav-item" onclick="showPage('new-quote',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>New Quote
+      </div>
+      <div class="nav-item" onclick="showPage('submissions',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Submissions
+      </div>
+      <div class="nav-item admin-only" onclick="showPage('coordinators',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Coordinators
+      </div>
+      <div class="nav-item admin-only" onclick="showPage('pricing-admin',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Manage Pricing
+      </div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">← Back to Website</button>
+  </aside>
+
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header"><h2>Dashboard</h2><p>Welcome back — here's your overview</p></div>
+      <div class="stats-row">
+        <div class="stat-card stat-accent"><div class="label">Total Submissions</div><div class="value" id="stat-total">0</div></div>
+        <div class="stat-card"><div class="label">Active Coordinators</div><div class="value" id="stat-coords">0</div></div>
+        <div class="stat-card"><div class="label">Policies</div><div class="value" id="stat-tugo">0</div></div>
+        <div class="stat-card"><div class="label">Destinations Policies</div><div class="value" id="stat-dest">0</div></div>
+      </div>
+      <div class="card">
+        <p style="font-size:.72rem;font-weight:700;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px;">Recent Submissions</p>
+        <table><thead><tr><th>Client</th><th>Email</th><th>Plan</th><th>Coordinator</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody id="dashboard-tbody"></tbody></table>
+        <p id="dash-empty" style="text-align:center;color:var(--sub);padding:32px;font-size:.9rem;display:none;">No submissions yet.</p>
+      </div>
+    </div>
+
+    <!-- PLANS -->
+    <div class="page" id="page-plans">
+      <div class="page-header"><h2>Plans & Pricing</h2><p>Current rates for all available plans</p></div>
+      <div id="plans-last-updated" class="last-updated-bar" style="display:none;"></div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);margin-bottom:16px;">✈️ Destination Plans</h3>
+      <div class="plans-grid" id="tugo-plans-grid"></div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);margin:8px 0 16px;">✈️ Destinations Plans</h3>
+      <div class="plans-grid" id="dest-plans-grid"></div>
+      <p style="font-size:.73rem;color:var(--sub);margin-top:24px;padding:12px 16px;background:white;border-radius:8px;border-left:3px solid var(--gold);">⚠ <b>Disclaimer:</b> Annual rates shown are for a standard 365-day student plan. Final premium confirmed at checkout. Always verify current rates on the provider portal before finalizing.</p>
+    </div>
+
+    <!-- NEW QUOTE -->
+    <div class="page" id="page-new-quote">
+      <div class="page-header"><h2>New Quote</h2><p>Create a new client submission</p></div>
+      <div style="max-width:860px;">
+        <div class="step-indicator" style="margin-bottom:28px;">
+          <div class="step active" id="step1-ind">1 · Client Info</div>
+          <div class="step" id="step2-ind">2 · Select Plan</div>
+          <div class="step" id="step3-ind">3 · Complete</div>
+        </div>
+        <div class="card" id="step1">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:22px;">Client Information</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" id="q-fname" placeholder="e.g. Sarah"/></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" id="q-lname" placeholder="e.g. Chen"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email *</label><input type="email" id="q-email" placeholder="sarah@email.com"/></div>
+            <div class="form-group"><label>Phone *</label><input type="tel" id="q-phone" placeholder="+1 514 555 0100"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Date of Birth</label><input type="date" id="q-dob"/></div>
+            <div class="form-group"><label>Country of Origin</label><input type="text" id="q-country" placeholder="e.g. Morocco"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Coverage Start</label><input type="date" id="q-start"/></div>
+            <div class="form-group"><label>Coverage End</label><input type="date" id="q-end"/></div>
+          </div>
+          <button class="btn btn-primary" style="width:auto;padding:12px 36px;margin-top:8px;" onclick="goStep2()">Continue → Choose Plan</button>
+          <p class="error-msg" id="step1-error" style="text-align:left;margin-top:10px;"></p>
+        </div>
+        <div class="card hidden" id="step2">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:6px;">Select a Plan</h3>
+          <p style="color:var(--sub);font-size:.85rem;margin-bottom:22px;">Estimated totals calculated from the coverage dates you entered.</p>
+          <div class="quote-dur-bar" id="quote-duration-bar"></div>
+          <div class="plans-grid" id="quote-plans-grid"></div>
+          <div style="display:flex;gap:10px;margin-top:8px;">
+            <button class="btn btn-outline btn-sm" onclick="goStep1()">← Back</button>
+            <button class="btn btn-primary" style="width:auto;padding:12px 36px;" onclick="goStep3()">Continue →</button>
+          </div>
+          <p class="error-msg" id="step2-error" style="display:none;text-align:left;margin-top:10px;"></p>
+        </div>
+        <div class="hidden" id="step3">
+          <div class="card" style="margin-bottom:20px;">
+            <p style="font-size:.7rem;font-weight:600;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px;">Client Summary</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" id="summary-grid"></div>
+          </div>
+          <div class="card" id="provider-action-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+              <div>
+                <p style="font-size:.7rem;font-weight:600;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;">Next Step</p>
+                <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--navy);margin-bottom:4px;" id="provider-action-title">Complete on Destination</h3>
+                <p style="font-size:.82rem;color:var(--sub);">Opens in a new tab. Your advisor code <b style="color:var(--navy);">HML809</b> is embedded — the policy will be credited to you automatically.</p>
+              </div>
+              <button class="btn btn-primary" style="white-space:nowrap;padding:14px 32px;font-size:1rem;width:auto;" onclick="doRedirect()">Open Policy Form →</button>
+            </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid #eee;">
+              <p style="font-size:.7rem;font-weight:600;color:var(--sub);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;">What happens next</p>
+              <div style="display:flex;gap:0;flex-wrap:wrap;">
+                <div class="next-step-item"><div class="next-step-num">1</div><div class="next-step-text">Policy form opens on the provider's platform</div></div>
+                <div class="next-step-item"><div class="next-step-num">2</div><div class="next-step-text">Fill in the student's details using the summary above</div></div>
+                <div class="next-step-item"><div class="next-step-num">3</div><div class="next-step-text">Student pays and receives policy confirmation by email</div></div>
+                <div class="next-step-item"><div class="next-step-num">4</div><div class="next-step-text">Return here and mark the submission as Completed</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px;">
+            <button class="btn btn-outline btn-sm" onclick="goStep2()">← Back</button>
+            <button class="btn btn-outline btn-sm" onclick="showPage('new-quote',document.querySelectorAll('.nav-item')[2])">+ New Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMISSIONS -->
+    <div class="page" id="page-submissions">
+      <div class="page-header"><h2>Submissions</h2><p>All client submissions</p></div>
+      <div class="card">
+        <div class="action-row">
+          <input class="search-input" id="sub-search" placeholder="Search by name or email…" oninput="filterSubs()"/>
+          <select class="search-input" id="sub-filter" style="width:180px;" onchange="filterSubs()">
+            <option value="">All Providers</option>
+            
+            <option value="destination">Destination</option>
+          </select>
+        </div>
+        <table><thead><tr><th>Client</th><th>Email</th><th>Phone</th><th>Plan</th><th>Est. Total</th><th>Coordinator</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody id="subs-tbody"></tbody></table>
+        <p id="subs-empty" style="text-align:center;color:var(--sub);padding:32px;font-size:.9rem;display:none;">No submissions found.</p>
+      </div>
+    </div>
+
+    <!-- COORDINATORS -->
+    <div class="page" id="page-coordinators">
+      <div class="page-header"><h2>Coordinator Accounts</h2><p>Manage access for coordinators who issue policies</p></div>
+      <div class="card">
+        <div class="action-row"><button class="btn btn-gold btn-sm" onclick="openAddCoordModal()">+ Add Coordinator</button></div>
+        <table><thead><tr><th>Name</th><th>Username</th><th>Institution</th><th>Role</th><th>Submissions</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="coords-tbody"></tbody></table>
+      </div>
+    </div>
+
+    <!-- PRICING ADMIN -->
+    <div class="page" id="page-pricing-admin">
+      <div class="page-header"><h2>Manage Pricing</h2><p>Update plan rates when providers change their prices</p></div>
+      <div id="pricing-last-updated" class="last-updated-bar"></div>
+      <div class="price-admin-grid">
+        <div class="card"><div class="price-section-title">✈️ Destination Plans</div><div id="tugo-price-editor"></div></div>
+        <div class="card"><div class="price-section-title">✈️ Destinations Plans</div><div id="dest-price-editor"></div></div>
+      </div>
+      <div style="margin-top:20px;display:flex;gap:12px;">
+        <button class="btn btn-primary" style="width:auto;padding:12px 32px;" onclick="savePricing()">Save & Publish Prices</button>
+      </div>
+      <div id="pricing-save-msg" style="display:none;margin-top:12px;font-size:.85rem;color:var(--success);font-weight:600;">✓ Prices updated successfully</div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ADD COORDINATOR MODAL -->
+<div class="modal-overlay" id="add-coord-modal">
+  <div class="modal">
+    <h3>Add Coordinator</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name *</label><input type="text" id="nc-name" placeholder="Jane Doe"/></div>
+      <div class="form-group"><label>Institution</label><input type="text" id="nc-inst" placeholder="College name"/></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Username *</label><input type="text" id="nc-user" placeholder="jane.doe"/></div>
+      <div class="form-group"><label>Password *</label><input type="password" id="nc-pass" placeholder="••••••••"/></div>
+    </div>
+    <div class="form-group"><label>Email</label><input type="email" id="nc-email" placeholder="jane@college.ca"/></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline btn-sm" onclick="closeModal('add-coord-modal')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addCoordinator()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ══════════════════════════════════════
+// PRICING DATA
+// ══════════════════════════════════════
+let PRICING = {
+  standardDays: 365,
+  lastUpdated: 'Feb 18, 2025',
+  tugo: [],
+  destination: [
+    {
+      id:'dest-vtc', name:'Canada Visitors Plan',
+      tagline:'Destination · For visitors to Canada',
+      provider:'destination', apiType:'vtc', productId:3,
+      dailyRate:1.75, yearlyRate:null,
+      forStudent:false, forVisitor:true, forCanadian:false,
+      maxCoverage:'$300,000',
+      scheduleOptions: true,
+      deductibleOptions: true,
+      sumInsuredOptions: [25000,50000,100000,150000,200000,250000,300000],
+      defaultSumInsured: 100000,
+      features:['Emergency medical care','Hospitalization','Ambulance','Prescription drugs (30 days)','Dental emergencies','Pre-existing conditions option (Schedule 1)','Super Visa eligible'],
+      popular:true,
+      badge:'🍁', badgeColor:'#1a9e52'
+    },
+    {
+      id:'dest-student', name:'International Student Plan',
+      tagline:'Destination · Studying in Canada',
+      provider:'destination', apiType:'student', productId:80,
+      dailyRate:2.40, yearlyRate:875.00,
+      forStudent:true, forVisitor:false, forCanadian:false,
+      maxCoverage:'$2,000,000',
+      scheduleOptions: false,
+      deductibleOptions: false,
+      sumInsuredOptions: [2000000],
+      defaultSumInsured: 2000000,
+      features:['Comprehensive medical coverage','Dental accidents up to $3,000','Vision care','Paramedical services','Mental health coverage','Repatriation benefits','365-day annual plan'],
+      popular:false,
+      badge:'🎓', badgeColor:'#2563c7'
+    },
+    {
+      id:'dest-leisure', name:'Leisure Travel Plan',
+      tagline:'Destination · For Canadians travelling abroad',
+      provider:'destination', apiType:'leisure', productId:null,
+      dailyRate:2.10, yearlyRate:null,
+      forStudent:false, forVisitor:false, forCanadian:true, leisurePlan:true,
+      maxCoverage:'$5,000,000',
+      scheduleOptions: false,
+      deductibleOptions: true,
+      sumInsuredOptions: [1000000,2000000,5000000],
+      defaultSumInsured: 2000000,
+      ageLimit: 'Age 0–79 (up to 90 days for age 60–79)',
+      features:['Emergency medical outside Canada','Trip cancellation/interruption','Baggage loss & delay','Accidental death & dismemberment','24/7 emergency assistance','Single or multi-trip options'],
+      popular:true,
+      badge:'🌍', badgeColor:'#7c3aed'
+    },
+    {
+      id:'dest-expat', name:'Expat Essential Plan',
+      tagline:'Destination · For Canadians living abroad',
+      provider:'destination', apiType:'expat', productId:null,
+      dailyRate:3.20, yearlyRate:null,
+      forStudent:false, forVisitor:false, forCanadian:true, expatPlan:true,
+      maxCoverage:'$2,000,000',
+      scheduleOptions: false,
+      deductibleOptions: true,
+      sumInsuredOptions: [1000000,2000000],
+      defaultSumInsured: 1000000,
+      ageLimit: 'Age 0–64',
+      features:['Comprehensive medical abroad','Hospitalization & surgery','Prescription drugs','Repatriation to Canada','Dental emergencies','Annual renewable plan','Working or living outside Canada'],
+      popular:false,
+      badge:'🌐', badgeColor:'#d97706'
+    }
+  ]
+};
+
+const PROVIDER_URLS = {
+  tugo:'https://shop.tugo.com/store/HML809',
+  destination:'https://www.desttravel.com/?id=4549d4e4-6c61-49a5-b29a-dea73d94cf9e#'
+};
+
+// ── FAQ DATA ──
+const FAQ = {
+  en: [
+    { q:'Do I need insurance if my school already has a group plan?', a:'It depends. Some schools automatically enroll students in their own health plan, but these are often optional and can be opted out of — and they may not cover you before classes begin or during summer breaks. A personal Destination plan is active from day one and has no gaps.' },
+    { q:'Is this insurance accepted by Canadian hospitals?', a:'Yes. Destination is a recognized Canadian insurer with a 24/7 emergency coordination line. In most cases, they pay the hospital directly — you don\'t need to pay out of pocket and claim later.' },
+    { q:'Can I buy insurance if I\'ve already arrived in Canada?', a:'Yes, in most cases. Both providers allow you to purchase after you\'ve arrived. Some waiting periods may apply for non-emergency conditions, but emergency coverage typically begins immediately or within a few days of purchase.' },
+    
+    { q:'Can I extend my coverage if my studies are delayed?', a:'Absolutely. Both plans allow you to extend before expiry without reapplying, as long as you haven\'t had a major claim. This is one of the most useful features — especially if your study permit is extended or you decide to stay longer.' },
+    { q:'Is the Super Visa insurance requirement met by these plans?', a:'Yes, Destination Insurance meets the Super Visa requirements set by Immigration, Refugees and Citizenship Canada (IRCC): minimum $100,000 medical coverage, valid for at least one year, purchased from a Canadian insurance company.' },
+    { q:'How do I contact my advisor after purchase?', a:'You can reach Onofrio directly by phone, email, or WhatsApp. As a licensed advisor, I\'m available to help with claims questions, renewals, or any concerns that come up during your coverage period.' }
+  ],
+  fr: [
+    { q:'Ai-je besoin d\'une assurance si mon école a déjà un régime collectif ?', a:'Ça dépend. Certaines écoles inscrivent automatiquement les étudiants à leur propre régime de santé, mais ceux-ci sont souvent facultatifs et peuvent ne pas vous couvrir avant le début des cours ou pendant les congés estivaux. Un plan Destination personnel est actif dès le premier jour, sans interruption.' },
+    { q:'Cette assurance est-elle acceptée par les hôpitaux canadiens ?', a:'Oui. Tugo et Destinations sont des assureurs canadiens reconnus avec des lignes d\'urgence disponibles 24h/24. Dans la plupart des cas, ils paient directement l\'hôpital — vous n\'avez pas besoin de payer de votre poche et de réclamer ensuite.' },
+    { q:'Puis-je acheter une assurance si je suis déjà au Canada ?', a:'Oui, dans la plupart des cas. Les deux fournisseurs permettent l\'achat après votre arrivée. Des délais de carence peuvent s\'appliquer pour les conditions non urgentes, mais la couverture d\'urgence commence généralement immédiatement.' },
+    
+    { q:'Puis-je prolonger ma couverture si mes études sont retardées ?', a:'Absolument. Les deux plans vous permettent de prolonger avant l\'expiration sans redemander, tant que vous n\'avez pas eu de sinistre majeur. C\'est l\'une des fonctionnalités les plus utiles si votre permis d\'études est prolongé.' },
+    { q:'L\'exigence d\'assurance pour le super visa est-elle satisfaite par ces plans ?', a:'Oui, l\'assurance Destinations répond aux exigences du super visa établies par Immigration, Réfugiés et Citoyenneté Canada : couverture médicale minimale de 100 000 $, valide pour au moins un an, achetée auprès d\'une compagnie d\'assurance canadienne.' },
+    { q:'Comment contacter mon conseiller après l\'achat ?', a:'Vous pouvez joindre Onofrio directement par téléphone, courriel ou WhatsApp. En tant que conseiller agréé, je suis disponible pour vous aider avec les questions de réclamations, les renouvellements ou toute préoccupation pendant votre période de couverture.' }
+  ]
+};
+
+// ── DATA ──
+let currentUser = null;
+const USERS = [
+  { id:1, username:'admin', password:'admin123', name:'You (Admin)', role:'admin', institution:'OK Financial HQ' },
+  { id:2, username:'coord1', password:'pass123', name:'Marie Tremblay', role:'coordinator', institution:'LaSalle College' },
+];
+let COORDINATORS = [...USERS];
+let SUBMISSIONS = [
+  { id:1, fname:'Youssef', lname:'Benali', email:'y.benali@student.ca', phone:'+1 514 555 0101', provider:'tugo', planName:'Standard', coordId:2, coordName:'Marie Tremblay', date:'2025-02-10', status:'Completed', dob:'', country:'Morocco', start:'2025-02-15', end:'2026-02-14', total:892.80 },
+  { id:2, fname:'Ana', lname:'Gomez', email:'a.gomez@student.ca', phone:'+1 514 555 0202', provider:'destination', planName:'Comprehensive', coordId:2, coordName:'Marie Tremblay', date:'2025-02-14', status:'Pending', dob:'', country:'Brazil', start:'2025-03-01', end:'2026-02-28', total:946.40 },
+];
+let selectedPlan=null, currentStep=1, nextSubId=3, currentSubId=null;
+let currentLang='en';
+let currentSegment=null;
+
+// ══════════════════════════════════════
+// LANGUAGE
+// ══════════════════════════════════════
+function setLang(lang) {
+  currentLang=lang;
+  document.getElementById('lang-en').classList.toggle('active',lang==='en');
+  document.getElementById('lang-fr').classList.toggle('active',lang==='fr');
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(val) el.innerHTML=val;
+  });
+  renderFAQ();
+  if(currentSegment) updateHeroPlanCards();
+}
+
+// ══════════════════════════════════════
+// FAQ
+// ══════════════════════════════════════
+function renderFAQ() {
+  const items=FAQ[currentLang]||FAQ.en;
+  document.getElementById('faq-list').innerHTML=items.map((item,i)=>`
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-q" onclick="toggleFAQ(${i})">
+        <span>${item.q}</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-a" id="faq-a-${i}"><div class="faq-a-inner">${item.a}</div></div>
+    </div>`).join('');
+}
+function toggleFAQ(i) {
+  const item=document.getElementById('faq-'+i);
+  const ans=document.getElementById('faq-a-'+i);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>{
+    el.classList.remove('open');
+    el.querySelector('.faq-a').style.maxHeight='0';
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    ans.style.maxHeight=ans.scrollHeight+'px';
+  }
+}
+
+// ══════════════════════════════════════
+// HERO SEGMENT SELECTION
+// ══════════════════════════════════════
+function selectSegment(seg) {
+  currentSegment=seg;
+  ['student','visitor','canadian'].forEach(s=>{
+    const el=document.getElementById('seg-'+s);
+    if(el) el.classList.toggle('active-seg',s===seg);
+  });
+  // Set default dates
+  const today=new Date(), end=new Date(today);
+  const defaultDays = seg==='student'?364 : seg==='canadian'?29 : 89;
+  end.setDate(end.getDate()+defaultDays);
+  const fmt=d=>d.toISOString().slice(0,10);
+  const s=document.getElementById('hw-start'), e=document.getElementById('hw-end');
+  if(s) s.value=fmt(today);
+  if(e) e.value=fmt(end);
+  // Update label
+  const label=document.getElementById('hw-label');
+  if(label) label.textContent=
+    seg==='student'  ? (currentLang==='fr'?'Dates de couverture — étudiant':'Student coverage dates') :
+    seg==='canadian' ? (currentLang==='fr'?'Dates de votre voyage':'Your trip dates') :
+                       (currentLang==='fr'?'Dates de couverture — visiteur':'Visitor coverage dates');
+  // Show/hide end date field
+  const endField=document.getElementById('hw-end-field');
+  if(endField) endField.style.display='';
+  // Show reveal and scroll
+  const reveal=document.getElementById('hero-reveal');
+  reveal.classList.add('show');
+  updateHeroPlanCards();
+  setTimeout(()=>{
+    const cards=document.getElementById('seg-student');
+    if(!cards) return;
+    const top=cards.getBoundingClientRect().top+window.scrollY-90;
+    window.scrollTo({top,behavior:'smooth'});
+  },80);
+}
+
+function updateHeroPlanCards() {
+  const start = document.getElementById('hw-start')?.value;
+  const end   = document.getElementById('hw-end')?.value;
+  const seg   = currentSegment;
+  let days = 365;
+  if (start && end) days = Math.max(1, Math.round((new Date(end)-new Date(start))/86400000)+1);
+
+  // Days pill
+  const pill = document.getElementById('hw-days');
+  if (pill) { pill.style.display=''; pill.textContent=`${days} ${currentLang==='fr'?'jours':'days'}`; }
+
+  // Filter plans by segment
+  const allPlans = [...PRICING.tugo, ...PRICING.destination];
+  let filtered;
+  if      (seg==='student')  filtered = allPlans.filter(p=>p.forStudent);
+  else if (seg==='visitor')  filtered = allPlans.filter(p=>p.forVisitor);
+  else if (seg==='canadian') filtered = allPlans.filter(p=>p.forCanadian);
+  else filtered = [];
+
+  // Sort popular first
+  const plans = [...filtered].sort((a,b)=>(b.popular?1:0)-(a.popular?1:0));
+  plans.forEach(p=>{ p._popular = p.popular; });
+
+  const grid = document.getElementById('hw-plan-cards');
+  if (!grid) return;
+
+  if (plans.length === 0) {
+    grid.innerHTML = `<div style="color:rgba(255,255,255,.4);text-align:center;padding:32px;grid-column:1/-1;">
+      ${currentLang==='fr'?'Aucun forfait disponible pour cette sélection.':'No plans available for this selection.'}
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = plans.map(p => {
+    // Price display logic per plan type
+    let priceMain, priceSub, priceNote;
+    if (p.forStudent) {
+      const total = days===365 ? p.yearlyRate : (p.dailyRate*days);
+      priceMain = `$${total.toFixed(2)}`;
+      priceSub  = days===365
+        ? `/ ${currentLang==='fr'?'an (365 jours)':'year (365 days)'}`
+        : `${currentLang==='fr'?'pour':'for'} ${days} ${currentLang==='fr'?'jours':'days'}`;
+      priceNote = `$${p.dailyRate.toFixed(2)}${currentLang==='fr'?'/jour':'/day'}`;
+    } else {
+      priceMain = `$${p.dailyRate.toFixed(2)}`;
+      priceSub  = currentLang==='fr'?'par jour (estimation)':'per day (estimate)';
+      priceNote = `${currentLang==='fr'?'Couverture jusqu\'à':'Up to'} ${p.maxCoverage}`;
+    }
+
+    // Age/duration note for Canadian plans
+    const ageNote = p.ageLimit
+      ? `<div class="hwp-age-note">👤 ${p.ageLimit}</div>`
+      : '';
+
+    // Features preview (first 3)
+    const featuresList = p.features.slice(0,3).map(f=>
+      `<div class="hwp-feature">✓ ${f}</div>`
+    ).join('');
+
+    // Badge style
+    const badgeStyle = p.badge
+      ? `style="background:${p.badgeColor||'#00b341'};color:#fff;"`
+      : '';
+
+    return `<div class="hwp-card ${p._popular?'hwp-popular':''}">
+      <div class="hwp-head">
+        <span class="hwp-badge hwp-badge-destination" ${badgeStyle}>${p.badge||'✈️'} DESTINATION</span>
+        ${p._popular?`<span class="hwp-pop-tag">${currentLang==='fr'?'★ Populaire':'★ Popular'}</span>`:''}
+        <div class="hwp-name">${p.name}</div>
+        <div class="hwp-tagline">${p.tagline}</div>
+        ${ageNote}
+      </div>
+      <div class="hwp-price">
+        <div class="hwp-total">${priceMain}</div>
+        <div class="hwp-total-unit">${priceSub}</div>
+        <div class="hwp-daily">${priceNote}</div>
+      </div>
+      <div class="hwp-features-mini">${featuresList}</div>
+      <div class="hwp-foot">
+        <button class="hwp-buy ${p._popular?'':'secondary'}" onclick="openCheckout('${p.id}')">
+          ${currentLang==='fr'?'Obtenir ce forfait →':'Get This Plan →'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Fetch live pricing from API for all rendered plans
+  fetchAllLivePricing(plans, days, start);
+}
+
+// ── Fetch live pricing for all plans in the current view ──
+async function fetchAllLivePricing(plans, days, startDate) {
+  const today = new Date().toISOString().slice(0,10);
+  const auth  = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+
+  for (const p of plans) {
+    try {
+      let url, params;
+      if (p.apiType === 'vtc') {
+        // Need age — use default 35 for display, user will set at checkout
+        params = new URLSearchParams({ applicationDate:today, tripDays:days, age:35, familyPlan:false });
+        url = 'https://devweb.desttravel.com/api/visitorquote/premiumoptions?' + params;
+        const res = await fetch(url, { headers:{ Authorization:auth, Accept:'application/json' }});
+        if (res.ok) {
+          const data = await res.json();
+          // Default: $100k coverage, Schedule 2 (no pre-existing) — most affordable
+          const match = data.find(d => d.SumInsured===100000 && d.ScheduleNo===2)
+                     || data.find(d => d.SumInsured===100000)
+                     || data[0];
+          if (match) {
+            p._liveRate  = match.DailyRate;
+            p._liveTotal = match.Rate;
+            p._liveData  = data; // store full for checkout
+            updatePlanCardPrice(p.id, `$${match.DailyRate.toFixed(2)}`, 'per day · $100K coverage');
+          }
+        }
+      } else if (p.apiType === 'student') {
+        params = new URLSearchParams({
+          applicationDate: today, productId:80,
+          tripDays:days, totalapplicants:1,
+          scheduleNo:0, effectiveDate:startDate||today, COVID19Rider:false
+        });
+        url = 'https://devweb.desttravel.com/api/studentquote/premiumoptions?' + params;
+        const res = await fetch(url, { headers:{ Authorization:auth, Accept:'application/json' }});
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.length > 0) {
+            const match = data.find(d=>d.ScheduleNo===1) || data[0];
+            p._liveRate  = match.DailyRate;
+            p._liveTotal = match.TotalDailyPremium;
+            updatePlanCardPrice(p.id,
+              `$${match.TotalDailyPremium.toFixed(2)}`,
+              `for ${days} days · $${match.DailyRate.toFixed(2)}/day`
+            );
+          }
+        }
+      }
+      // Leisure & Expat: API docs pending — show estimated price with note
+    } catch(e) {
+      console.log('[DTG] Live pricing failed for', p.id, e.message);
+    }
+  }
+}
+
+// ── Update a plan card's price display in-place after live fetch ──
+function updatePlanCardPrice(planId, mainPrice, subText) {
+  const cards = document.querySelectorAll('#hw-plan-cards .hwp-card');
+  cards.forEach(card => {
+    if (card.querySelector(`[onclick*="${planId}"]`)) {
+      const total = card.querySelector('.hwp-total');
+      const unit  = card.querySelector('.hwp-total-unit');
+      if (total) { total.textContent = mainPrice; total.style.color='var(--gold)'; }
+      if (unit)  { unit.textContent  = subText + ' ✓ Live'; unit.style.color='rgba(201,168,76,.7)'; }
+    }
+  });
+}
+
+
+// ══════════════════════════════════════
+// LEAD CAPTURE MODAL
+// ══════════════════════════════════════
+let pendingPlan = null;
+
+function openLead(plan) {
+  pendingPlan = plan;
+  const badge = document.getElementById('lead-plan-badge');
+  const title = document.getElementById('lead-head-title');
+  const sub   = document.getElementById('lead-head-sub');
+  if (badge) badge.textContent = (plan.provider==='tugo'?'✈️ Destination':'✈️ Destination') + ' · ' + plan.name;
+  if (title) title.textContent = currentLang==='fr' ? 'Presque là — quelques détails' : 'Almost there — just a few details';
+  if (sub)   sub.textContent   = currentLang==='fr'
+    ? "Nous enregistrons vos informations et ouvrons le formulaire de demande. 2 minutes pour compléter."
+    : "We'll log your information and open the application form for you. Takes 2 minutes to complete.";
+  // Clear fields
+  ['lead-fname','lead-lname','lead-email','lead-phone'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){el.value='';el.classList.remove('error');}
+  });
+  document.getElementById('lead-err').style.display='none';
+  document.getElementById('lead-modal').classList.add('open');
+  setTimeout(()=>document.getElementById('lead-fname').focus(),120);
+}
+
+function openLeadById(planId) {
+  const all=[...PRICING.tugo,...PRICING.destination];
+  const plan=all.find(p=>p.id===planId);
+  if(plan) openLead(plan);
+}
+
+function closeLead() {
+  document.getElementById('lead-modal').classList.remove('open');
+  pendingPlan = null;
+}
+
+function submitLeadAndRedirect() {
+  const fname = document.getElementById('lead-fname').value.trim();
+  const lname = document.getElementById('lead-lname').value.trim();
+  const email = document.getElementById('lead-email').value.trim();
+  const phone = document.getElementById('lead-phone').value.trim();
+  const err   = document.getElementById('lead-err');
+  // Validate
+  let valid = true;
+  ['lead-fname','lead-lname','lead-email','lead-phone'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el.value.trim()){el.classList.add('error');valid=false;}
+    else el.classList.remove('error');
+  });
+  if(!valid){err.style.display='block';return;}
+  err.style.display='none';
+  // Save lead to SUBMISSIONS (visible in portal)
+  const start = document.getElementById('hw-start')?.value || '';
+  const end   = document.getElementById('hw-end')?.value   || '';
+  SUBMISSIONS.push({
+    id: nextSubId++,
+    fname, lname, email, phone,
+    dob:'', country:'',
+    start, end,
+    provider: pendingPlan.provider,
+    planName: pendingPlan.name,
+    planId:   pendingPlan.id,
+    total: null,
+    coordId: 1, coordName: 'Public Website',
+    date: new Date().toISOString().slice(0,10),
+    status: 'Pending',
+    source: 'public'
+  });
+  // Show confirmation then redirect
+  const url = PROVIDER_URLS[pendingPlan.provider];
+  document.getElementById('lead-success').style.display='block';
+  document.getElementById('lead-submit') && (document.querySelector('.lead-submit').disabled=true);
+  setTimeout(()=>{
+    closeLead();
+    document.getElementById('lead-success').style.display='none';
+    document.querySelector('.lead-submit').disabled=false;
+    window.open(url, '_blank');
+  }, 1400);
+}
+
+// Close modal on backdrop click
+document.addEventListener('click', function(e){
+  if(e.target.id==='lead-modal') closeLead();
+});
+
+// ══════════════════════════════════════
+// DESTINATION INTEGRATED CHECKOUT — LIVE API
+// Test environment: devweb.desttravel.com
+// Auth: Basic Auth (username:password base64)
+// ══════════════════════════════════════
+const DTG_CONFIG = {
+  username: 'onofrio.kanagaratnam_api',
+  // NOTE: In production, API calls should go through your own backend
+  // to keep credentials secure. Never expose passwords in frontend JS in prod.
+  iframeUrl: 'https://devweb.desttravel.com/payment/checkout.aspx',
+  apiBase:   'https://devweb.desttravel.com',
+};
+
+let checkoutPlan    = null;
+let checkoutDates   = {};
+let paymentToken    = null;
+let cardHolderName  = null;
+
+// ── Open checkout (replaces old openLeadById flow) ──
+function openCheckout(planId) {
+  const allPlans = [...PRICING.tugo, ...PRICING.destination];
+  const plan = allPlans.find(p => p.id === planId);
+  if (!plan) return;
+  checkoutPlan  = plan;
+  checkoutDates = {
+    start: document.getElementById('hw-start')?.value || '',
+    end:   document.getElementById('hw-end')?.value   || '',
+  };
+  paymentToken   = null;
+  cardHolderName = null;
+
+  // Populate plan badge + summary
+  document.getElementById('co-plan-badge').textContent = '✈️ Destination · ' + plan.name;
+  renderCoSummary('co-plan-summary');
+  renderCoSummary('co-payment-summary');
+
+  // Pre-fill from lead modal if user already entered info
+  ['fname','lname','email','phone'].forEach(f => {
+    const leadVal = document.getElementById('lead-' + f)?.value;
+    if (leadVal) document.getElementById('co-' + f).value = leadVal;
+  });
+
+  // For leisure/expat — API docs pending, show advisor contact modal
+  if (plan.apiType === 'leisure' || plan.apiType === 'expat') {
+    showAdvisorContactModal(plan);
+    return;
+  }
+
+  // Fetch live pricing in background to confirm rate
+  fetchLivePricing();
+
+  // Reset to step 1
+  coGoToStep(1);
+  document.getElementById('checkout-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+
+
+function showAdvisorContactModal(plan) {
+  const modal = document.getElementById('advisor-modal');
+  document.getElementById('adv-plan-badge').textContent = (plan.badge||'✈️') + ' ' + plan.name.toUpperCase();
+  document.getElementById('adv-modal-title').textContent = currentLang==='fr'
+    ? 'Obtenez un devis personnalisé'
+    : 'Get a Personalized Quote';
+  document.getElementById('adv-plan-details').innerHTML = `
+    <strong>${plan.name}</strong><br>
+    ${plan.tagline}<br>
+    <span style="color:var(--sub);">
+      ${plan.ageLimit ? '👤 ' + plan.ageLimit + '<br>' : ''}
+      🛡️ Up to ${plan.maxCoverage} coverage<br>
+      ${plan.features.slice(0,4).map(f=>'✓ '+f).join('<br>')}
+    </span>
+  `;
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+// ── Fetch live pricing from Destination API ──
+async 
+function updateAgeFromDOB() {
+  const dob = document.getElementById('co-dob')?.value;
+  if (!dob || !checkoutPlan) return;
+  const age = Math.floor((new Date() - new Date(dob)) / 31557600000);
+  // Re-fetch VTC pricing with actual age
+  if (checkoutPlan.apiType === 'vtc') {
+    fetchLivePricing();
+    renderCoSummary('co-plan-summary');
+    renderCoSummary('co-payment-summary');
+  }
+}
+function fetchLivePricing() {
+  if (!checkoutPlan) return;
+  const isStudent = checkoutPlan.forStudent;
+  const authHeader = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+  const days = checkoutDates.start && checkoutDates.end
+    ? Math.round((new Date(checkoutDates.end) - new Date(checkoutDates.start)) / 86400000) + 1
+    : 365;
+  const today = new Date().toISOString().slice(0,10);
+
+  try {
+    if (isStudent) {
+      const params = new URLSearchParams({
+        applicationDate: today,
+        productId: 80,
+        tripDays: days,
+        totalapplicants: 1,
+        scheduleNo: 0,
+        effectiveDate: checkoutDates.start || today,
+        COVID19Rider: false
+      });
+      const res = await fetch(
+        'https://devweb.desttravel.com/api/studentquote/premiumoptions?' + params,
+        { headers: { 'Authorization': authHeader, 'Accept': 'application/json' } }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.length > 0) {
+          // Use TotalDailyPremium as the live price
+          const liveTotal = data[0].TotalDailyPremium;
+          const liveDaily = data[0].DailyRate;
+          console.log('[DTG] Live student pricing:', liveTotal, '/', liveDaily + '/day');
+          // Update plan display
+          checkoutPlan._liveTotal = liveTotal;
+          checkoutPlan._liveDaily = liveDaily;
+          renderCoSummary('co-plan-summary');
+          renderCoSummary('co-payment-summary');
+        }
+      }
+    } else {
+      // For VTC we need age
+      const dob = document.getElementById('co-dob')?.value;
+      const age = dob ? Math.floor((new Date() - new Date(dob)) / 31557600000) : 35;
+      const params = new URLSearchParams({
+        applicationDate: today,
+        tripDays: days,
+        age: age,
+        familyPlan: false
+      });
+      const res = await fetch(
+        'https://devweb.desttravel.com/api/visitorquote/premiumoptions?' + params,
+        { headers: { 'Authorization': authHeader, 'Accept': 'application/json' } }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        // Find $1M coverage, schedule 1 (pre-existing covered)
+        const match = data.find(d => d.SumInsured === 1000000 && d.ScheduleNo === 1);
+        if (match) {
+          console.log('[DTG] Live VTC pricing:', match.Rate, '/', match.DailyRate + '/day');
+          checkoutPlan._liveTotal = match.Rate;
+          checkoutPlan._liveDaily = match.DailyRate;
+          renderCoSummary('co-plan-summary');
+          renderCoSummary('co-payment-summary');
+        }
+      }
+    }
+  } catch(e) {
+    console.log('[DTG] Live pricing fetch failed (CORS or network):', e.message);
+  }
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  // Unload iframe to stop any pending requests
+  const iframe = document.getElementById('dtg-iframe');
+  if (iframe) { iframe.src = ''; iframe.style.display='none'; }
+  document.getElementById('dtg-loading').style.display = 'flex';
+  document.getElementById('co-pay-error').style.display = 'none';
+}
+
+// Close on backdrop click
+document.addEventListener('click', e => {
+  if (e.target.id === 'checkout-modal') closeCheckout();
+});
+
+function renderCoSummary(containerId) {
+  if (!checkoutPlan) return;
+  const p = checkoutPlan;
+  const days = checkoutDates.start && checkoutDates.end
+    ? Math.round((new Date(checkoutDates.end) - new Date(checkoutDates.start)) / 86400000) + 1
+    : 365;
+  const liveTotal = p._liveTotal;
+  const price = p.forStudent
+    ? '$' + (liveTotal || p.yearlyRate).toFixed(2)
+    : '$' + (p._liveDaily || p.dailyRate).toFixed(2) + '/day';
+  document.getElementById(containerId).innerHTML = `
+    <div>
+      <div class="co-plan-name">${p.name}</div>
+      <div class="co-plan-dates">
+        ${checkoutDates.start || '—'} → ${p.forStudent ? (checkoutDates.end || '—') : 'Flexible'} &nbsp;·&nbsp; ${days} days
+      </div>
+    </div>
+    <div class="co-plan-price">${price}</div>
+  `;
+}
+
+// ── Step navigation ──
+function coGoToStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('co-step-' + i).style.display = i === n ? 'block' : 'none';
+    const tab = document.getElementById('co-step-' + i + '-tab');
+    tab.classList.toggle('active', i === n);
+    tab.classList.toggle('done', i < n);
+  });
+}
+
+// ── Step 1 → Step 2 ──
+function coNextToPayment() {
+  // Validate required fields
+  const fields = ['co-fname','co-lname','co-dob','co-gender','co-email','co-phone','co-country','co-address','co-city','co-prov','co-postal'];
+  let valid = true;
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    const err = document.getElementById('err-' + id);
+    if (!el.value.trim()) {
+      el.classList.add('error');
+      if (err) err.style.display = 'block';
+      valid = false;
+    } else {
+      el.classList.remove('error');
+      if (err) err.style.display = 'none';
+    }
+  });
+  if (!valid) return;
+
+  // Show coverage options for visitors
+  const covOpts = document.getElementById('co-coverage-options');
+  if (covOpts) covOpts.style.display = currentSegment === 'visitor' ? 'block' : 'none';
+
+  // Save lead to SUBMISSIONS before proceeding
+  const lead = {
+    id: nextSubId++,
+    fname: document.getElementById('co-fname').value.trim(),
+    lname: document.getElementById('co-lname').value.trim(),
+    email: document.getElementById('co-email').value.trim(),
+    phone: document.getElementById('co-phone').value.trim(),
+    dob:   document.getElementById('co-dob').value,
+    country: document.getElementById('co-country').value,
+    start: checkoutDates.start, end: checkoutDates.end,
+    provider: 'destination',
+    planName: checkoutPlan.name,
+    planId:   checkoutPlan.id,
+    total: null,
+    coordId: 1, coordName: 'Public Website',
+    date: new Date().toISOString().slice(0,10),
+    status: 'Payment Started',
+    source: 'public'
+  };
+  SUBMISSIONS.push(lead);
+
+  // Load DTG payment iframe
+  coGoToStep(2);
+  loadDTGIframe();
+}
+
+// ── Load DTG payment iframe ──
+function loadDTGIframe() {
+  const lang = (currentLang === 'fr') ? 'FR' : 'EN';
+  const bgColor = 'f8f9fb';
+  const iframeUrl = `${DTG_CONFIG.iframeUrl}?showSubmit=false&bgcolor=${bgColor}&lang=${lang}`;
+
+  const iframe  = document.getElementById('dtg-iframe');
+  const loading = document.getElementById('dtg-loading');
+
+  iframe.style.display = 'none';
+  loading.style.display = 'flex';
+
+  iframe.onload = () => {
+    loading.style.display = 'none';
+    iframe.style.display  = 'block';
+    // Listen for payment token from DTG iframe
+    window.removeEventListener('message', dtgPaymentCallback);
+    window.addEventListener('message', dtgPaymentCallback);
+  };
+
+  iframe.src = iframeUrl;
+}
+
+// ── Handle postMessage from DTG iframe ──
+function dtgPaymentCallback(e) {
+  // Only accept messages from DTG domain
+  if (!e.origin.includes('desttravel.com')) return;
+
+  const errEl = document.getElementById('co-pay-error');
+  errEl.style.display = 'none';
+
+  if (e.data.dataKey) {
+    // ✅ Card tokenized successfully
+    paymentToken   = e.data.dataKey;
+    cardHolderName = e.data.cardName;
+    // Auto-proceed to submit
+    coSubmitApplication();
+  } else {
+    // ❌ Payment error
+    let msg = 'We could not process your card. ';
+    if (e.data.responseCode && e.data.responseCode.includes('NOTVORM')) {
+      msg += 'Only Visa or Mastercard is accepted.';
+    } else if (e.data.responseCode && e.data.responseCode.includes('NOHOLDERNAME')) {
+      msg += 'Please enter the cardholder name.';
+    } else if (e.data.errorMessage) {
+      msg += e.data.errorMessage + ' (Code: ' + (e.data.responseCode || []).join(', ') + ')';
+    } else {
+      msg += 'Please check your card details and try again.';
+    }
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+    document.getElementById('co-pay-btn').disabled = false;
+    document.getElementById('co-pay-btn').textContent = 'Complete Application →';
+  }
+}
+
+// ── Step 2: trigger iframe to generate token ──
+function coProcessPayment() {
+  const btn = document.getElementById('co-pay-btn');
+  btn.disabled = true;
+  btn.textContent = 'Processing...';
+  document.getElementById('co-pay-error').style.display = 'none';
+
+  const iframe = document.getElementById('dtg-iframe');
+  iframe.contentWindow.postMessage('generateToken', '*');
+}
+
+// ── Submit application to Destination API ──
+async function coSubmitApplication() {
+  const btn = document.getElementById('co-pay-btn');
+
+  // Build applicant data
+  const applicant = {
+    FirstName:   document.getElementById('co-fname').value.trim(),
+    LastName:    document.getElementById('co-lname').value.trim(),
+    DateOfBirth: document.getElementById('co-dob').value,
+    Gender:      document.getElementById('co-gender').value,
+    Email:       document.getElementById('co-email').value.trim(),
+    Phone:       document.getElementById('co-phone').value.trim(),
+    Country:     document.getElementById('co-country').value,
+    StartDate:   checkoutDates.start,
+    EndDate:     checkoutDates.end,
+    PlanId:      checkoutPlan.id,
+    Payment: {
+      PaymentMethod:  2,
+      PaymentTokenId: paymentToken,
+      CardHolderName: cardHolderName
+    }
+  };
+
+  // ── LIVE API CALL ──
+  const isStudent = checkoutPlan.forStudent;
+  const endpoint  = isStudent
+    ? 'https://devweb.desttravel.com/api/studentquote'
+    : 'https://devweb.desttravel.com/api/visitorquote';
+  const authHeader = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+  const today      = new Date().toLocaleDateString('en-GB').replace(/\//g, '/'); // DD/MM/YYYY
+  const fmt        = d => new Date(d).toLocaleDateString('en-GB').replace(/\//g, '/');
+
+  const days = checkoutDates.start && checkoutDates.end
+    ? Math.round((new Date(checkoutDates.end) - new Date(checkoutDates.start)) / 86400000) + 1
+    : 365;
+
+  const payload = {
+    Payment: {
+      PaymentMethod:  2,
+      PaymentTokenId: paymentToken,
+      CardHolderName: cardHolderName
+    },
+    ClientAddrLookup: {
+      ClientLookup: [{
+        Gender:       document.getElementById('co-gender').value,
+        FirstName:    document.getElementById('co-fname').value.trim(),
+        LastName:     document.getElementById('co-lname').value.trim(),
+        BirthDate:    fmt(document.getElementById('co-dob').value),
+        Relationship: 'P'
+      }],
+      ClientType:  'S',
+      Address:     document.getElementById('co-address').value.trim(),
+      City:        document.getElementById('co-city').value.trim(),
+      Prov:        document.getElementById('co-prov').value,
+      PostalCode:  document.getElementById('co-postal').value.trim().toUpperCase(),
+      Email:       document.getElementById('co-email').value.trim(),
+      Phone:       document.getElementById('co-phone').value.trim()
+    },
+    ProductID:       isStudent ? 80 : 3,
+    ApplicationDate: today,
+    ArrivalDate:     fmt(checkoutDates.start),
+    EffectiveDate:   fmt(checkoutDates.start),
+    ExpiryDate:      fmt(checkoutDates.end || checkoutDates.start),
+    IsQuoteOnly:     false,
+    Deductible:      0,
+    SumInsured:      isStudent ? 2000000 : parseInt(document.getElementById('co-suminsured')?.value || 2000000),
+    DailyRate:       checkoutPlan.dailyRate,
+    ScheduleNo:      isStudent ? 1 : parseInt(document.getElementById('co-schedule')?.value || 1),
+    TripLength:      days,
+    TotalPremium:    parseFloat((checkoutPlan.dailyRate * days).toFixed(2))
+  };
+
+  console.log('[DTG] POST to', endpoint, JSON.stringify(payload, null, 2));
+
+  try {
+    const res = await fetch(endpoint, {
+      method:  'POST',
+      headers: {
+        'Content-Type':    'application/json',
+        'Accept':          'application/json',
+        'Accept-Language': currentLang.toUpperCase(),
+        'Authorization':   authHeader
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.status === 201 || res.status === 200) {
+      const data = await res.json();
+      const policyNo = Array.isArray(data) ? data[0]?.PolicyNo : data?.PolicyNo;
+
+      // Update submission in portal
+      const sub = SUBMISSIONS.find(s => s.planId === checkoutPlan.id && s.status === 'Payment Started');
+      if (sub) { sub.status = 'Completed'; sub.policyNo = policyNo; }
+
+      coGoToStep(3);
+      document.getElementById('co-ref-number').textContent = policyNo
+        ? 'Policy No: ' + policyNo
+        : 'Application submitted successfully';
+
+    } else {
+      // Try to parse error
+      let errMsg = 'Submission failed (HTTP ' + res.status + '). Please try again or call +1 (438) 376-9334.';
+      try {
+        const errData = await res.json();
+        if (Array.isArray(errData) && errData[0]?.Message) {
+          errMsg = errData.map(e => e.Message).join(' ');
+        }
+      } catch(e) {}
+      const errEl = document.getElementById('co-pay-error');
+      errEl.textContent = errMsg;
+      errEl.style.display = 'block';
+    }
+  } catch(err) {
+    // CORS or network error
+    const errEl = document.getElementById('co-pay-error');
+    if (err.name === 'TypeError' && err.message.includes('fetch')) {
+      errEl.textContent = 'Network error — please ensure the site domain is whitelisted by Destination. Contact +1 (438) 376-9334 for assistance.';
+    } else {
+      errEl.textContent = 'Connection error: ' + err.message;
+    }
+    errEl.style.display = 'block';
+    console.error('[DTG] API error:', err);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Complete Application →';
+  window.removeEventListener('message', dtgPaymentCallback);
+}
+
+function coBackToDetails() {
+  coGoToStep(1);
+  window.removeEventListener('message', dtgPaymentCallback);
+}
+
+
+// ══════════════════════════════════════
+// LANDING PAGE NAV
+// ══════════════════════════════════════
+function lpScroll(id) {
+  document.getElementById('lp-'+id)?.scrollIntoView({behavior:'smooth'});
+}
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// ══════════════════════════════════════
+// LOGIN / AUTH
+// ══════════════════════════════════════
+function openLogin() {
+  document.getElementById('login-modal').classList.add('open');
+  setTimeout(()=>document.getElementById('login-user').focus(),100);
+}
+function closeLogin() {
+  document.getElementById('login-modal').classList.remove('open');
+  document.getElementById('login-error').style.display='none';
+}
+function doLogin() {
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value;
+  const user=USERS.find(x=>x.username===u&&x.password===p);
+  if(!user){document.getElementById('login-error').style.display='block';return;}
+  currentUser=user;
+  closeLogin();
+  document.getElementById('landing-page').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('sidebar-avatar').textContent=user.name.charAt(0).toUpperCase();
+  document.getElementById('sidebar-name').textContent=user.name;
+  document.getElementById('sidebar-role').textContent=user.role==='admin'?'Administrator':'Coordinator – '+user.institution;
+  document.querySelectorAll('.admin-only').forEach(el=>{el.style.display=user.role==='admin'?'flex':'none';});
+  refreshDashboard(); renderSubmissions(); renderCoordinators(); renderPlans(); renderPricingAdmin();
+}
+function doLogout() {
+  currentUser=null;
+  document.getElementById('app').style.display='none';
+  document.getElementById('landing-page').style.display='block';
+  document.getElementById('login-user').value='';
+  document.getElementById('login-pass').value='';
+}
+
+// ══════════════════════════════════════
+// PORTAL NAV
+// ══════════════════════════════════════
+function showPage(name,el) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  if(el) el.classList.add('active');
+  if(name==='dashboard') refreshDashboard();
+  if(name==='submissions') renderSubmissions();
+  if(name==='coordinators') renderCoordinators();
+  if(name==='plans') renderPlans();
+  if(name==='pricing-admin') renderPricingAdmin();
+  if(name==='new-quote') resetQuote();
+}
+
+// ══════════════════════════════════════
+// PLAN CARD HTML
+// ══════════════════════════════════════
+function planCardHtml(plan, selectable, selectedId, days) {
+  const isSelected=selectable&&selectedId===plan.id;
+  let priceHtml;
+  if(days&&selectable){
+    const total=(plan.dailyRate*days).toFixed(2);
+    priceHtml=`<div class="plan-card-price"><span class="plan-price-amount">$${total}</span><span class="plan-price-unit">/ ${days} days</span><span class="plan-price-note">$${plan.dailyRate.toFixed(2)}/day</span></div>`;
+  } else if(plan.studentPlan&&plan.yearlyRate){
+    priceHtml=`<div class="plan-card-price"><span class="plan-price-amount">$${plan.yearlyRate.toFixed(2)}</span><span class="plan-price-unit">/ ${PRICING.standardDays} days</span><span class="plan-price-note">$${plan.dailyRate.toFixed(2)}/day</span></div>`;
+  } else {
+    priceHtml=`<div class="plan-card-price"><span class="plan-price-amount">$${plan.dailyRate.toFixed(2)}</span><span class="plan-price-unit">/ day</span><span class="plan-price-note">up to ${plan.maxCoverage}</span></div>`;
+  }
+  return `<div class="plan-card ${isSelected?'selected-plan':''}" onclick="${selectable?`selectPlan('${plan.id}')`:``}">
+    <div class="plan-card-header">
+      <span class="plan-provider-badge ${plan.provider==='tugo'?'badge-tugo':'badge-dest'}">${plan.provider==='tugo'?'✈️ Destination':'✈️ Destination'}</span>
+      ${plan.popular?'<span style="float:right;font-size:.7rem;background:rgba(201,168,76,.15);color:#8a6a1a;padding:2px 8px;border-radius:20px;font-weight:700;">★ Popular</span>':''}
+      <div class="plan-name">${plan.name}</div><div class="plan-tagline">${plan.tagline}</div>
+    </div>
+    ${priceHtml}
+    <div class="plan-card-features">${plan.features.map(f=>`<div class="plan-feature">${f}</div>`).join('')}</div>
+    <div class="plan-card-footer">
+      ${selectable?`<button class="plan-select-btn" onclick="selectPlan('${plan.id}')">${isSelected?'✓ Selected':'Select Plan →'}</button>`:`<span class="plan-select-btn" onclick="showPage('new-quote',document.querySelectorAll('.nav-item')[2])">Quote this plan →</span>`}
+      <span class="price-updated">Updated ${PRICING.lastUpdated}</span>
+    </div>
+  </div>`;
+}
+
+function pubPlanHtml(plan) {
+  return `<div class="pub-plan ${plan.popular?'pop':''}">
+    <div class="pub-plan-head">
+      <span class="pub-badge ${plan.provider==='tugo'?'pub-badge-tugo':'pub-badge-dest'}">${plan.provider==='tugo'?'✈️ Destination':'✈️ Destination'}</span>
+      ${plan.popular?'<span class="pub-pop-tag">★ Popular</span>':''}
+      <div class="pub-plan-name">${plan.name}</div>
+      <div class="pub-plan-tag">${plan.tagline}</div>
+    </div>
+    <div class="pub-plan-price">
+      <span class="pub-price-amt">$${plan.yearlyRate.toFixed(2)}</span>
+      <span class="pub-price-unit">/ year</span>
+      <span class="pub-price-day">$${plan.dailyRate.toFixed(2)}/day</span>
+    </div>
+    <div class="pub-features">${plan.features.map(f=>`<div class="pub-feat">${f}</div>`).join('')}</div>
+    <div class="pub-plan-foot">
+      <button class="pub-buy ${plan.popular?'':'secondary'}" onclick="window.open('${PROVIDER_URLS[plan.provider]}','_blank')">${plan.popular?'Get This Plan →':'Select Plan →'}</button>
+    </div>
+  </div>`;
+}
+
+function renderLandingPlans() {
+  const tg=document.getElementById('lp-tugo-grid');
+  const dg=document.getElementById('lp-dest-grid');
+  if(tg) tg.innerHTML=PRICING.tugo.map(pubPlanHtml).join('');
+  if(dg) dg.innerHTML=PRICING.destination.map(pubPlanHtml).join('');
+}
+
+// ══════════════════════════════════════
+// PORTAL PAGES
+// ══════════════════════════════════════
+function refreshDashboard() {
+  const mine=currentUser.role==='admin'?SUBMISSIONS:SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
+  document.getElementById('stat-total').textContent=mine.length;
+  document.getElementById('stat-coords').textContent=COORDINATORS.filter(c=>c.role==='coordinator').length;
+  document.getElementById('stat-tugo').textContent=mine.filter(s=>s.provider==='tugo').length;
+  document.getElementById('stat-dest').textContent=mine.filter(s=>s.provider==='destination').length;
+  const tbody=document.getElementById('dashboard-tbody');
+  tbody.innerHTML=[...mine].reverse().slice(0,8).map(s=>`<tr>
+    <td><b>${s.fname} ${s.lname}</b></td><td>${s.email}</td>
+    <td>${s.provider==='tugo'?'🛡️ Tugo':'✈️ Dest.'} · ${s.planName||'—'}</td>
+    <td>${s.coordName}</td><td>${s.date}</td>
+    <td><span class="badge ${s.status==='Completed'?'badge-active':'badge-pending'}">${s.status}</span></td>
+  </tr>`).join('');
+  document.getElementById('dash-empty').style.display=mine.length?'none':'block';
+}
+
+function renderSubmissions() {
+  const search=(document.getElementById('sub-search')?.value||'').toLowerCase();
+  const filter=document.getElementById('sub-filter')?.value||'';
+  let list=currentUser.role==='admin'?SUBMISSIONS:SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
+  if(search) list=list.filter(s=>(s.fname+' '+s.lname+' '+s.email).toLowerCase().includes(search));
+  if(filter) list=list.filter(s=>s.provider===filter);
+  document.getElementById('subs-tbody').innerHTML=[...list].reverse().map(s=>`<tr>
+    <td><b>${s.fname} ${s.lname}</b></td><td>${s.email}</td><td>${s.phone}</td>
+    <td>${s.provider==='tugo'?'🛡️ Tugo':'✈️ Dest.'} · ${s.planName||'—'}</td>
+    <td>${s.total?'$'+s.total.toFixed(2):'—'}</td>
+    <td>${s.coordName}</td><td>${s.date}</td>
+    <td><span class="badge ${s.status==='Completed'?'badge-active':'badge-pending'}">${s.status}</span>
+    ${s.status==='Pending'?`<button class="btn btn-sm" style="margin-left:6px;padding:4px 10px;background:rgba(39,174,96,.1);color:var(--success);border:none;border-radius:6px;cursor:pointer;font-size:.72rem;font-weight:600;" onclick="markComplete(${s.id})">Mark Done</button>`:''}
+    </td></tr>`).join('');
+  document.getElementById('subs-empty').style.display=list.length?'none':'block';
+}
+function markComplete(id){const s=SUBMISSIONS.find(s=>s.id===id);if(s){s.status='Completed';renderSubmissions();refreshDashboard();}}
+function filterSubs(){renderSubmissions();}
+
+function renderCoordinators() {
+  document.getElementById('coords-tbody').innerHTML=COORDINATORS.filter(c=>c.role==='coordinator').map(c=>{
+    const count=SUBMISSIONS.filter(s=>s.coordId===c.id).length;
+    return `<tr><td><b>${c.name}</b></td><td>${c.username}</td><td>${c.institution||'—'}</td>
+      <td><span class="badge badge-coord">Coordinator</span></td><td>${count}</td>
+      <td><span class="badge badge-active">Active</span></td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteCoord(${c.id})">Remove</button></td></tr>`;
+  }).join('');
+}
+function openAddCoordModal(){['nc-name','nc-inst','nc-user','nc-pass','nc-email'].forEach(id=>document.getElementById(id).value='');document.getElementById('add-coord-modal').classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function addCoordinator(){
+  const name=document.getElementById('nc-name').value.trim();
+  const inst=document.getElementById('nc-inst').value.trim();
+  const user=document.getElementById('nc-user').value.trim();
+  const pass=document.getElementById('nc-pass').value;
+  const email=document.getElementById('nc-email').value.trim();
+  if(!name||!user||!pass){alert('Please fill in Name, Username and Password.');return;}
+  if(COORDINATORS.find(c=>c.username===user)){alert('Username already taken.');return;}
+  const nc={id:Date.now(),username:user,password:pass,name,role:'coordinator',institution:inst,email};
+  COORDINATORS.push(nc);USERS.push(nc);closeModal('add-coord-modal');renderCoordinators();
+}
+function deleteCoord(id){if(!confirm('Remove this coordinator?'))return;const i=COORDINATORS.findIndex(c=>c.id===id);if(i>-1)COORDINATORS.splice(i,1);renderCoordinators();}
+
+// ══════════════════════════════════════
+// QUOTE FLOW (PORTAL)
+// ══════════════════════════════════════
+function resetQuote() {
+  selectedPlan=null;
+  ['step1','step2','step3'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',i!==0));
+  ['step1-ind','step2-ind','step3-ind'].forEach((id,i)=>{const el=document.getElementById(id);el.classList.toggle('active',i===0);el.classList.remove('done');});
+  document.getElementById('step1-error').style.display='none';
+  ['q-fname','q-lname','q-email','q-phone','q-dob','q-country'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const today=new Date(), end=new Date(today);
+  end.setDate(end.getDate()+364);
+  const fmt=d=>d.toISOString().slice(0,10);
+  const s=document.getElementById('q-start'), e=document.getElementById('q-end');
+  if(s) s.value=fmt(today); if(e) e.value=fmt(end);
+}
+function goStep1(){
+  document.getElementById('step2').classList.add('hidden');
+  document.getElementById('step1').classList.remove('hidden');
+  document.getElementById('step2-ind').classList.remove('active');
+  document.getElementById('step1-ind').classList.remove('done');
+  document.getElementById('step1-ind').classList.add('active');
+}
+function goStep2(){
+  const fname=document.getElementById('q-fname').value.trim();
+  const lname=document.getElementById('q-lname').value.trim();
+  const email=document.getElementById('q-email').value.trim();
+  const phone=document.getElementById('q-phone').value.trim();
+  const err=document.getElementById('step1-error');
+  if(!fname||!lname||!email||!phone){err.textContent='Please fill in First Name, Last Name, Email, and Phone.';err.style.display='block';return;}
+  err.style.display='none';
+  const start=document.getElementById('q-start').value, end=document.getElementById('q-end').value;
+  let days=null;
+  if(start&&end){const ms=new Date(end)-new Date(start);days=Math.max(1,Math.round(ms/86400000)+1);}
+  const allPlans=[...PRICING.tugo,...PRICING.destination];
+  document.getElementById('quote-plans-grid').innerHTML=allPlans.map(p=>planCardHtml(p,true,selectedPlan?.id,days)).join('');
+  const bar=document.getElementById('quote-duration-bar');
+  if(days){bar.style.display='block';bar.textContent=`Coverage period: ${days} days — estimated totals shown on each plan.`;}
+  else bar.style.display='none';
+  document.getElementById('step1').classList.add('hidden');
+  document.getElementById('step2').classList.remove('hidden');
+  document.getElementById('step1-ind').classList.remove('active');
+  document.getElementById('step1-ind').classList.add('done');
+  document.getElementById('step2-ind').classList.add('active');
+}
+function selectPlan(planId){
+  const allPlans=[...PRICING.tugo,...PRICING.destination];
+  selectedPlan=allPlans.find(p=>p.id===planId);
+  const start=document.getElementById('q-start').value, end=document.getElementById('q-end').value;
+  let days=null;
+  if(start&&end){const ms=new Date(end)-new Date(start);days=Math.max(1,Math.round(ms/86400000)+1);}
+  document.getElementById('quote-plans-grid').innerHTML=allPlans.map(p=>planCardHtml(p,true,planId,days)).join('');
+}
+function goStep3(){
+  if(!selectedPlan){document.getElementById('step2-error').textContent='Please select a plan to continue.';document.getElementById('step2-error').style.display='block';return;}
+  document.getElementById('step2-error').style.display='none';
+  const fname=document.getElementById('q-fname').value.trim(), lname=document.getElementById('q-lname').value.trim();
+  const email=document.getElementById('q-email').value.trim(), phone=document.getElementById('q-phone').value.trim();
+  const dob=document.getElementById('q-dob').value, country=document.getElementById('q-country').value.trim();
+  const start=document.getElementById('q-start').value, end=document.getElementById('q-end').value;
+  let days=null, total=null;
+  if(start&&end){const ms=new Date(end)-new Date(start);days=Math.max(1,Math.round(ms/86400000)+1);total=(selectedPlan.dailyRate*days).toFixed(2);}
+  SUBMISSIONS.push({id:nextSubId++,fname,lname,email,phone,dob,country,start,end,provider:selectedPlan.provider,planName:selectedPlan.name,planId:selectedPlan.id,total:total?parseFloat(total):null,coordId:currentUser.id,coordName:currentUser.name,date:new Date().toISOString().slice(0,10),status:'Pending'});
+  currentSubId=nextSubId-1;
+  document.getElementById('summary-grid').innerHTML=[['First Name',fname],['Last Name',lname],['Email',email],['Phone',phone],['Date of Birth',dob||'—'],['Country',country||'—'],['Start',start||'—'],['End',end||'—']].map(([l,v])=>`<div class="summary-field"><div class="sf-label">${l}</div><div class="sf-value">${v}</div></div>`).join('');
+  document.getElementById('provider-action-title').textContent=`Complete on Destination · ${selectedPlan.name}`;
+  const ex=document.getElementById('quote-total-line');if(ex)ex.remove();
+  if(total){const div=document.createElement('div');div.id='quote-total-line';div.style.cssText='margin-top:12px;padding:12px 16px;background:rgba(201,168,76,.1);border-radius:8px;font-size:.88rem;color:#8a6a1a;';div.innerHTML=`<b>Estimated Premium:</b> $${total} CAD · ${days} days × $${selectedPlan.dailyRate.toFixed(2)}/day`;document.getElementById('provider-action-card').appendChild(div);}
+  document.getElementById('step2').classList.add('hidden');
+  document.getElementById('step3').classList.remove('hidden');
+  document.getElementById('step2-ind').classList.remove('active');
+  document.getElementById('step2-ind').classList.add('done');
+  document.getElementById('step3-ind').classList.add('active');
+}
+function doRedirect(){
+  window.open(PROVIDER_URLS[selectedPlan?.provider]||PROVIDER_URLS.tugo,'_blank');
+  setTimeout(()=>{const s=SUBMISSIONS.find(s=>s.id===currentSubId);if(s&&s.status==='Pending'&&confirm(`Did the policy get issued for ${s.fname} ${s.lname}? Click OK to mark Completed.`))s.status='Completed';},30000);
+}
+
+// ══════════════════════════════════════
+// PRICING ADMIN
+// ══════════════════════════════════════
+function renderPlans() {
+  const tg=document.getElementById('tugo-plans-grid');
+  const dg=document.getElementById('dest-plans-grid');
+  if(tg) tg.innerHTML=PRICING.tugo.map(p=>planCardHtml(p,false,null,null)).join('');
+  if(dg) dg.innerHTML=PRICING.destination.map(p=>planCardHtml(p,false,null,null)).join('');
+  const bar=document.getElementById('plans-last-updated');
+  if(bar){bar.style.display='block';bar.textContent=`ℹ Prices last updated on ${PRICING.lastUpdated}.`;}
+}
+function renderPricingAdmin() {
+  const tE=document.getElementById('tugo-price-editor');
+  const dE=document.getElementById('dest-price-editor');
+  if(!tE) return;
+  const bar=document.getElementById('pricing-last-updated');
+  if(bar) bar.textContent=`Last updated: ${PRICING.lastUpdated}. Changes publish instantly everywhere.`;
+  const rows=(plans)=>plans.map(p=>`
+    <div style="padding:14px 0;border-bottom:1px solid #f3f4f6;">
+      <div style="font-weight:600;font-size:.87rem;color:var(--navy);margin-bottom:10px;">${p.name}</div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <label style="font-size:.72rem;color:var(--sub);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Annual $</label>
+          <input type="number" id="yearly-${p.id}" value="${p.yearlyRate.toFixed(2)}" step="0.01" min="0" style="width:90px;padding:7px 10px;border:1.5px solid #dde3ea;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#dde3ea'"/>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <label style="font-size:.72rem;color:var(--sub);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Daily $</label>
+          <input type="number" id="price-${p.id}" value="${p.dailyRate.toFixed(4)}" step="0.0001" min="0" style="width:88px;padding:7px 10px;border:1.5px solid #dde3ea;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#dde3ea'"/>
+        </div>
+        <button style="font-size:.72rem;background:rgba(201,168,76,.1);border:none;color:#8a6a1a;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;" onclick="syncDaily('${p.id}')">↔ Auto-calc daily</button>
+      </div>
+    </div>`).join('');
+  tE.innerHTML=rows(PRICING.tugo);
+  dE.innerHTML=rows(PRICING.destination);
+}
+function syncDaily(id){
+  const y=document.getElementById('yearly-'+id);
+  const d=document.getElementById('price-'+id);
+  if(y&&d) d.value=(parseFloat(y.value)/365).toFixed(4);
+}
+function savePricing(){
+  [...PRICING.tugo,...PRICING.destination].forEach(p=>{
+    const y=document.getElementById('yearly-'+p.id);
+    const d=document.getElementById('price-'+p.id);
+    if(y) p.yearlyRate=parseFloat(y.value)||p.yearlyRate;
+    if(d) p.dailyRate=parseFloat(d.valu
