@@ -2745,14 +2745,32 @@ async function doLogin() {
       return;
     }
 
-    // Fetch coordinator profile from our coordinators table
-    const { data: profile, error: profileErr } = await _supabase
-      .from('coordinators')
-      .select('*')
-      .eq('email', data.user.email)
-      .single();
+    // Fetch coordinator profile via backend (bypasses RLS issues)
+    const token = data.session?.access_token;
+    const profileRes = await fetch(`${BACKEND_URL}/api/coordinator/profile`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
 
-    if (profileErr || !profile) {
+    let profile = null;
+    if (profileRes.ok) {
+      profile = await profileRes.json();
+    }
+
+    // Fallback: try direct Supabase query with session
+    if (!profile) {
+      const sb = getSupabase();
+      const { data: p } = await sb
+        .from('coordinators')
+        .select('*')
+        .eq('email', data.user.email)
+        .single();
+      profile = p;
+    }
+
+    if (!profile) {
       errEl.textContent = 'Account not found. Contact your administrator.';
       errEl.style.display = 'block';
       await getSupabase().auth.signOut();
