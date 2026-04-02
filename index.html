@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <title>OK Financial — Student & Visitor Insurance Canada</title>
 <meta name="description" content="Licensed Financial Security Advisor in Montreal offering Destination insurance for international students and visitors across Canada."/>
 <meta property="og:title" content="OK Financial — Student &amp; Visitor Insurance Canada"/>
@@ -983,9 +982,6 @@ tr:hover td{background:#fafbfc;}
      LANDING PAGE
 ═══════════════════════════════════ -->
 <div id="landing-page">
-<div style="background:#c9a84c;color:#0d1b2a;text-align:center;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;position:relative;z-index:600;">
-  🚧 &nbsp; WORK IN PROGRESS — Preview version for integration review &nbsp; 🚧
-</div>
 
 
   <!-- NAV -->
@@ -3063,4 +3059,13 @@ function savePricing(){
     const y=document.getElementById('yearly-'+p.id);
     const d=document.getElementById('price-'+p.id);
     if(y) p.yearlyRate=parseFloat(y.value)||p.yearlyRate;
-    if(d) p.dailyRate=parseFloat(d.valu
+    if(d) p.dailyRate=parseFloat(d.value)||p.dailyRate;
+  });
+  renderPlans();
+  renderPricingAdmin();
+  alert('Pricing updated successfully!');
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+</body>
+</html>
