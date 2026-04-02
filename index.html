@@ -2071,39 +2071,35 @@ function updateHeroPlanCards() {
 // ── Fetch live pricing for all plans in the current view ──
 async function fetchAllLivePricing(plans, days, startDate) {
   const today = new Date().toISOString().slice(0,10);
-  const auth  = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+  // Auth handled by backend
 
   for (const p of plans) {
     try {
-      let url, params;
+      let url, params, res, data;
       if (p.apiType === 'vtc') {
-        // Need age — use default 35 for display, user will set at checkout
         params = new URLSearchParams({ applicationDate:today, tripDays:days, age:35, familyPlan:false });
-        url = 'https://devweb.desttravel.com/api/visitorquote/premiumoptions?' + params;
-        const res = await fetch(url, { headers:{ Authorization:auth, Accept:'application/json' }});
+        res = await fetch(`${BACKEND_URL}/api/destination/vtc/quote?${params}`);
         if (res.ok) {
-          const data = await res.json();
-          // Default: $100k coverage, Schedule 2 (no pre-existing) — most affordable
+          data = await res.json();
           const match = data.find(d => d.SumInsured===100000 && d.ScheduleNo===2)
                      || data.find(d => d.SumInsured===100000)
                      || data[0];
           if (match) {
             p._liveRate  = match.DailyRate;
             p._liveTotal = match.Rate;
-            p._liveData  = data; // store full for checkout
+            p._liveData  = data;
             updatePlanCardPrice(p.id, `$${match.DailyRate.toFixed(2)}`, 'per day · $100K coverage');
           }
         }
       } else if (p.apiType === 'student') {
         params = new URLSearchParams({
-          applicationDate: today, productId:80,
+          applicationDate:today, productId:80,
           tripDays:days, totalapplicants:1,
-          scheduleNo:0, effectiveDate:startDate||today, COVID19Rider:false
+          scheduleNo:0, effectiveDate:startDate||today
         });
-        url = 'https://devweb.desttravel.com/api/studentquote/premiumoptions?' + params;
-        const res = await fetch(url, { headers:{ Authorization:auth, Accept:'application/json' }});
+        res = await fetch(`${BACKEND_URL}/api/destination/student/quote?${params}`);
         if (res.ok) {
-          const data = await res.json();
+          data = await res.json();
           if (data && data.length > 0) {
             const match = data.find(d=>d.ScheduleNo===1) || data[0];
             p._liveRate  = match.DailyRate;
@@ -2114,8 +2110,28 @@ async function fetchAllLivePricing(plans, days, startDate) {
             );
           }
         }
+      } else if (p.apiType === 'leisure') {
+        params = new URLSearchParams({
+          applicationDate:today, effectiveDate:startDate||today,
+          tripDays:days, age:35, familyPlan:false, afterDeparture:false
+        });
+        res = await fetch(`${BACKEND_URL}/api/destination/leisure/quote?${params}`);
+        if (res.ok) {
+          data = await res.json();
+          if (data && data.length > 0) {
+            const single = data.find(d => !d.AnnualScheduleNo) || data[0];
+            if (single) {
+              p._liveRate  = single.SingleTripRate;
+              p._liveTotal = single.SingleTripPremium;
+              p._liveData  = data;
+              updatePlanCardPrice(p.id,
+                `$${single.SingleTripRate.toFixed(2)}`,
+                `per day · $${single.SingleTripPremium.toFixed(2)} total`
+              );
+            }
+          }
+        }
       }
-      // Leisure & Expat: API docs pending — show estimated price with note
     } catch(e) {
       console.log('[DTG] Live pricing failed for', p.id, e.message);
     }
@@ -2226,12 +2242,15 @@ document.addEventListener('click', function(e){
 // Test environment: devweb.desttravel.com
 // Auth: Basic Auth (username:password base64)
 // ══════════════════════════════════════
+// ── SECURE BACKEND URL ──
+const BACKEND_URL = 'https://okinsure-backend.onrender.com';
+
 const DTG_CONFIG = {
   username: 'onofrio.kanagaratnam_api',
   // NOTE: In production, API calls should go through your own backend
   // to keep credentials secure. Never expose passwords in frontend JS in prod.
-  iframeUrl: 'https://devweb.desttravel.com/payment/checkout.aspx',
-  apiBase:   'https://devweb.desttravel.com',
+  iframeUrl: 'https://www.desttravel.com/payment/checkout.aspx',
+  apiBase:   BACKEND_URL,
 };
 
 let checkoutPlan    = null;
@@ -2311,64 +2330,62 @@ function updateAgeFromDOB() {
     renderCoSummary('co-payment-summary');
   }
 }
-function fetchLivePricing() {
+async function fetchLivePricing() {
   if (!checkoutPlan) return;
   const isStudent = checkoutPlan.forStudent;
-  const authHeader = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+  const isLeisure = checkoutPlan.apiType === 'leisure';
   const days = checkoutDates.start && checkoutDates.end
     ? Math.round((new Date(checkoutDates.end) - new Date(checkoutDates.start)) / 86400000) + 1
     : 365;
   const today = new Date().toISOString().slice(0,10);
+  const dob   = document.getElementById('co-dob')?.value;
+  const age   = dob ? Math.floor((new Date() - new Date(dob)) / 31557600000) : 35;
 
   try {
     if (isStudent) {
       const params = new URLSearchParams({
-        applicationDate: today,
-        productId: 80,
-        tripDays: days,
-        totalapplicants: 1,
-        scheduleNo: 0,
-        effectiveDate: checkoutDates.start || today,
-        COVID19Rider: false
+        applicationDate: today, productId: 80,
+        tripDays: days, totalapplicants: 1,
+        scheduleNo: 0, effectiveDate: checkoutDates.start || today
       });
-      const res = await fetch(
-        'https://devweb.desttravel.com/api/studentquote/premiumoptions?' + params,
-        { headers: { 'Authorization': authHeader, 'Accept': 'application/json' } }
-      );
+      const res = await fetch(`${BACKEND_URL}/api/destination/student/quote?${params}`);
       if (res.ok) {
         const data = await res.json();
         if (data && data.length > 0) {
-          // Use TotalDailyPremium as the live price
-          const liveTotal = data[0].TotalDailyPremium;
-          const liveDaily = data[0].DailyRate;
-          console.log('[DTG] Live student pricing:', liveTotal, '/', liveDaily + '/day');
-          // Update plan display
-          checkoutPlan._liveTotal = liveTotal;
-          checkoutPlan._liveDaily = liveDaily;
+          const match = data.find(d=>d.ScheduleNo===1) || data[0];
+          checkoutPlan._liveTotal = match.TotalDailyPremium;
+          checkoutPlan._liveDaily = match.DailyRate;
           renderCoSummary('co-plan-summary');
           renderCoSummary('co-payment-summary');
         }
       }
-    } else {
-      // For VTC we need age
-      const dob = document.getElementById('co-dob')?.value;
-      const age = dob ? Math.floor((new Date() - new Date(dob)) / 31557600000) : 35;
+    } else if (isLeisure) {
       const params = new URLSearchParams({
-        applicationDate: today,
-        tripDays: days,
-        age: age,
-        familyPlan: false
+        applicationDate: today, effectiveDate: checkoutDates.start || today,
+        tripDays: days, age: age, familyPlan: false, afterDeparture: false
       });
-      const res = await fetch(
-        'https://devweb.desttravel.com/api/visitorquote/premiumoptions?' + params,
-        { headers: { 'Authorization': authHeader, 'Accept': 'application/json' } }
-      );
+      const res = await fetch(`${BACKEND_URL}/api/destination/leisure/quote?${params}`);
       if (res.ok) {
         const data = await res.json();
-        // Find $1M coverage, schedule 1 (pre-existing covered)
-        const match = data.find(d => d.SumInsured === 1000000 && d.ScheduleNo === 1);
+        if (data && data.length > 0) {
+          const single = data.find(d => !d.AnnualScheduleNo) || data[0];
+          if (single) {
+            checkoutPlan._liveTotal = single.SingleTripPremium;
+            checkoutPlan._liveDaily = single.SingleTripRate;
+            renderCoSummary('co-plan-summary');
+            renderCoSummary('co-payment-summary');
+          }
+        }
+      }
+    } else {
+      const params = new URLSearchParams({
+        applicationDate: today, tripDays: days, age: age, familyPlan: false
+      });
+      const res = await fetch(`${BACKEND_URL}/api/destination/vtc/quote?${params}`);
+      if (res.ok) {
+        const data = await res.json();
+        const match = data.find(d => d.SumInsured === 100000 && d.ScheduleNo === 2) || data[0];
         if (match) {
-          console.log('[DTG] Live VTC pricing:', match.Rate, '/', match.DailyRate + '/day');
           checkoutPlan._liveTotal = match.Rate;
           checkoutPlan._liveDaily = match.DailyRate;
           renderCoSummary('co-plan-summary');
@@ -2377,7 +2394,7 @@ function fetchLivePricing() {
       }
     }
   } catch(e) {
-    console.log('[DTG] Live pricing fetch failed (CORS or network):', e.message);
+    console.log('[DTG] Live pricing fetch failed:', e.message);
   }
 }
 
@@ -2568,10 +2585,12 @@ async function coSubmitApplication() {
 
   // ── LIVE API CALL ──
   const isStudent = checkoutPlan.forStudent;
+  const isLeisure = checkoutPlan.apiType === 'leisure';
   const endpoint  = isStudent
-    ? 'https://devweb.desttravel.com/api/studentquote'
-    : 'https://devweb.desttravel.com/api/visitorquote';
-  const authHeader = 'Basic ' + btoa('onofrio.kanagaratnam_api:$qkBX5s*YQn=');
+    ? `${BACKEND_URL}/api/destination/student/apply`
+    : isLeisure
+      ? `${BACKEND_URL}/api/destination/leisure/apply`
+      : `${BACKEND_URL}/api/destination/vtc/apply`;
   const today      = new Date().toLocaleDateString('en-GB').replace(/\//g, '/'); // DD/MM/YYYY
   const fmt        = d => new Date(d).toLocaleDateString('en-GB').replace(/\//g, '/');
 
@@ -2601,7 +2620,7 @@ async function coSubmitApplication() {
       Email:       document.getElementById('co-email').value.trim(),
       Phone:       document.getElementById('co-phone').value.trim()
     },
-    ProductID:       isStudent ? 80 : 3,
+    ProductID:       isStudent ? 80 : isLeisure ? 101 : 3,
     ApplicationDate: today,
     ArrivalDate:     fmt(checkoutDates.start),
     EffectiveDate:   fmt(checkoutDates.start),
@@ -2623,8 +2642,7 @@ async function coSubmitApplication() {
       headers: {
         'Content-Type':    'application/json',
         'Accept':          'application/json',
-        'Accept-Language': currentLang.toUpperCase(),
-        'Authorization':   authHeader
+        'Accept-Language': currentLang.toUpperCase()
       },
       body: JSON.stringify(payload)
     });
