@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <title>OK Financial — Student & Visitor Insurance Canada</title>
 <meta name="description" content="Licensed Financial Security Advisor in Montreal offering Destination insurance for international students and visitors across Canada."/>
 <meta property="og:title" content="OK Financial — Student &amp; Visitor Insurance Canada"/>
@@ -2247,7 +2248,7 @@ document.addEventListener('click', function(e){
 // ── Supabase Auth Client ──────────────────────────────
 const SUPABASE_URL = 'https://vehpkjyqjwefigpettjz.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_KV4Os5oO480KMn5bcjewGw_eoAXpvAK';
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ── SECURE BACKEND URL ──
 const BACKEND_URL = 'https://okinsure-backend.onrender.com';
