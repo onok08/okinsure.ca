@@ -1560,8 +1560,8 @@ tr:hover td{background:#fafbfc;}
       <p>Coordinator Portal</p>
     </div>
     <div class="form-group">
-      <label>Username</label>
-      <input type="text" id="login-user" placeholder="Enter your username" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <label>Email Address</label>
+      <input type="email" id="login-user" placeholder="your@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')doLogin()"/>
     </div>
     <div class="form-group">
       <label>Password</label>
@@ -1878,8 +1878,7 @@ const FAQ = {
 // ── DATA ──
 let currentUser = null;
 const USERS = [
-  { id:1, username:'admin', password:'admin123', name:'You (Admin)', role:'admin', institution:'OK Financial HQ' },
-  { id:2, username:'coord1', password:'pass123', name:'Marie Tremblay', role:'coordinator', institution:'LaSalle College' },
+  // Users loaded from Supabase Auth — see doLogin()
 ];
 let COORDINATORS = [...USERS];
 let SUBMISSIONS = [
@@ -2244,6 +2243,12 @@ document.addEventListener('click', function(e){
 // Test environment: devweb.desttravel.com
 // Auth: Basic Auth (username:password base64)
 // ══════════════════════════════════════
+
+// ── Supabase Auth Client ──────────────────────────────
+const SUPABASE_URL = 'https://vehpkjyqjwefigpettjz.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_KV4Os5oO480KMn5bcjewGw_eoAXpvAK';
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // ── SECURE BACKEND URL ──
 const BACKEND_URL = 'https://okinsure-backend.onrender.com';
 
@@ -2717,27 +2722,84 @@ function closeLogin() {
   document.getElementById('login-modal').classList.remove('open');
   document.getElementById('login-error').style.display='none';
 }
-function doLogin() {
-  const u=document.getElementById('login-user').value.trim();
-  const p=document.getElementById('login-pass').value;
-  const user=USERS.find(x=>x.username===u&&x.password===p);
-  if(!user){document.getElementById('login-error').style.display='block';return;}
-  currentUser=user;
-  closeLogin();
-  document.getElementById('landing-page').style.display='none';
-  document.getElementById('app').style.display='block';
-  document.getElementById('sidebar-avatar').textContent=user.name.charAt(0).toUpperCase();
-  document.getElementById('sidebar-name').textContent=user.name;
-  document.getElementById('sidebar-role').textContent=user.role==='admin'?'Administrator':'Coordinator – '+user.institution;
-  document.querySelectorAll('.admin-only').forEach(el=>{el.style.display=user.role==='admin'?'flex':'none';});
-  refreshDashboard(); renderSubmissions(); renderCoordinators(); renderPlans(); renderPricingAdmin();
+async function doLogin() {
+  const email = document.getElementById('login-user').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+
+  const btn = document.querySelector('#login-modal .btn-primary') ||
+              document.querySelector('#login-modal button[onclick="doLogin()"]');
+  if (btn) { btn.textContent = 'Signing in...'; btn.disabled = true; }
+
+  try {
+    const { data, error } = await _supabase.auth.signInWithPassword({ email, password: pass });
+
+    if (error || !data.user) {
+      errEl.textContent = 'Invalid email or password. Please try again.';
+      errEl.style.display = 'block';
+      if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
+      return;
+    }
+
+    // Fetch coordinator profile from our coordinators table
+    const { data: profile, error: profileErr } = await _supabase
+      .from('coordinators')
+      .select('*')
+      .eq('email', data.user.email)
+      .single();
+
+    if (profileErr || !profile) {
+      errEl.textContent = 'Account not found. Contact your administrator.';
+      errEl.style.display = 'block';
+      await _supabase.auth.signOut();
+      if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
+      return;
+    }
+
+    // Map Supabase role to portal role
+    const isAdmin = profile.role === 'super_admin';
+    const isSenior = profile.role === 'senior_coordinator';
+
+    currentUser = {
+      id:          profile.id,
+      email:       profile.email,
+      name:        profile.full_name,
+      role:        isAdmin ? 'admin' : 'coordinator',
+      supabaseRole: profile.role,
+      institution: 'OK Financial'
+    };
+
+    closeLogin();
+    document.getElementById('landing-page').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    document.getElementById('sidebar-avatar').textContent = profile.full_name.charAt(0).toUpperCase();
+    document.getElementById('sidebar-name').textContent = profile.full_name;
+
+    const roleLabel = isAdmin ? 'Super Administrator' : isSenior ? 'Senior Coordinator' : 'Coordinator';
+    document.getElementById('sidebar-role').textContent = roleLabel;
+
+    // Show admin-only items for super admin and senior coordinator
+    document.querySelectorAll('.admin-only').forEach(el => {
+      el.style.display = (isAdmin || isSenior) ? 'flex' : 'none';
+    });
+
+    if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
+    refreshDashboard(); renderSubmissions(); renderCoordinators(); renderPlans(); renderPricingAdmin();
+
+  } catch(err) {
+    errEl.textContent = 'Connection error. Please try again.';
+    errEl.style.display = 'block';
+    if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
+  }
 }
-function doLogout() {
-  currentUser=null;
-  document.getElementById('app').style.display='none';
-  document.getElementById('landing-page').style.display='block';
-  document.getElementById('login-user').value='';
-  document.getElementById('login-pass').value='';
+async function doLogout() {
+  await _supabase.auth.signOut();
+  currentUser = null;
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('landing-page').style.display = 'block';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
 }
 
 // ══════════════════════════════════════
@@ -2816,7 +2878,8 @@ function renderLandingPlans() {
 // PORTAL PAGES
 // ══════════════════════════════════════
 function refreshDashboard() {
-  const mine=currentUser.role==='admin'?SUBMISSIONS:SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
+  const canSeeAll2 = currentUser.supabaseRole === 'super_admin' || currentUser.supabaseRole === 'senior_coordinator';
+  const mine = canSeeAll2 ? SUBMISSIONS : SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
   document.getElementById('stat-total').textContent=mine.length;
   document.getElementById('stat-coords').textContent=COORDINATORS.filter(c=>c.role==='coordinator').length;
   document.getElementById('stat-tugo').textContent=mine.filter(s=>s.provider==='tugo').length;
@@ -2834,7 +2897,9 @@ function refreshDashboard() {
 function renderSubmissions() {
   const search=(document.getElementById('sub-search')?.value||'').toLowerCase();
   const filter=document.getElementById('sub-filter')?.value||'';
-  let list=currentUser.role==='admin'?SUBMISSIONS:SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
+  // senior_coordinator and admin see all; junior sees own only
+  const canSeeAll = currentUser.supabaseRole === 'super_admin' || currentUser.supabaseRole === 'senior_coordinator';
+  let list = canSeeAll ? SUBMISSIONS : SUBMISSIONS.filter(s=>s.coordId===currentUser.id);
   if(search) list=list.filter(s=>(s.fname+' '+s.lname+' '+s.email).toLowerCase().includes(search));
   if(filter) list=list.filter(s=>s.provider===filter);
   document.getElementById('subs-tbody').innerHTML=[...list].reverse().map(s=>`<tr>
