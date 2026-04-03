@@ -1322,7 +1322,7 @@ tr:hover td{background:#fafbfc;}
       <div style="margin-bottom:14px;">
         <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.78rem;color:var(--sub);line-height:1.6;">
           <input type="checkbox" id="lead-consent" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:var(--gold);cursor:pointer;"/>
-          <span data-en="I consent to OK Financial (Brilliance Financial Solutions) contacting me by phone or email to assist with my insurance application. I understand I may withdraw consent at any time by contacting <a href='mailto:onofrio.k@brilliancefsi.com' style='color:var(--gold)'>onofrio.k@brilliancefsi.com</a>." data-fr="Je consens à ce qu'OK Financial (Solutions Financières Brilliance) me contacte par téléphone ou par courriel pour m'aider avec ma demande d'assurance. Je comprends que je peux retirer mon consentement à tout moment.">I consent to OK Financial (Brilliance Financial Solutions) contacting me by phone or email to assist with my insurance application. I understand I may withdraw consent at any time by contacting <a href="mailto:onofrio.k@brilliancefsi.com" style="color:var(--gold)">onofrio.k@brilliancefsi.com</a>.</span>
+          <span data-en="I consent to OK Financial (Brilliance Financial Solutions) contacting me by phone or email to assist with my insurance application. I understand I may withdraw consent at any time by contacting <a href='mailto:onofrio.k@brilliancefsi.com' style='color:var(--gold)'>onofrio.k@brilliancefsi.com</a>." data-fr="Je consens à ce qu'OK Financial (Solutions Financières Brilliance) me contacte par téléphone ou par courriel pour m'aider avec ma demande d'assurance. Je comprends que je peux retirer mon consentement à tout moment.">I consent to OK Financial (Brilliance Financial Solutions) contacting me by phone or email to assist with my insurance application. I understand I may withdraw consent at any time by contacting <a href="/cdn-cgi/l/email-protection#a9c6c7c6cfdbc0c687c2e9cbdbc0c5c5c0c8c7cacccfdac087cac6c4" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="ea8584858c988385c481aa8898838686838b84898f8c9983c4898587">[email&#160;protected]</span></a>.</span>
         </label>
       </div>
       <p class="lead-err" id="lead-err">Please fill in all required fields and accept the consent.</p>
@@ -1571,6 +1571,30 @@ tr:hover td{background:#fafbfc;}
 </div>
 
 <!-- ═══════════════════════════════════
+     PASSWORD RESET MODAL
+═══════════════════════════════════ -->
+<div id="reset-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);z-index:1100;align-items:center;justify-content:center;">
+  <div class="login-box" style="max-width:420px;width:90%;">
+    <div class="login-logo">
+      <h1>OK <span>Financial</span></h1>
+      <p>Set New Password</p>
+    </div>
+    <p style="font-size:.82rem;color:var(--sub);text-align:center;margin-bottom:24px;line-height:1.6;">Choose a new password for your coordinator account.</p>
+    <div class="form-group">
+      <label>New Password</label>
+      <input type="password" id="reset-pass" placeholder="Min. 8 characters" onkeydown="if(event.key==='Enter')doResetPassword()"/>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" id="reset-pass2" placeholder="Repeat password" onkeydown="if(event.key==='Enter')doResetPassword()"/>
+    </div>
+    <button class="btn btn-primary" id="reset-btn" onclick="doResetPassword()">Update Password</button>
+    <p class="error-msg" id="reset-error" style="display:none;"></p>
+    <p id="reset-success" style="display:none;margin-top:14px;font-size:.82rem;color:var(--success);text-align:center;font-weight:600;">✓ Password updated! Redirecting to sign in…</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
      PORTAL APP
 ═══════════════════════════════════ -->
 <div id="app">
@@ -1771,7 +1795,7 @@ tr:hover td{background:#fafbfc;}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ══════════════════════════════════════
 // PRICING DATA
 // ══════════════════════════════════════
@@ -2250,6 +2274,60 @@ function getSupabase() {
     _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
   return _supabase;
+}
+
+// ── Password Recovery Handler ──────────────────────────────
+// Fires when Supabase redirects back after a password reset email click.
+// The URL will contain #type=recovery — Supabase catches it automatically
+// and emits a PASSWORD_RECOVERY event via onAuthStateChange.
+getSupabase().auth.onAuthStateChange((event, session) => {
+  if (event === 'PASSWORD_RECOVERY') {
+    // Hide landing page and any login modal, show reset modal
+    document.getElementById('login-modal').classList.remove('open');
+    const resetModal = document.getElementById('reset-modal');
+    resetModal.style.display = 'flex';
+  }
+});
+
+async function doResetPassword() {
+  const pass  = document.getElementById('reset-pass').value;
+  const pass2 = document.getElementById('reset-pass2').value;
+  const errEl = document.getElementById('reset-error');
+  const btn   = document.getElementById('reset-btn');
+  errEl.style.display = 'none';
+
+  if (pass.length < 8) {
+    errEl.textContent = 'Password must be at least 8 characters.';
+    errEl.style.display = 'block'; return;
+  }
+  if (pass !== pass2) {
+    errEl.textContent = 'Passwords do not match.';
+    errEl.style.display = 'block'; return;
+  }
+
+  btn.textContent = 'Updating…'; btn.disabled = true;
+  const { error } = await getSupabase().auth.updateUser({ password: pass });
+
+  if (error) {
+    errEl.textContent = error.message || 'Could not update password. Please request a new reset link.';
+    errEl.style.display = 'block';
+    btn.textContent = 'Update Password'; btn.disabled = false;
+    return;
+  }
+
+  document.getElementById('reset-success').style.display = 'block';
+  btn.style.display = 'none';
+  // Sign out so they log in fresh with the new password
+  await getSupabase().auth.signOut();
+  setTimeout(() => {
+    document.getElementById('reset-modal').style.display = 'none';
+    document.getElementById('reset-pass').value = '';
+    document.getElementById('reset-pass2').value = '';
+    document.getElementById('reset-success').style.display = 'none';
+    btn.style.display = 'block';
+    btn.textContent = 'Update Password'; btn.disabled = false;
+    openLogin();
+  }, 2200);
 }
 
 // ── SECURE BACKEND URL ──
@@ -3062,13 +3140,4 @@ function savePricing(){
     const y=document.getElementById('yearly-'+p.id);
     const d=document.getElementById('price-'+p.id);
     if(y) p.yearlyRate=parseFloat(y.value)||p.yearlyRate;
-    if(d) p.dailyRate=parseFloat(d.value)||p.dailyRate;
-  });
-  renderPlans();
-  renderPricingAdmin();
-  alert('Pricing updated successfully!');
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-</body>
-</html>
+    if(d) p.
