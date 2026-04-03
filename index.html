@@ -1902,11 +1902,118 @@ const USERS = [
   // Users loaded from Supabase Auth — see doLogin()
 ];
 let COORDINATORS = [...USERS];
-let SUBMISSIONS = [
-  { id:1, fname:'Youssef', lname:'Benali', email:'y.benali@student.ca', phone:'+1 514 555 0101', provider:'tugo', planName:'Standard', coordId:2, coordName:'Marie Tremblay', date:'2025-02-10', status:'Completed', dob:'', country:'Morocco', start:'2025-02-15', end:'2026-02-14', total:892.80 },
-  { id:2, fname:'Ana', lname:'Gomez', email:'a.gomez@student.ca', phone:'+1 514 555 0202', provider:'destination', planName:'Comprehensive', coordId:2, coordName:'Marie Tremblay', date:'2025-02-14', status:'Pending', dob:'', country:'Brazil', start:'2025-03-01', end:'2026-02-28', total:946.40 },
-];
-let selectedPlan=null, currentStep=1, nextSubId=3, currentSubId=null;
+let SUBMISSIONS = [];
+let selectedPlan=null, currentStep=1, nextSubId=1, currentSubId=null;
+
+// ══════════════════════════════════════
+// SUPABASE LEADS — DB READ / WRITE
+// Expected `leads` table columns:
+//   id (uuid, PK), first_name, last_name, email, phone,
+//   dob, country, coverage_start, coverage_end,
+//   provider, plan_name, plan_id, total,
+//   coord_id, coord_name, status, source,
+//   created_at (timestamptz, default now())
+// ══════════════════════════════════════
+
+// Map local lead object → Supabase row
+function leadToRow(lead) {
+  // Calculate trip_days from start/end dates
+  let trip_days = null;
+  if (lead.start && lead.end) {
+    const ms = new Date(lead.end) - new Date(lead.start);
+    trip_days = Math.max(1, Math.round(ms / 86400000) + 1);
+  }
+  return {
+    first_name:     lead.fname,
+    last_name:      lead.lname,
+    email:          lead.email,
+    phone:          lead.phone   || null,
+    segment:        lead.segment || null,
+    coverage_start: lead.start   || null,
+    coverage_end:   lead.end     || null,
+    trip_days:      trip_days,
+    provider:       lead.provider,
+    plan_name:      lead.planName || null,
+    plan_id:        lead.planId   || null,
+    coordinator_id: (lead.coordId && lead.coordId !== 1) ? lead.coordId : null,
+    status:         lead.status  || 'Pending',
+    source:         lead.source  || 'public',
+    consent_given:  lead.consentGiven || false,
+    notes:          lead.notes   || null,
+  };
+}
+
+// Map Supabase row → local lead object
+function rowToLead(row, idx) {
+  return {
+    id:          idx + 1,
+    supabaseId:  row.id,
+    fname:       row.first_name,
+    lname:       row.last_name,
+    email:       row.email,
+    phone:       row.phone || '',
+    dob:         '',
+    country:     '',
+    start:       row.coverage_start || '',
+    end:         row.coverage_end   || '',
+    segment:     row.segment || '',
+    provider:    row.provider,
+    planName:    row.plan_name || '—',
+    planId:      row.plan_id  || null,
+    total:       null,
+    coordId:     row.coordinator_id || 1,
+    coordName:   row.coordinator_id ? 'Coordinator' : 'Public Website',
+    date:        row.created_at ? row.created_at.slice(0,10) : '',
+    status:      row.status,
+    source:      row.source || 'public',
+  };
+}
+
+async function saveLeadToSupabase(lead) {
+  try {
+    const { data, error } = await getSupabase()
+      .from('leads')
+      .insert([leadToRow(lead)])
+      .select('id')
+      .single();
+    if (error) { console.error('Supabase insert error:', error.message); return null; }
+    // Attach the Supabase UUID back to the local lead
+    lead.supabaseId = data.id;
+    return data.id;
+  } catch(e) { console.error('saveLeadToSupabase exception:', e); return null; }
+}
+
+async function loadLeads() {
+  try {
+    const sb = getSupabase();
+    const isSuper  = currentUser?.supabaseRole === 'super_admin';
+    const isSenior = currentUser?.supabaseRole === 'senior_coordinator';
+
+    let query = sb.from('leads').select('*').order('created_at', { ascending: false });
+
+    // Junior coordinators only see their own leads
+    if (!isSuper && !isSenior && currentUser?.id) {
+      query = query.eq('coordinator_id', currentUser.id);
+    }
+
+    const { data, error } = await query;
+    if (error) { console.error('Supabase fetch error:', error.message); return; }
+
+    SUBMISSIONS = (data || []).map(rowToLead);
+    nextSubId = SUBMISSIONS.length + 1;
+  } catch(e) { console.error('loadLeads exception:', e); }
+}
+
+async function updateLeadStatus(supabaseId, status) {
+  if (!supabaseId) return;
+  try {
+    const { error } = await getSupabase()
+      .from('leads')
+      .update({ status })
+      .eq('id', supabaseId);
+    if (error) console.error('Supabase update error:', error.message);
+  } catch(e) { console.error('updateLeadStatus exception:', e); }
+}
 let currentLang='en';
 let currentSegment=null;
 
@@ -2225,14 +2332,16 @@ function submitLeadAndRedirect() {
     return;
   }
   err.style.display='none';
-  // Save lead to SUBMISSIONS (visible in portal)
+  // Save lead to SUBMISSIONS + Supabase
   const start = document.getElementById('hw-start')?.value || '';
   const end   = document.getElementById('hw-end')?.value   || '';
-  SUBMISSIONS.push({
+  const consentEl = document.getElementById('lead-consent');
+  const lead1 = {
     id: nextSubId++,
     fname, lname, email, phone,
     dob:'', country:'',
     start, end,
+    segment: currentSegment || null,
     provider: pendingPlan.provider,
     planName: pendingPlan.name,
     planId:   pendingPlan.id,
@@ -2240,8 +2349,11 @@ function submitLeadAndRedirect() {
     coordId: 1, coordName: 'Public Website',
     date: new Date().toISOString().slice(0,10),
     status: 'Pending',
-    source: 'public'
-  });
+    source: 'public',
+    consentGiven: consentEl ? consentEl.checked : false,
+  };
+  SUBMISSIONS.push(lead1);
+  saveLeadToSupabase(lead1);
   // Show confirmation then redirect
   const url = PROVIDER_URLS[pendingPlan.provider];
   document.getElementById('lead-success').style.display='block';
@@ -2565,6 +2677,7 @@ function coNextToPayment() {
     dob:   document.getElementById('co-dob').value,
     country: document.getElementById('co-country').value,
     start: checkoutDates.start, end: checkoutDates.end,
+    segment: currentSegment || null,
     provider: 'destination',
     planName: checkoutPlan.name,
     planId:   checkoutPlan.id,
@@ -2572,9 +2685,11 @@ function coNextToPayment() {
     coordId: 1, coordName: 'Public Website',
     date: new Date().toISOString().slice(0,10),
     status: 'Payment Started',
-    source: 'public'
+    source: 'public',
+    consentGiven: true,
   };
   SUBMISSIONS.push(lead);
+  saveLeadToSupabase(lead);
 
   // Load DTG payment iframe
   coGoToStep(2);
@@ -2741,7 +2856,7 @@ async function coSubmitApplication() {
 
       // Update submission in portal
       const sub = SUBMISSIONS.find(s => s.planId === checkoutPlan.id && s.status === 'Payment Started');
-      if (sub) { sub.status = 'Completed'; sub.policyNo = policyNo; }
+      if (sub) { sub.status = 'Completed'; sub.policyNo = policyNo; updateLeadStatus(sub.supabaseId, 'Completed'); }
 
       coGoToStep(3);
       document.getElementById('co-ref-number').textContent = policyNo
@@ -2863,7 +2978,9 @@ async function doLogin() {
     });
 
     if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
-    refreshDashboard(); renderSubmissions(); renderCoordinators(); renderPlans(); renderPricingAdmin();
+    // Load leads from Supabase then render everything
+    loadLeads().then(() => { refreshDashboard(); renderSubmissions(); });
+    renderCoordinators(); renderPlans(); renderPricingAdmin();
 
   } catch(err) {
     errEl.textContent = 'Connection error. Please try again.';
@@ -2888,8 +3005,8 @@ function showPage(name,el) {
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   if(el) el.classList.add('active');
-  if(name==='dashboard') refreshDashboard();
-  if(name==='submissions') renderSubmissions();
+  if(name==='dashboard') loadLeads().then(()=>refreshDashboard());
+  if(name==='submissions') loadLeads().then(()=>renderSubmissions());
   if(name==='coordinators') renderCoordinators();
   if(name==='plans') renderPlans();
   if(name==='pricing-admin') renderPricingAdmin();
@@ -2990,7 +3107,7 @@ function renderSubmissions() {
     </td></tr>`).join('');
   document.getElementById('subs-empty').style.display=list.length?'none':'block';
 }
-function markComplete(id){const s=SUBMISSIONS.find(s=>s.id===id);if(s){s.status='Completed';renderSubmissions();refreshDashboard();}}
+function markComplete(id){const s=SUBMISSIONS.find(s=>s.id===id);if(s){s.status='Completed';updateLeadStatus(s.supabaseId,'Completed');renderSubmissions();refreshDashboard();}}
 function filterSubs(){renderSubmissions();}
 
 function renderCoordinators() {
@@ -3078,7 +3195,9 @@ function goStep3(){
   const start=document.getElementById('q-start').value, end=document.getElementById('q-end').value;
   let days=null, total=null;
   if(start&&end){const ms=new Date(end)-new Date(start);days=Math.max(1,Math.round(ms/86400000)+1);total=(selectedPlan.dailyRate*days).toFixed(2);}
-  SUBMISSIONS.push({id:nextSubId++,fname,lname,email,phone,dob,country,start,end,provider:selectedPlan.provider,planName:selectedPlan.name,planId:selectedPlan.id,total:total?parseFloat(total):null,coordId:currentUser.id,coordName:currentUser.name,date:new Date().toISOString().slice(0,10),status:'Pending'});
+  const portalLead = {id:nextSubId++,fname,lname,email,phone,dob,country,start,end,segment:null,provider:selectedPlan.provider,planName:selectedPlan.name,planId:selectedPlan.id,total:total?parseFloat(total):null,coordId:currentUser.id,coordName:currentUser.name,date:new Date().toISOString().slice(0,10),status:'Pending',source:'portal',consentGiven:true};
+  SUBMISSIONS.push(portalLead);
+  saveLeadToSupabase(portalLead);
   currentSubId=nextSubId-1;
   document.getElementById('summary-grid').innerHTML=[['First Name',fname],['Last Name',lname],['Email',email],['Phone',phone],['Date of Birth',dob||'—'],['Country',country||'—'],['Start',start||'—'],['End',end||'—']].map(([l,v])=>`<div class="summary-field"><div class="sf-label">${l}</div><div class="sf-value">${v}</div></div>`).join('');
   document.getElementById('provider-action-title').textContent=`Complete on Destination · ${selectedPlan.name}`;
@@ -3092,7 +3211,7 @@ function goStep3(){
 }
 function doRedirect(){
   window.open(PROVIDER_URLS[selectedPlan?.provider]||PROVIDER_URLS.tugo,'_blank');
-  setTimeout(()=>{const s=SUBMISSIONS.find(s=>s.id===currentSubId);if(s&&s.status==='Pending'&&confirm(`Did the policy get issued for ${s.fname} ${s.lname}? Click OK to mark Completed.`))s.status='Completed';},30000);
+  setTimeout(()=>{const s=SUBMISSIONS.find(s=>s.id===currentSubId);if(s&&s.status==='Pending'&&confirm(`Did the policy get issued for ${s.fname} ${s.lname}? Click OK to mark Completed.`)){s.status='Completed';updateLeadStatus(s.supabaseId,'Completed');renderSubmissions();refreshDashboard();}},30000);
 }
 
 // ══════════════════════════════════════
