@@ -975,6 +975,7 @@ tr:hover td{background:#fafbfc;}
   .lead-submit{padding:15px;font-size:1rem;}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -2389,16 +2390,14 @@ function getSupabase() {
 }
 
 // ── Password Recovery Handler ──────────────────────────────
-// Fires when Supabase redirects back after a password reset email click.
-// The URL will contain #type=recovery — Supabase catches it automatically
-// and emits a PASSWORD_RECOVERY event via onAuthStateChange.
-getSupabase().auth.onAuthStateChange((event, session) => {
-  if (event === 'PASSWORD_RECOVERY') {
-    // Hide landing page and any login modal, show reset modal
-    document.getElementById('login-modal').classList.remove('open');
-    const resetModal = document.getElementById('reset-modal');
-    resetModal.style.display = 'flex';
-  }
+// Wrapped in DOMContentLoaded to ensure Supabase library is ready.
+document.addEventListener('DOMContentLoaded', () => {
+  getSupabase().auth.onAuthStateChange((event, session) => {
+    if (event === 'PASSWORD_RECOVERY') {
+      document.getElementById('login-modal').classList.remove('open');
+      document.getElementById('reset-modal').style.display = 'flex';
+    }
+  });
 });
 
 async function doResetPassword() {
