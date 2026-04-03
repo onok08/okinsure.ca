@@ -2731,8 +2731,7 @@ async function doLogin() {
   const errEl = document.getElementById('login-error');
   errEl.style.display = 'none';
 
-  const btn = document.querySelector('#login-modal .btn-primary') ||
-              document.querySelector('#login-modal button[onclick="doLogin()"]');
+  const btn = document.querySelector('#login-modal button[onclick="doLogin()"]');
   if (btn) { btn.textContent = 'Signing in...'; btn.disabled = true; }
 
   try {
@@ -2745,62 +2744,42 @@ async function doLogin() {
       return;
     }
 
-    // Fetch coordinator profile via backend (bypasses RLS issues)
-    const token = data.session?.access_token;
-    const profileRes = await fetch(`${BACKEND_URL}/api/coordinator/profile`, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    });
+    // Role mapping — based on known coordinator emails
+    const COORDINATOR_MAP = {
+      'onofrio.k@brilliancefsi.com': { name: 'Onofrio Kanagaratnam', role: 'super_admin' },
+      'abetha@tav.ca':               { name: 'Abetha Amirthalingam', role: 'senior_coordinator' },
+      'abetha@live.ca':              { name: 'Abetha Amirthalingam', role: 'senior_coordinator' },
+      'mahesh@tav.ca':               { name: 'Durga Mahesh Murakonda', role: 'junior_coordinator' }
+    };
 
-    let profile = null;
-    if (profileRes.ok) {
-      profile = await profileRes.json();
-    }
-
-    // Fallback: try direct Supabase query with session
-    if (!profile) {
-      const sb = getSupabase();
-      const { data: p } = await sb
-        .from('coordinators')
-        .select('*')
-        .eq('email', data.user.email)
-        .single();
-      profile = p;
-    }
-
-    if (!profile) {
-      errEl.textContent = 'Account not found. Contact your administrator.';
+    const mapped = COORDINATOR_MAP[email.toLowerCase()];
+    if (!mapped) {
+      errEl.textContent = 'Account not authorized. Contact your administrator.';
       errEl.style.display = 'block';
       await getSupabase().auth.signOut();
       if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
       return;
     }
 
-    // Map Supabase role to portal role
-    const isAdmin = profile.role === 'super_admin';
-    const isSenior = profile.role === 'senior_coordinator';
+    const isAdmin  = mapped.role === 'super_admin';
+    const isSenior = mapped.role === 'senior_coordinator';
 
     currentUser = {
-      id:          profile.id,
-      email:       profile.email,
-      name:        profile.full_name,
-      role:        isAdmin ? 'admin' : 'coordinator',
-      supabaseRole: profile.role,
-      institution: 'OK Financial'
+      id:           data.user.id,
+      email:        email,
+      name:         mapped.name,
+      role:         isAdmin ? 'admin' : 'coordinator',
+      supabaseRole: mapped.role,
+      institution:  'OK Financial'
     };
 
     closeLogin();
     document.getElementById('landing-page').style.display = 'none';
     document.getElementById('app').style.display = 'block';
-    document.getElementById('sidebar-avatar').textContent = profile.full_name.charAt(0).toUpperCase();
-    document.getElementById('sidebar-name').textContent = profile.full_name;
+    document.getElementById('sidebar-avatar').textContent = mapped.name.charAt(0).toUpperCase();
+    document.getElementById('sidebar-name').textContent = mapped.name;
+    document.getElementById('sidebar-role').textContent = isAdmin ? 'Super Administrator' : isSenior ? 'Senior Coordinator' : 'Coordinator';
 
-    const roleLabel = isAdmin ? 'Super Administrator' : isSenior ? 'Senior Coordinator' : 'Coordinator';
-    document.getElementById('sidebar-role').textContent = roleLabel;
-
-    // Show admin-only items for super admin and senior coordinator
     document.querySelectorAll('.admin-only').forEach(el => {
       el.style.display = (isAdmin || isSenior) ? 'flex' : 'none';
     });
