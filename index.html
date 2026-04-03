@@ -1972,7 +1972,8 @@ function rowToLead(row, idx) {
 
 async function saveLeadToSupabase(lead) {
   try {
-    const { data, error } = await getSupabase()
+    const sb = getSupabase(); if (!sb) return null;
+    const { data, error } = await sb
       .from('leads')
       .insert([leadToRow(lead)])
       .select('id')
@@ -1986,7 +1987,7 @@ async function saveLeadToSupabase(lead) {
 
 async function loadLeads() {
   try {
-    const sb = getSupabase();
+    const sb = getSupabase(); if (!sb) return;
     const isSuper  = currentUser?.supabaseRole === 'super_admin';
     const isSenior = currentUser?.supabaseRole === 'senior_coordinator';
 
@@ -2008,7 +2009,8 @@ async function loadLeads() {
 async function updateLeadStatus(supabaseId, status) {
   if (!supabaseId) return;
   try {
-    const { error } = await getSupabase()
+    const sb = getSupabase(); if (!sb) return;
+    const { error } = await sb
       .from('leads')
       .update({ status })
       .eq('id', supabaseId);
@@ -2384,6 +2386,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 let _supabase = null;
 function getSupabase() {
   if (!_supabase) {
+    if (!window.supabase) { console.warn('Supabase library not loaded yet.'); return null; }
     _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
   return _supabase;
@@ -2392,12 +2395,15 @@ function getSupabase() {
 // ── Password Recovery Handler ──────────────────────────────
 // Wrapped in DOMContentLoaded to ensure Supabase library is ready.
 document.addEventListener('DOMContentLoaded', () => {
-  getSupabase().auth.onAuthStateChange((event, session) => {
-    if (event === 'PASSWORD_RECOVERY') {
-      document.getElementById('login-modal').classList.remove('open');
-      document.getElementById('reset-modal').style.display = 'flex';
-    }
-  });
+  const sb = getSupabase();
+  if (sb) {
+    sb.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        document.getElementById('login-modal').classList.remove('open');
+        document.getElementById('reset-modal').style.display = 'flex';
+      }
+    });
+  }
 });
 
 async function doResetPassword() {
@@ -2417,7 +2423,8 @@ async function doResetPassword() {
   }
 
   btn.textContent = 'Updating…'; btn.disabled = true;
-  const { error } = await getSupabase().auth.updateUser({ password: pass });
+  const sb2 = getSupabase(); if (!sb2) return;
+  const { error } = await sb2.auth.updateUser({ password: pass });
 
   if (error) {
     errEl.textContent = error.message || 'Could not update password. Please request a new reset link.';
@@ -2429,7 +2436,7 @@ async function doResetPassword() {
   document.getElementById('reset-success').style.display = 'block';
   btn.style.display = 'none';
   // Sign out so they log in fresh with the new password
-  await getSupabase().auth.signOut();
+  const sb3 = getSupabase(); if (sb3) await sb3.auth.signOut();
   setTimeout(() => {
     document.getElementById('reset-modal').style.display = 'none';
     document.getElementById('reset-pass').value = '';
@@ -2927,7 +2934,9 @@ async function doLogin() {
   if (btn) { btn.textContent = 'Signing in...'; btn.disabled = true; }
 
   try {
-    const { data, error } = await getSupabase().auth.signInWithPassword({ email, password: pass });
+    const sbLogin = getSupabase();
+    if (!sbLogin) { errEl.textContent='Auth service unavailable. Please refresh and try again.'; errEl.style.display='block'; if(btn){btn.textContent='Sign In';btn.disabled=false;} return; }
+    const { data, error } = await sbLogin.auth.signInWithPassword({ email, password: pass });
 
     if (error || !data.user) {
       errEl.textContent = 'Invalid email or password. Please try again.';
@@ -2948,7 +2957,7 @@ async function doLogin() {
     if (!mapped) {
       errEl.textContent = 'Account not authorized. Contact your administrator.';
       errEl.style.display = 'block';
-      await getSupabase().auth.signOut();
+      const sbOut = getSupabase(); if (sbOut) await sbOut.auth.signOut();
       if (btn) { btn.textContent = 'Sign In'; btn.disabled = false; }
       return;
     }
@@ -2988,7 +2997,7 @@ async function doLogin() {
   }
 }
 async function doLogout() {
-  await getSupabase().auth.signOut();
+  const sbLogout = getSupabase(); if (sbLogout) await sbLogout.auth.signOut();
   currentUser = null;
   document.getElementById('app').style.display = 'none';
   document.getElementById('landing-page').style.display = 'block';
