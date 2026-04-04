@@ -1567,7 +1567,11 @@ tr:hover td{background:#fafbfc;}
     </div>
     <button class="btn btn-primary" onclick="doLogin()">Sign In</button>
     <p class="error-msg" id="login-error">Invalid credentials. Please try again.</p>
-    <p style="margin-top:20px;font-size:.73rem;color:var(--sub);text-align:center;">For coordinator access, contact your administrator.</p>
+    <p style="margin-top:16px;font-size:.73rem;color:var(--sub);text-align:center;">
+      <span onclick="doForgotPassword()" style="color:var(--gold);cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Forgot your password?</span>
+    </p>
+    <p id="forgot-success" style="display:none;margin-top:10px;font-size:.75rem;color:var(--success);text-align:center;font-weight:600;">✓ Reset link sent — check your email.</p>
+    <p id="forgot-error" style="display:none;margin-top:10px;font-size:.75rem;color:var(--danger);text-align:center;"></p>
   </div>
 </div>
 
@@ -2405,6 +2409,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+async function doForgotPassword() {
+  const email = document.getElementById('login-user').value.trim();
+  const successEl = document.getElementById('forgot-success');
+  const errorEl   = document.getElementById('forgot-error');
+  successEl.style.display = 'none';
+  errorEl.style.display   = 'none';
+
+  if (!email) {
+    errorEl.textContent = 'Enter your email address above first.';
+    errorEl.style.display = 'block';
+    document.getElementById('login-user').focus();
+    return;
+  }
+
+  const sb = getSupabase();
+  if (!sb) return;
+
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: 'https://okinsure.ca'
+  });
+
+  if (error) {
+    errorEl.textContent = error.message || 'Could not send reset email. Try again.';
+    errorEl.style.display = 'block';
+  } else {
+    successEl.style.display = 'block';
+  }
+}
 
 async function doResetPassword() {
   const pass  = document.getElementById('reset-pass').value;
