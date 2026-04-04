@@ -2524,8 +2524,7 @@ function showAdvisorContactModal(plan) {
   document.body.style.overflow = 'hidden';
 }
 // ── Fetch live pricing from Destination API ──
-async 
-function updateAgeFromDOB() {
+async function updateAgeFromDOB() {
   const dob = document.getElementById('co-dob')?.value;
   if (!dob || !checkoutPlan) return;
   const age = Math.floor((new Date() - new Date(dob)) / 31557600000);
