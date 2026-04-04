@@ -1023,17 +1023,18 @@ tr:hover td{background:#fafbfc;}
 .mobile-quote-bar{
   display:none;
   position:fixed;bottom:64px;left:0;right:0;z-index:599;
-  padding:10px 16px;
-  background:linear-gradient(to top,var(--navy) 0%,transparent 100%);
+  padding:8px 20px;
+  background:rgba(13,27,42,.92);
+  backdrop-filter:blur(12px);
+  border-top:1px solid rgba(201,168,76,.15);
 }
 .mobile-quote-bar button{
-  width:100%;padding:15px;background:var(--gold);color:var(--navy);
-  border:none;border-radius:12px;font-family:'DM Sans',sans-serif;
-  font-weight:700;font-size:1rem;cursor:pointer;
-  box-shadow:0 8px 24px rgba(201,168,76,.35);
+  width:100%;padding:11px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:8px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:.88rem;cursor:pointer;letter-spacing:.3px;
   transition:all .2s;
 }
-.mobile-quote-bar button:active{transform:scale(.98);}
+.mobile-quote-bar button:active{opacity:.85;}
 
 @media(max-width:768px){
   .mobile-bottom-nav{display:block;}
@@ -1044,6 +1045,15 @@ tr:hover td{background:#fafbfc;}
   /* add bottom padding to pages so content isn't behind bottom nav */
   .lp-page.active{padding-bottom:140px;}
   .lp-footer{padding-bottom:80px;}
+  /* Compact hero on mobile so who-cards are visible above fold */
+  .hero-inner{padding:88px 5% 20px!important;gap:0!important;}
+  .hero-eyebrow{margin-bottom:14px!important;}
+  .hero-h1{font-size:1.95rem!important;margin-bottom:10px!important;}
+  .hero-sub{font-size:.84rem!important;margin-bottom:22px!important;max-width:100%!important;}
+  .who-cards{gap:10px!important;}
+  .who-card{padding:20px 18px!important;border-radius:14px!important;}
+  .who-title{font-size:1.2rem!important;}
+  .who-desc{font-size:.78rem!important;margin-bottom:10px!important;}
 }
 
 /* ═══════════════════════════════════
@@ -1204,7 +1214,7 @@ tr:hover td{background:#fafbfc;}
   <div class="lp-page" id="page-plans">
 
   <!-- Plans page hero header -->
-  <div style="background:linear-gradient(160deg,#0a1520 0%,#0d1b2a 100%);padding:80px 5% 40px;text-align:center;">
+  <div style="background:linear-gradient(160deg,#0a1520 0%,#0d1b2a 100%);padding:56px 5% 36px;text-align:center;">
     <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;">
       Coverage Plans
     </div>
@@ -1467,7 +1477,7 @@ tr:hover td{background:#fafbfc;}
 
 <!-- MOBILE FLOATING QUOTE BAR -->
 <div class="mobile-quote-bar" id="mobile-quote-bar">
-  <button onclick="showLPPage('home')" data-en="🛡️ Get Covered Now →" data-fr="🛡️ Se couvrir maintenant →">🛡️ Get Covered Now →</button>
+  <button onclick="showLPPage('home')" data-en="Get Covered Now →" data-fr="Se couvrir maintenant →">Get Covered Now →</button>
 </div>
 
 
@@ -2313,9 +2323,9 @@ function selectSegment(seg) {
   reveal.classList.add('show');
   updateHeroPlanCards();
   setTimeout(()=>{
-    const cards=document.getElementById('seg-student');
-    if(!cards) return;
-    const top=cards.getBoundingClientRect().top+window.scrollY-90;
+    const reveal=document.getElementById('hero-reveal');
+    if(!reveal) return;
+    const top=reveal.getBoundingClientRect().top+window.scrollY-80;
     window.scrollTo({top,behavior:'smooth'});
   },80);
 }
@@ -3186,15 +3196,23 @@ function showLPPage(name, segment) {
   const quoteBar = document.getElementById('mobile-quote-bar');
   if (quoteBar) quoteBar.style.display = (name === 'home' || name === 'plans') ? 'block' : 'none';
 
-  window.scrollTo({top:0, behavior:'smooth'});
+  // If segment requested, select and scroll to reveal; else scroll to who-cards
+  if (segment) {
+    setTimeout(() => selectSegment(segment), 150);
+  } else if (name === 'home') {
+    setTimeout(() => {
+      const cards = document.getElementById('seg-student');
+      if (cards) {
+        const top = cards.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({top, behavior:'smooth'});
+      }
+    }, 80);
+  } else {
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
 
   // Re-render FAQ with correct language
   if (name === 'faq') renderFaq();
-
-  // If segment requested, select it on home page
-  if (segment) {
-    setTimeout(() => selectSegment(segment), 150);
-  }
 
   // Update URL hash
   try { history.pushState(null, '', '#' + name); } catch(e) {}
