@@ -3267,4 +3267,14 @@ function savePricing(){
     const y=document.getElementById('yearly-'+p.id);
     const d=document.getElementById('price-'+p.id);
     if(y) p.yearlyRate=parseFloat(y.value)||p.yearlyRate;
-    if(d) p.
+    if(d) p.dailyRate=parseFloat(d.value)||p.dailyRate;
+  });
+  PRICING.lastUpdated=new Date().toLocaleDateString('en-CA',{year:'numeric',month:'short',day:'numeric'});
+  renderPlans();renderPricingAdmin();
+  const bar=document.getElementById('pricing-last-updated');
+  if(bar) bar.textContent=`Last updated: ${PRICING.lastUpdated}. Changes publish instantly everywhere.`;
+  alert('Prices saved and published!');
+}
+</script>
+</body>
+</html>
