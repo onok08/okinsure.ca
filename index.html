@@ -974,6 +974,112 @@ tr:hover td{background:#fafbfc;}
   .lead-input{padding:13px 14px;font-size:1rem;}/* no zoom on iOS */
   .lead-submit{padding:15px;font-size:1rem;}
 }
+
+/* ═══════════════════════════════════
+   MULTI-PAGE SYSTEM
+═══════════════════════════════════ */
+.lp-page{display:none;animation:pageIn .35s ease both;}
+.lp-page.active{display:block;}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* NAV active page link */
+.lp-nav-page{
+  color:rgba(255,255,255,.6);font-size:.88rem;cursor:pointer;
+  transition:color .2s;background:none;border:none;
+  font-family:'DM Sans',sans-serif;padding:6px 0;
+  position:relative;
+}
+.lp-nav-page:hover{color:white;}
+.lp-nav-page.active{color:white;}
+.lp-nav-page.active::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:2px;background:var(--gold);border-radius:2px;
+}
+
+/* ═══════════════════════════════════
+   MOBILE BOTTOM NAV
+═══════════════════════════════════ */
+.mobile-bottom-nav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:600;
+  background:var(--navy);border-top:1px solid rgba(201,168,76,.2);
+  padding:0;padding-bottom:env(safe-area-inset-bottom);
+}
+.mobile-bottom-nav-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.mobile-nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:10px 8px;cursor:pointer;transition:all .18s;
+  border:none;background:none;font-family:'DM Sans',sans-serif;
+  color:rgba(255,255,255,.45);font-size:.6rem;font-weight:600;
+  letter-spacing:.5px;text-transform:uppercase;
+}
+.mobile-nav-item svg{width:20px;height:20px;stroke-width:1.8;}
+.mobile-nav-item.active{color:var(--gold);}
+.mobile-nav-item.active svg{stroke:var(--gold);}
+
+/* MOBILE floating get quote bar */
+.mobile-quote-bar{
+  display:none;
+  position:fixed;bottom:64px;left:0;right:0;z-index:599;
+  padding:10px 16px;
+  background:linear-gradient(to top,var(--navy) 0%,transparent 100%);
+}
+.mobile-quote-bar button{
+  width:100%;padding:15px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:12px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:1rem;cursor:pointer;
+  box-shadow:0 8px 24px rgba(201,168,76,.35);
+  transition:all .2s;
+}
+.mobile-quote-bar button:active{transform:scale(.98);}
+
+@media(max-width:768px){
+  .mobile-bottom-nav{display:block;}
+  .mobile-quote-bar{display:block;}
+  /* hide top nav links on mobile */
+  .lp-nav-links .lp-nav-page{display:none;}
+  .lp-nav-links .lang-toggle{display:none;}
+  /* add bottom padding to pages so content isn't behind bottom nav */
+  .lp-page.active{padding-bottom:140px;}
+  .lp-footer{padding-bottom:80px;}
+}
+
+/* ═══════════════════════════════════
+   FAQ TABS
+═══════════════════════════════════ */
+.faq-tabs{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-bottom:36px;
+}
+.faq-tab{
+  padding:8px 18px;border-radius:20px;font-size:.78rem;font-weight:600;
+  cursor:pointer;border:1.5px solid #dde3ea;background:white;
+  color:var(--sub);font-family:'DM Sans',sans-serif;transition:all .18s;
+}
+.faq-tab:hover{border-color:var(--gold);color:var(--navy);}
+.faq-tab.active{background:var(--navy);color:white;border-color:var(--navy);}
+.faq-category{display:none;}
+.faq-category.active{display:block;}
+
+/* ═══════════════════════════════════
+   PLANS PAGE SEGMENT SELECTOR
+═══════════════════════════════════ */
+.plans-segment-bar{
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:40px;
+}
+.plans-seg-btn{
+  padding:12px 24px;border-radius:30px;
+  font-size:.85rem;font-weight:600;cursor:pointer;
+  border:1.5px solid rgba(13,27,42,.15);background:white;
+  color:var(--sub);font-family:'DM Sans',sans-serif;transition:all .22s;
+  display:flex;align-items:center;gap:8px;
+}
+.plans-seg-btn:hover{border-color:var(--navy);color:var(--navy);}
+.plans-seg-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -987,10 +1093,12 @@ tr:hover td{background:#fafbfc;}
 
   <!-- NAV -->
   <nav class="lp-nav">
-    <div class="lp-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">OK <span>Financial</span></div>
+    <div class="lp-logo" onclick="showLPPage('home')">OK <span>Financial</span></div>
     <div class="lp-nav-links">
-      <button class="lp-nav-a" onclick="lpScroll('how')" data-en="How It Works" data-fr="Comment ça marche">How It Works</button>
-      <button class="lp-nav-a" onclick="lpScroll('advisor')" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</button>
+      <button class="lp-nav-page active" data-page="home" onclick="showLPPage('home')" data-en="Home" data-fr="Accueil">Home</button>
+      <button class="lp-nav-page" data-page="plans" onclick="showLPPage('plans')" data-en="Plans" data-fr="Forfaits">Plans</button>
+      <button class="lp-nav-page" data-page="faq" onclick="showLPPage('faq')" data-en="FAQ" data-fr="FAQ">FAQ</button>
+      <button class="lp-nav-page" data-page="about" onclick="showLPPage('about')" data-en="About" data-fr="À propos">About</button>
       <div class="lang-toggle">
         <button class="lang-btn active" id="lang-en" onclick="setLang('en')">EN</button>
         <button class="lang-btn" id="lang-fr" onclick="setLang('fr')">FR</button>
@@ -998,6 +1106,9 @@ tr:hover td{background:#fafbfc;}
       <button class="lp-portal-btn" onclick="openLogin()" data-en="Portal Login" data-fr="Portail">Portal Login</button>
     </div>
   </nav>
+
+  <!-- ── PAGE: HOME ── -->
+  <div class="lp-page active" id="page-home">
 
   <!-- HERO -->
   <section class="lp-hero">
@@ -1087,6 +1198,27 @@ tr:hover td{background:#fafbfc;}
   </div>
 
   <!-- WHO IS IT FOR -->
+  </div><!-- /page-home -->
+
+  <!-- ── PAGE: PLANS ── -->
+  <div class="lp-page" id="page-plans">
+
+  <!-- Plans page hero header -->
+  <div style="background:linear-gradient(160deg,#0a1520 0%,#0d1b2a 100%);padding:80px 5% 40px;text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;">
+      Coverage Plans
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:white;font-weight:600;margin-bottom:12px;" data-en="Find the right plan<br><em style='color:var(--gold);font-style:italic;'>for your situation</em>" data-fr="Trouvez le bon forfait<br><em style='color:var(--gold);font-style:italic;'>pour votre situation</em>">Find the right plan<br><em style="color:var(--gold);font-style:italic;">for your situation</em></h1>
+    <p style="color:rgba(255,255,255,.55);font-size:.95rem;max-width:480px;margin:0 auto 32px;line-height:1.7;" data-en="Select your profile below to see the plans designed for you, with live pricing." data-fr="Sélectionnez votre profil pour voir les forfaits conçus pour vous.">Select your profile below to see the plans designed for you, with live pricing.</p>
+    <div class="plans-segment-bar">
+      <button class="plans-seg-btn" onclick="selectPlansSeg('student',this)">🎓 <span data-en="International Student" data-fr="Étudiant international">International Student</span></button>
+      <button class="plans-seg-btn" onclick="selectPlansSeg('visitor',this)">✈️ <span data-en="Visitor to Canada" data-fr="Visiteur au Canada">Visitor to Canada</span></button>
+      <button class="plans-seg-btn" onclick="selectPlansSeg('canadian',this)">🍁 <span data-en="Canadian Travelling" data-fr="Canadien voyageant">Canadian Travelling</span></button>
+    </div>
+    <!-- Inline plan cards for Plans page -->
+    <div id="plans-page-cards" style="max-width:1000px;margin:0 auto;"></div>
+  </div>
+
   <div id="lp-audience" style="background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);">
     <div class="section">
       <div class="sec-eye" data-en="Who We Serve" data-fr="Qui nous servons">Who We Serve</div>
@@ -1107,7 +1239,7 @@ tr:hover td{background:#fafbfc;}
               <li data-en="Mental health and maternity coverage options" data-fr="Options de santé mentale et de maternité">Mental health and maternity coverage options</li>
               <li data-en="Easy renewal before your policy expires" data-fr="Renouvellement facile avant l'expiration de votre police">Easy renewal before your policy expires</li>
             </ul>
-            <button class="aud-cta" onclick="selectSegment('student');document.getElementById('hero-reveal').scrollIntoView({behavior:'smooth',block:'center'})" data-en="Get Student Quote →" data-fr="Obtenir un devis étudiant →">Get Student Quote →</button>
+            <button class="aud-cta" onclick="showLPPage('home','student')" data-en="Get Student Quote →" data-fr="Obtenir un devis étudiant →">Get Student Quote →</button>
           </div>
         </div>
         <div class="aud-card">
@@ -1124,13 +1256,18 @@ tr:hover td{background:#fafbfc;}
               <li data-en="Emergency medical up to $2,000,000" data-fr="Médical d'urgence jusqu'à 2 000 000 $">Emergency medical up to $2,000,000</li>
               <li data-en="Competitive daily rates, no age penalty" data-fr="Tarifs journaliers compétitifs, sans pénalité d'âge">Competitive daily rates, no age penalty</li>
             </ul>
-            <button class="aud-cta aud-cta-ghost" onclick="selectSegment('visitor');document.getElementById('hero-reveal').scrollIntoView({behavior:'smooth',block:'center'})" data-en="Get Visitor Quote →" data-fr="Obtenir un devis visiteur →">Get Visitor Quote →</button>
+            <button class="aud-cta aud-cta-ghost" onclick="showLPPage('home','visitor')" data-en="Get Visitor Quote →" data-fr="Obtenir un devis visiteur →">Get Visitor Quote →</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+
+  </div><!-- /page-plans -->
+
+  <!-- ── PAGE: ABOUT ── -->
+  <div class="lp-page" id="page-about">
 
   <!-- ADVISOR -->
   <div id="lp-advisor" class="advisor-bg">
@@ -1230,6 +1367,11 @@ tr:hover td{background:#fafbfc;}
     </div>
   </div>
 
+  </div><!-- /page-about -->
+
+  <!-- ── PAGE: FAQ ── -->
+  <div class="lp-page" id="page-faq">
+
   <!-- FAQ -->
   <div id="lp-faq" style="background:white;">
     <div class="section">
@@ -1237,8 +1379,18 @@ tr:hover td{background:#fafbfc;}
       <h2 class="sec-h2" data-en="Frequently asked<br>questions" data-fr="Questions fréquemment<br>posées">Frequently asked<br>questions</h2>
       <p class="sec-sub">
         <span data-en="Everything you need to know before buying. Still have questions? " data-fr="Tout ce que vous devez savoir avant d'acheter. Des questions ? ">Everything you need to know before buying. Still have questions? </span>
-        <a href="/cdn-cgi/l/email-protection#086766676e7a61672663486a7a6164646169666b6d6e7b61266b6765" style="color:var(--gold);font-weight:600;" data-en="Send me a message." data-fr="Envoyez-moi un message.">Send me a message.</a>
+        <a href="mailto:onofrio.k@brilliancefsi.com" style="color:var(--gold);font-weight:600;" data-en="Send me a message." data-fr="Envoyez-moi un message.">Send me a message.</a>
       </p>
+
+      <!-- FAQ TABS -->
+      <div class="faq-tabs">
+        <button class="faq-tab active" onclick="switchFaqTab('all',this)" data-en="All Questions" data-fr="Toutes les questions">All Questions</button>
+        <button class="faq-tab" onclick="switchFaqTab('general',this)" data-en="General" data-fr="Général">General</button>
+        <button class="faq-tab" onclick="switchFaqTab('students',this)" data-en="Students" data-fr="Étudiants">Students</button>
+        <button class="faq-tab" onclick="switchFaqTab('visitors',this)" data-en="Visitors" data-fr="Visiteurs">Visitors</button>
+        <button class="faq-tab" onclick="switchFaqTab('canadians',this)" data-en="Canadians" data-fr="Canadiens">Canadians</button>
+      </div>
+
       <div class="faq-list" id="faq-list"></div>
     </div>
   </div>
@@ -1248,8 +1400,10 @@ tr:hover td{background:#fafbfc;}
     <div class="cta-banner-photo"></div>
     <h2 data-en="Ready to get covered?" data-fr="Prêt(e) à être couvert(e) ?">Ready to get covered?</h2>
     <p data-en="Tell us who you are, pick your plan, and complete your application in minutes. Your advisor is available every step of the way." data-fr="Dites-nous qui vous êtes, choisissez votre forfait et complétez votre demande en quelques minutes. Votre conseiller est disponible à chaque étape.">Tell us who you are, pick your plan, and complete your application in minutes. Your advisor is available every step of the way.</p>
-    <button class="btn-gold-solid" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-en="Get Covered Now →" data-fr="Se couvrir maintenant →">Get Covered Now →</button>
+    <button class="btn-gold-solid" onclick="showLPPage('home')" data-en="Get Covered Now →" data-fr="Se couvrir maintenant →">Get Covered Now →</button>
   </div>
+
+  </div><!-- /page-faq -->
 
   <!-- FOOTER -->
   <footer class="lp-footer">
@@ -1264,10 +1418,10 @@ tr:hover td{background:#fafbfc;}
       </div>
       <div>
         <div class="footer-col-title" data-en="Quick Links" data-fr="Liens rapides">Quick Links</div>
-        <span class="footer-link" onclick="lpScroll('how')" data-en="How It Works" data-fr="Comment ça marche">How It Works</span>
-        <span class="footer-link" onclick="lpScroll('advisor')" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</span>
-        <span class="footer-link" onclick="lpScroll('why')" data-en="Why OK Financial" data-fr="Pourquoi OK Financial">Why OK Financial</span>
-        <span class="footer-link" onclick="lpScroll('faq')" data-en="FAQ" data-fr="FAQ">FAQ</span>
+        <span class="footer-link" onclick="showLPPage('home')" data-en="How It Works" data-fr="Comment ça marche">How It Works</span>
+        <span class="footer-link" onclick="showLPPage('about')" data-en="Your Advisor" data-fr="Votre Conseiller">Your Advisor</span>
+        <span class="footer-link" onclick="showLPPage('about')" data-en="Why OK Financial" data-fr="Pourquoi OK Financial">Why OK Financial</span>
+        <span class="footer-link" onclick="showLPPage('faq')" data-en="FAQ" data-fr="FAQ">FAQ</span>
         <span class="footer-link" onclick="openLogin()" data-en="Coordinator Login" data-fr="Portail coordinateur">Coordinator Login</span>
       </div>
       <div>
@@ -1276,9 +1430,9 @@ tr:hover td{background:#fafbfc;}
       </div>
       <div>
         <div class="footer-col-title" data-en="For Students" data-fr="Pour étudiants">For Students</div>
-        <span class="footer-link" onclick="lpScroll('audience')" data-en="Student Plans" data-fr="Forfaits étudiants">Student Plans</span>
-        <span class="footer-link" onclick="lpScroll('audience')" data-en="Visitor Plans" data-fr="Forfaits visiteurs">Visitor Plans</span>
-        <span class="footer-link" onclick="lpScroll('testi')" data-en="Reviews" data-fr="Avis">Reviews</span>
+        <span class="footer-link" onclick="showLPPage('plans')" data-en="Student Plans" data-fr="Forfaits étudiants">Student Plans</span>
+        <span class="footer-link" onclick="showLPPage('plans')" data-en="Visitor Plans" data-fr="Forfaits visiteurs">Visitor Plans</span>
+        <span class="footer-link" onclick="showLPPage('about')" data-en="Reviews" data-fr="Avis">Reviews</span>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1287,6 +1441,33 @@ tr:hover td{background:#fafbfc;}
     </div>
   </footer>
 
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <div class="mobile-bottom-nav-inner">
+    <button class="mobile-nav-item active" data-page="home" onclick="showLPPage('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-en="Home" data-fr="Accueil">Home</span>
+    </button>
+    <button class="mobile-nav-item" data-page="plans" onclick="showLPPage('plans')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span data-en="Plans" data-fr="Forfaits">Plans</span>
+    </button>
+    <button class="mobile-nav-item" data-page="faq" onclick="showLPPage('faq')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>FAQ</span>
+    </button>
+    <button class="mobile-nav-item" data-page="about" onclick="showLPPage('about')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span data-en="About" data-fr="À propos">About</span>
+    </button>
+  </div>
+</div>
+
+<!-- MOBILE FLOATING QUOTE BAR -->
+<div class="mobile-quote-bar" id="mobile-quote-bar">
+  <button onclick="showLPPage('home')" data-en="🛡️ Get Covered Now →" data-fr="🛡️ Se couvrir maintenant →">🛡️ Get Covered Now →</button>
 </div>
 
 
@@ -1882,22 +2063,46 @@ const PROVIDER_URLS = {
 // ── FAQ DATA ──
 const FAQ = {
   en: [
-    { q:'Do I need insurance if my school already has a group plan?', a:'It depends. Some schools automatically enroll students in their own health plan, but these are often optional and can be opted out of — and they may not cover you before classes begin or during summer breaks. A personal Destination plan is active from day one and has no gaps.' },
-    { q:'Is this insurance accepted by Canadian hospitals?', a:'Yes. Destination is a recognized Canadian insurer with a 24/7 emergency coordination line. In most cases, they pay the hospital directly — you don\'t need to pay out of pocket and claim later.' },
-    { q:'Can I buy insurance if I\'ve already arrived in Canada?', a:'Yes, in most cases. Both providers allow you to purchase after you\'ve arrived. Some waiting periods may apply for non-emergency conditions, but emergency coverage typically begins immediately or within a few days of purchase.' },
-    
-    { q:'Can I extend my coverage if my studies are delayed?', a:'Absolutely. Both plans allow you to extend before expiry without reapplying, as long as you haven\'t had a major claim. This is one of the most useful features — especially if your study permit is extended or you decide to stay longer.' },
-    { q:'Is the Super Visa insurance requirement met by these plans?', a:'Yes, Destination Insurance meets the Super Visa requirements set by Immigration, Refugees and Citizenship Canada (IRCC): minimum $100,000 medical coverage, valid for at least one year, purchased from a Canadian insurance company.' },
-    { q:'How do I contact my advisor after purchase?', a:'You can reach Onofrio directly by phone, email, or WhatsApp. As a licensed advisor, I\'m available to help with claims questions, renewals, or any concerns that come up during your coverage period.' }
+    // General
+    { cat:'general', q:'Why do I need travel insurance in Canada?', a:'Canada has excellent healthcare — but it is only free for residents. Visitors, international students, and new arrivals are not covered by provincial health plans. A single emergency room visit can cost $2,000–$5,000, while hospitalization can run $10,000+ per day. Travel insurance protects you from these costs entirely.' },
+    { cat:'general', q:'Why should I use an advisor instead of buying direct?', a:'A licensed advisor compares plans, explains the fine print, and is available when you need to make a claim. Direct online purchases offer no guidance — if something goes wrong, you are on your own. Onofrio is reachable by phone, email, and WhatsApp at no extra cost to you.' },
+    { cat:'general', q:'Can I buy insurance after I have already arrived in Canada?', a:'Yes, in most cases. You can purchase coverage after arrival, though a short waiting period may apply for non-emergency conditions. Emergency coverage typically begins immediately or within a few days of purchase. It is always better to buy before you arrive, but it is not too late.' },
+    { cat:'general', q:'What is a deductible and how does it work?', a:'A deductible is the portion you pay out of pocket before the insurance company covers the rest. For example, with a $500 deductible on a $4,000 hospital bill, you pay $500 and insurance covers the remaining $3,500. Choosing a higher deductible usually lowers your monthly premium.' },
+    { cat:'general', q:'Can I cancel my policy and get a refund?', a:'Most policies allow cancellation and a full refund before the coverage effective date. After the start date, refunds are generally not available unless the policy has not been used and the request meets certain conditions. Contact your advisor before the start date if your plans change.' },
+    { cat:'general', q:'Can I extend my coverage if I decide to stay longer?', a:'Yes. Both Destination and Tugo plans allow extensions before your policy expires, provided you have not made a major claim and are not currently seeking medical attention. Extensions are one of the most useful features — especially for students whose study permits are extended.' },
+    // Students
+    { cat:'students', q:'Do I need insurance if my school already has a group plan?', a:'It depends. Many schools automatically enroll students in their own health plan, but these are often limited in scope — they may not cover you before classes begin, during summer breaks, or for certain conditions. A personal plan is active from day one with no gaps and often provides broader coverage.' },
+    { cat:'students', q:'Is this insurance accepted by Canadian hospitals?', a:'Yes. Destination is a recognized Canadian insurer with a 24/7 emergency coordination line. In most cases, they coordinate payment directly with the hospital — you do not need to pay out of pocket and claim later.' },
+    { cat:'students', q:'Does student insurance cover mental health?', a:'Yes. The International Student Plan includes mental health coverage, which is especially important given the stress of studying abroad. You also have access to a confidential emotional assistance line, staffed by registered psychiatrists and counselors, available 24/7 at no extra cost.' },
+    { cat:'students', q:'What happens if my study permit is extended or I change schools?', a:'Your coverage can typically be extended to match your new permit length. If you change institutions, your plan usually stays valid as long as you remain a full-time student in Canada. Always notify your advisor of any changes so your policy is updated accordingly.' },
+    // Visitors
+    { cat:'visitors', q:'Does the Destination plan meet Super Visa insurance requirements?', a:'Yes. Destination Insurance meets all Super Visa requirements set by Immigration, Refugees and Citizenship Canada (IRCC): minimum $100,000 in emergency medical coverage, valid for at least one year, purchased from a Canadian insurance company. We can issue a letter of confirmation for your IRCC application.' },
+    { cat:'visitors', q:'Do pre-existing conditions affect my coverage?', a:'It depends on the plan and your age. For visitors under 60, conditions that have been stable for 90 days before your start date are typically covered. Those 60–69 require a 120-day stability period, and older applicants may need to complete a medical questionnaire. Your advisor will walk you through eligibility.' },
+    { cat:'visitors', q:'What are the age limits for visitor coverage?', a:'Coverage is available for visitors up to age 90 and beyond, subject to a medical questionnaire for applicants 60 and older. There is no automatic age cutoff — even seniors on Super Visas can qualify. Premiums increase with age, and the stability requirement for pre-existing conditions becomes longer.' },
+    { cat:'visitors', q:'Are sports and recreational activities covered?', a:'Yes. Most standard sports and recreational activities are automatically covered under the Visitor to Canada plan. Extreme or professional sports may be excluded. If you plan to ski, hike, or play contact sports, confirm coverage with your advisor before your policy starts.' },
+    // Canadians
+    { cat:'canadians', q:'Am I covered by my provincial health plan when travelling abroad?', a:'Provincial health plans provide very limited out-of-province coverage and almost no coverage outside Canada. Some plans reimburse a small fixed amount for foreign hospital visits — far below actual costs. Travel insurance fills this gap entirely, covering emergency medical, hospitalization, and evacuation.' },
+    { cat:'canadians', q:'What does the Leisure Travel Plan cover for Canadians abroad?', a:'The Destination Leisure Travel Plan covers emergency medical expenses, hospitalization, surgery, ambulance, prescription drugs, repatriation to Canada, dental emergencies, accidental death and dismemberment, and 24/7 emergency assistance — available in single-trip or annual multi-trip options.' },
+    { cat:'canadians', q:'What is the difference between single trip and annual coverage?', a:'A single-trip plan covers one specific trip and is ideal for occasional travellers. An annual multi-trip plan covers unlimited trips within a year up to a maximum duration per trip, and is more cost-effective if you travel frequently. Your advisor can help you decide which makes more sense for your lifestyle.' }
   ],
   fr: [
-    { q:'Ai-je besoin d\'une assurance si mon école a déjà un régime collectif ?', a:'Ça dépend. Certaines écoles inscrivent automatiquement les étudiants à leur propre régime de santé, mais ceux-ci sont souvent facultatifs et peuvent ne pas vous couvrir avant le début des cours ou pendant les congés estivaux. Un plan Destination personnel est actif dès le premier jour, sans interruption.' },
-    { q:'Cette assurance est-elle acceptée par les hôpitaux canadiens ?', a:'Oui. Tugo et Destinations sont des assureurs canadiens reconnus avec des lignes d\'urgence disponibles 24h/24. Dans la plupart des cas, ils paient directement l\'hôpital — vous n\'avez pas besoin de payer de votre poche et de réclamer ensuite.' },
-    { q:'Puis-je acheter une assurance si je suis déjà au Canada ?', a:'Oui, dans la plupart des cas. Les deux fournisseurs permettent l\'achat après votre arrivée. Des délais de carence peuvent s\'appliquer pour les conditions non urgentes, mais la couverture d\'urgence commence généralement immédiatement.' },
-    
-    { q:'Puis-je prolonger ma couverture si mes études sont retardées ?', a:'Absolument. Les deux plans vous permettent de prolonger avant l\'expiration sans redemander, tant que vous n\'avez pas eu de sinistre majeur. C\'est l\'une des fonctionnalités les plus utiles si votre permis d\'études est prolongé.' },
-    { q:'L\'exigence d\'assurance pour le super visa est-elle satisfaite par ces plans ?', a:'Oui, l\'assurance Destinations répond aux exigences du super visa établies par Immigration, Réfugiés et Citoyenneté Canada : couverture médicale minimale de 100 000 $, valide pour au moins un an, achetée auprès d\'une compagnie d\'assurance canadienne.' },
-    { q:'Comment contacter mon conseiller après l\'achat ?', a:'Vous pouvez joindre Onofrio directement par téléphone, courriel ou WhatsApp. En tant que conseiller agréé, je suis disponible pour vous aider avec les questions de réclamations, les renouvellements ou toute préoccupation pendant votre période de couverture.' }
+    { cat:'general', q:'Pourquoi ai-je besoin d\'une assurance voyage au Canada ?', a:'Le Canada offre d\'excellents soins de santé — mais ils sont gratuits uniquement pour les résidents. Les visiteurs, étudiants internationaux et nouveaux arrivants ne sont pas couverts par les régimes provinciaux. Une seule visite aux urgences peut coûter 2 000 $ à 5 000 $, et une hospitalisation peut dépasser 10 000 $ par jour.' },
+    { cat:'general', q:'Pourquoi utiliser un conseiller plutôt qu\'acheter directement ?', a:'Un conseiller agréé compare les plans, explique les détails et est disponible lors d\'un sinistre. Les achats directs en ligne n\'offrent aucun accompagnement. Onofrio est joignable par téléphone, courriel et WhatsApp, sans frais supplémentaires.' },
+    { cat:'general', q:'Puis-je acheter une assurance après mon arrivée au Canada ?', a:'Oui, dans la plupart des cas. Vous pouvez souscrire une couverture après votre arrivée. Des délais de carence peuvent s\'appliquer pour les conditions non urgentes, mais la couverture d\'urgence commence généralement immédiatement ou dans les quelques jours suivant l\'achat.' },
+    { cat:'general', q:'Qu\'est-ce qu\'une franchise et comment fonctionne-t-elle ?', a:'Une franchise est la portion que vous payez avant que l\'assureur couvre le reste. Par exemple, avec une franchise de 500 $ sur une facture de 4 000 $, vous payez 500 $ et l\'assurance couvre les 3 500 $ restants. Une franchise plus élevée réduit généralement la prime.' },
+    { cat:'general', q:'Puis-je annuler ma police et obtenir un remboursement ?', a:'La plupart des polices permettent l\'annulation et un remboursement complet avant la date d\'entrée en vigueur. Après la date de début, les remboursements ne sont généralement pas disponibles. Contactez votre conseiller avant la date de début si vos plans changent.' },
+    { cat:'general', q:'Puis-je prolonger ma couverture si je décide de rester plus longtemps ?', a:'Oui. Les plans permettent des prolongations avant l\'expiration de votre police, à condition que vous n\'ayez pas fait de réclamation majeure. C\'est particulièrement utile pour les étudiants dont le permis est prolongé.' },
+    { cat:'students', q:'Ai-je besoin d\'une assurance si mon école a déjà un régime collectif ?', a:'Ca dépend. Beaucoup d\'écoles inscrivent automatiquement les étudiants à leur propre régime, mais ceux-ci sont souvent limités. Un plan personnel est actif dès le premier jour, sans interruption, et offre souvent une couverture plus large.' },
+    { cat:'students', q:'Cette assurance est-elle acceptée par les hôpitaux canadiens ?', a:'Oui. Destination est un assureur canadien reconnu avec une ligne d\'urgence disponible 24h/24. Dans la plupart des cas, ils coordonnent le paiement directement avec l\'hôpital.' },
+    { cat:'students', q:'L\'assurance étudiant couvre-t-elle la santé mentale ?', a:'Oui. Le plan inclut la couverture en santé mentale. Vous avez aussi accès à une ligne d\'assistance émotionnelle confidentielle, assurée par des psychiatres et conseillers agréés, disponible 24h/24 sans frais supplémentaires.' },
+    { cat:'students', q:'Que se passe-t-il si mon permis d\'études est prolongé ou si je change d\'établissement ?', a:'Votre couverture peut généralement être prolongée pour correspondre à votre nouveau permis. Informez toujours votre conseiller de tout changement pour que votre police soit mise à jour.' },
+    { cat:'visitors', q:'Le plan Destination répond-il aux exigences du super visa ?', a:'Oui. Destination répond à toutes les exigences du super visa d\'IRCC : couverture médicale minimale de 100 000 $, valide au moins un an, achetée auprès d\'une compagnie canadienne. Nous pouvons fournir une lettre de confirmation pour votre dossier.' },
+    { cat:'visitors', q:'Les conditions préexistantes affectent-elles ma couverture ?', a:'Cela dépend du plan et de votre âge. Pour les visiteurs de moins de 60 ans, les conditions stables depuis 90 jours avant le début sont généralement couvertes. Les 60-69 ans nécessitent une période de stabilité de 120 jours. Votre conseiller vous guidera.' },
+    { cat:'visitors', q:'Quelles sont les limites d\'age pour la couverture visiteur ?', a:'La couverture est disponible jusqu\'a 90 ans et plus, sous réserve d\'un questionnaire médical pour les demandeurs de 60 ans et plus. Il n\'y a pas de limite d\'age automatique — même les seniors en super visa peuvent être éligibles.' },
+    { cat:'visitors', q:'Les sports et activités de loisirs sont-ils couverts ?', a:'Oui. La plupart des sports et activités récréatifs standard sont automatiquement couverts. Les sports extrêmes ou professionnels peuvent être exclus. Vérifiez avec votre conseiller si vous prévoyez des activités à risque.' },
+    { cat:'canadians', q:'Suis-je couvert par mon régime provincial à l\'etranger ?', a:'Les régimes provinciaux offrent une couverture très limitée hors province et presque aucune à l\'etranger. L\'assurance voyage comble entièrement cette lacune, couvrant les urgences médicales, l\'hospitalisation et l\'evacuation.' },
+    { cat:'canadians', q:'Que couvre le plan Loisirs pour les Canadiens à l\'etranger ?', a:'Le plan couvre les urgences médicales, l\'hospitalisation, la chirurgie, l\'ambulance, les médicaments, le rapatriement au Canada, les urgences dentaires, le décès accidentel et l\'assistance d\'urgence 24h/24 — en formule voyage unique ou annuel.' },
+    { cat:'canadians', q:'Quelle est la différence entre une couverture voyage unique et annuelle ?', a:'Un plan voyage unique couvre un séjour spécifique. Un plan annuel multi-voyages couvre des voyages illimités sur un an, jusqu\'a une durée maximale par voyage — plus rentable si vous voyagez fréquemment. Votre conseiller peut vous aider à choisir.' }
   ]
 };
 
@@ -2042,9 +2247,19 @@ function setLang(lang) {
 // ══════════════════════════════════════
 // FAQ
 // ══════════════════════════════════════
-function renderFAQ() {
-  const items=FAQ[currentLang]||FAQ.en;
-  document.getElementById('faq-list').innerHTML=items.map((item,i)=>`
+function renderFAQ() { renderFaq(); }
+function renderFaq() {
+  const all = FAQ[currentLang] || FAQ.en;
+  const items = (currentFaqCat && currentFaqCat !== 'all')
+    ? all.filter(f => f.cat === currentFaqCat)
+    : all;
+  const el = document.getElementById('faq-list');
+  if (!el) return;
+  if (items.length === 0) {
+    el.innerHTML = '<p style="color:var(--sub);font-size:.88rem;padding:20px 0;">No questions in this category yet.</p>';
+    return;
+  }
+  el.innerHTML = items.map((item,i) => `
     <div class="faq-item" id="faq-${i}">
       <div class="faq-q" onclick="toggleFAQ(${i})">
         <span>${item.q}</span>
@@ -2944,6 +3159,107 @@ function lpScroll(id) {
   document.getElementById('lp-'+id)?.scrollIntoView({behavior:'smooth'});
 }
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// ══════════════════════════════════════
+// PAGE SWITCHING
+// ══════════════════════════════════════
+function showLPPage(name, segment) {
+  // Hide all pages
+  document.querySelectorAll('.lp-page').forEach(p => {
+    p.classList.remove('active');
+  });
+  // Show target page
+  const page = document.getElementById('page-' + name);
+  if (page) page.classList.add('active');
+
+  // Update desktop nav
+  document.querySelectorAll('.lp-nav-page').forEach(b => b.classList.remove('active'));
+  const navBtn = document.querySelector('.lp-nav-page[data-page="' + name + '"]');
+  if (navBtn) navBtn.classList.add('active');
+
+  // Update mobile nav
+  document.querySelectorAll('.mobile-nav-item').forEach(b => b.classList.remove('active'));
+  const mobileBtn = document.querySelector('.mobile-nav-item[data-page="' + name + '"]');
+  if (mobileBtn) mobileBtn.classList.add('active');
+
+  // Show/hide mobile quote bar (only on home and plans)
+  const quoteBar = document.getElementById('mobile-quote-bar');
+  if (quoteBar) quoteBar.style.display = (name === 'home' || name === 'plans') ? 'block' : 'none';
+
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  // Re-render FAQ with correct language
+  if (name === 'faq') renderFaq();
+
+  // If segment requested, select it on home page
+  if (segment) {
+    setTimeout(() => selectSegment(segment), 150);
+  }
+
+  // Update URL hash
+  try { history.pushState(null, '', '#' + name); } catch(e) {}
+}
+
+// Handle initial page load from hash
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#','');
+  if (['home','plans','faq','about'].includes(hash)) {
+    showLPPage(hash);
+  }
+});
+
+// Plans page segment selector
+function selectPlansSeg(seg, btn) {
+  document.querySelectorAll('.plans-seg-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const grid = document.getElementById('plans-page-cards');
+  if (!grid) return;
+
+  const allPlans = [...PRICING.tugo, ...PRICING.destination];
+  let filtered;
+  if      (seg === 'student')  filtered = allPlans.filter(p => p.forStudent);
+  else if (seg === 'visitor')  filtered = allPlans.filter(p => p.forVisitor);
+  else if (seg === 'canadian') filtered = allPlans.filter(p => p.forCanadian);
+  else filtered = [];
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p style="color:rgba(255,255,255,.45);padding:24px;">No plans available for this selection.</p>';
+    return;
+  }
+
+  grid.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:24px;">' +
+    filtered.map(p => `
+      <div style="background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.13);border-radius:16px;padding:24px 20px;text-align:left;transition:all .22s;cursor:pointer;"
+           onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.background='rgba(201,168,76,.07)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,.13)';this.style.background='rgba(255,255,255,.07)'"
+           onclick="showLPPage('home');setTimeout(()=>selectSegment('${seg}'),150)">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:12px;background:#00b341;color:white;display:inline-block;margin-bottom:12px;">Destination</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:white;margin-bottom:6px;">${p.name}</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.45);margin-bottom:14px;">${p.tagline}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--gold);">${p.forStudent ? '$'+p.yearlyRate.toFixed(2) : '$'+p.dailyRate.toFixed(2)}</div>
+        <div style="font-size:.7rem;color:rgba(255,255,255,.35);margin-bottom:14px;">${p.forStudent ? '/ year' : '/ day'}</div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.5);">
+          ${p.features.slice(0,3).map(f=>'✓ '+f).join('<br>')}
+        </div>
+        <button onclick="event.stopPropagation();showLPPage('home');setTimeout(()=>selectSegment('${seg}'),150)"
+          style="margin-top:16px;width:100%;padding:9px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;">
+          Get Quote →
+        </button>
+      </div>`).join('') + '</div>';
+}
+
+// ══════════════════════════════════════
+// FAQ TABS
+// ══════════════════════════════════════
+let currentFaqCat = 'all';
+
+function switchFaqTab(cat, btn) {
+  currentFaqCat = cat;
+  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFaq();
+}
 
 // ══════════════════════════════════════
 // LOGIN / AUTH
