@@ -1214,7 +1214,7 @@ tr:hover td{background:#fafbfc;}
   <div class="lp-page" id="page-plans">
 
   <!-- Plans page hero header -->
-  <div style="background:linear-gradient(160deg,#0a1520 0%,#0d1b2a 100%);padding:56px 5% 36px;text-align:center;">
+  <div style="background:linear-gradient(160deg,#0a1520 0%,#0d1b2a 100%);padding:100px 5% 36px;text-align:center;">
     <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px;">
       Coverage Plans
     </div>
@@ -1229,7 +1229,7 @@ tr:hover td{background:#fafbfc;}
     <div id="plans-page-cards" style="max-width:1000px;margin:0 auto;"></div>
   </div>
 
-  <div id="lp-audience" style="background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);">
+  <div id="lp-audience" style="display:none;">
     <div class="section">
       <div class="sec-eye" data-en="Who We Serve" data-fr="Qui nous servons">Who We Serve</div>
       <h2 class="sec-h2" data-en="The right plan for<br>your situation" data-fr="Le bon forfait pour<br>votre situation">The right plan for<br>your situation</h2>
@@ -3194,7 +3194,7 @@ function showLPPage(name, segment) {
 
   // Show/hide mobile quote bar (only on home and plans)
   const quoteBar = document.getElementById('mobile-quote-bar');
-  if (quoteBar) quoteBar.style.display = (name === 'home' || name === 'plans') ? 'block' : 'none';
+  if (quoteBar) quoteBar.style.display = (window.innerWidth <= 768 && (name === 'home' || name === 'plans')) ? 'block' : 'none';
 
   // If segment requested, select and scroll to reveal; else scroll to who-cards
   if (segment) {
@@ -3224,6 +3224,15 @@ window.addEventListener('load', () => {
   if (['home','plans','faq','about'].includes(hash)) {
     showLPPage(hash);
   }
+  // Hide quote bar on desktop on initial load
+  const quoteBar = document.getElementById('mobile-quote-bar');
+  if (quoteBar && window.innerWidth > 768) quoteBar.style.display = 'none';
+});
+
+// Hide on resize to desktop
+window.addEventListener('resize', () => {
+  const quoteBar = document.getElementById('mobile-quote-bar');
+  if (quoteBar && window.innerWidth > 768) quoteBar.style.display = 'none';
 });
 
 // Plans page segment selector
